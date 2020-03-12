@@ -13,7 +13,7 @@
 	</servlet-mapping>
 	
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
+		<welcome-file>intro.html</welcome-file>
 	</welcome-file-list>
 	
 	<!--  OAUTH SERVLETS 
