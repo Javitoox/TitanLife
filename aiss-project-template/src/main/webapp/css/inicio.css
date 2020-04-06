@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 #logo{
 	position:absolute;
 	width:30%;
@@ -27,3 +28,15 @@
 	 position:absolute;
 	 right:16%;
 }
+#sentence{
+
+	position:absolute;
+    bottom:20%;
+    right:26%;
+	font-family: 'Alegreya', serif;
+	font-size: 60px;
+	color:dark;
+	-webkit-text-stroke: 1.75px #E33737;
+    text-shadow: 9px 9px 9px black;
+}
+	
