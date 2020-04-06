@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+body{
+background: url(/images/sports.jpg) ;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+
+.dropdown {
+  position: absolute;
+  left:5%; 
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgb(255,0,0);
+  min-width: 160px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown .dropdown-content p a{
+	color:white;
+    font: 16px "Comic Sans MS", cursive;
+    text-decoration:none;
+    margin: 20px;
+}
+
+.dropdown .dropdown-content p a:hover{
+    color: black;
+}
+
+

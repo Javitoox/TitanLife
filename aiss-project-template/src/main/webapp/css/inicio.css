@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+#logo{
+	position:absolute;
+	width:30%;
+	height:60%;
+	top:4%;
+	right:36%;
+}
+
+#enlace1{
+	 position:absolute;
+	 right:4%;
+}
+
+#enlace2{
+	 position:absolute;
+	 right:8%;
+}
+
+#enlace3{
+	 position:absolute;
+	 right:12%;
+}
+
+#enlace4{
+	 position:absolute;
+	 right:16%;
+}
