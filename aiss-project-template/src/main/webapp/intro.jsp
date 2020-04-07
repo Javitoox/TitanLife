@@ -1,32 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<style type="text/css">
-	@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@1,800&display=swap');
-</style>
 <title>Inicio</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0">
-<link rel="stylesheet" href="css/plantilla.css">
 <link rel="stylesheet" href="css/inicio.css">
 <link rel="shortcut icon" href="images/logo.png">
 <link rel="apple-touch-icon" href="images/logo.png">
 </head>
 <body>
-<div class="dropdown">
-  <img src="images/pngocean.com.png" width=40 height=40 alt="Menú">
-  <div class="dropdown-content">
-  <p><a href="intro.html">Iniciar sesión</a></p>
-  <p><a href="intro.html">Inicio</a></p>
-  <p><a href="intro.html">Mis Objetivos</a></p>
-  <p><a href="intro.html">Mis Comidas</a></p>
-  <p><a href="intro.html">Mis Videos</a></p>
-  <p><a href="perfil.html">Mi Perfil</a></p>
-  <p><a href="intro.html">Mi Strava</a></p>
-  <p><a href="error.html">Error View</a></p>
-  
-  </div>
-</div>
+
+<%@ include file="menu.jsp" %>
 
 <div id="enlace1">
 <a href="https://www.fatsecret.es/"> 
@@ -49,7 +35,7 @@
 </a>
 </div>
 
-<img  id="logo" src="images/logo.png" alt="Descripción de la imagen">
+<img  id="logo" src="images/logo.png" alt="DescripciÃ³n de la imagen">
 
 <h2 id="sentence"> No tengas un sueño,ten un plan.</h2>
 

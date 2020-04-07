@@ -1,16 +1,8 @@
 @charset "UTF-8";
 
-body{
-background: url(/images/sports.jpg) ;
--webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
-background-size: cover;
-}
-
 .dropdown {
-  position: absolute;
-  left:5%; 
+  position: static;
+  float:left;
 }
 
 .dropdown-content {

@@ -1,80 +1,50 @@
-#fotoFondo{
-    position: absolute;
-    width: 80%;
-    height: 100%;
-    top: 1%;
-    right: 10%; 
-    z-index: -1;
-}
-#avatar{
-    position: absolute;
-    width: 7.5%;
-    height: 15%;
-    right: 82%;
-}
-#ajuste{
-    position: absolute;
-    width: 2%;
-    height: 3.8%;
-    right: 80%;
-    top: 13%;
-}
-.dropdown {
-    position: absolute;
-    left:1%; 
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: rgb(255,0,0);
-    min-width: 160px;
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  .dropdown .dropdown-content p a{
-      color:white;
-      font: 16px "Comic Sans MS", cursive;
-      text-decoration:none;
-      margin: 20px;
-  }
-  
-  .dropdown .dropdown-content p a:hover{
-      color: black;
-  }
+@charset "UTF-8";
 
-#fotoLogo{
-    position: absolute;
+body{
+	background: url(/images/perfil.jpg) ;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#texto4{
+    font-family: 'Titillium Web', sans-serif;
+    color:red;
+}
+
+#logo{
+    position:absolute;
     width: 15%;
     height: 30%;
-    top: -3%;
-    right: 0%;
+    right: 2%;
 }
 input[type=text] {
-  width: 20%;
-  padding: 12px 20px;
+  width: 15%;
+  padding: 0 75px 0 9px;
   margin: 8px 0;
   box-sizing: border-box;
-  border: 2px solid red;
-  border-radius: 4px;
+  border: 2px solid black;
+  border-radius: 9px;
   position: relative;
-  top:130px;
-  left:400px
+  top:170px;
+  left:200px;
+  height:27px;
+  font-family: 'Source Sans Pro', sans-serif;
 }
-#Objetivos {
-  width: 20%;
-  height: 150px;
-  padding: 12px 20px;
+
+input[type=submit] {
+  width: 9.3%;
+  padding: 0 75px 0 9px;
   box-sizing: border-box;
-  border: 2px solid red;
-  border-radius: 4px;
-  background-color: #f8f8f8;
-  font-size: 16px;
-  resize: none;
-  box-sizing: border-box;
-  text-align: justify;
-  
+  border: 2px solid black;
+  border-radius: 9px;
+  position: relative;
+  top:155px;
+  left:425px;
+  height:27px;
+  background: #424242;
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+
 }

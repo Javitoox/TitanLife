@@ -1,5 +1,14 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@1,800&display=swap');
+
+body{
+background: url(/images/sports.jpg) ;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
 
 #logo{
 	position:absolute;
@@ -28,14 +37,14 @@
 	 position:absolute;
 	 right:16%;
 }
-#sentence{
 
+#sentence{
 	position:absolute;
     bottom:20%;
     right:26%;
 	font-family: 'Alegreya', serif;
 	font-size: 60px;
-	color:dark;
+	color:black;
 	-webkit-text-stroke: 1.75px #E33737;
     text-shadow: 9px 9px 9px black;
 }
