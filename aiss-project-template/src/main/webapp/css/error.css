@@ -1,0 +1,22 @@
+#imagenGato {
+    position: absolute;
+    width: 28%;
+    height: 60%;
+    top: 4%;
+    right: 36%;
+}
+#texto1{
+    position: absolute;
+    left: 35.5%;
+    top: 62%;
+}
+#texto2{
+    position: absolute;
+    left: 42.5%;
+    top: 66%;
+}
+#texto3{
+    position: absolute;
+    left: 46.7%;
+    top: 66%;
+}
