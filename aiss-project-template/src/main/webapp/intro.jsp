@@ -35,7 +35,7 @@
 </a>
 </div>
 
-<img  id="logo" src="images/logo.png" alt="DescripciÃ³n de la imagen">
+<img id="logo" src="images/logo.png" alt="Descripción de la imagen">
 
 <h2 id="sentence"> No tengas un sueño,ten un plan.</h2>
 

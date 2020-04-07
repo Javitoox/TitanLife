@@ -11,7 +11,7 @@ background-size: cover;
 }
 
 #logo{
-	position:relative;
+	position:absolute;
 	width:30%;
 	height:60%;
 	top:4%;

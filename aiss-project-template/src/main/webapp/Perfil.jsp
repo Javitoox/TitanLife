@@ -14,11 +14,15 @@
 </head>
 <body>
 
+<img id="love" src="https://i.pinimg.com/originals/58/b8/01/58b801823c2ee845a6fa3e749dbe3d83.png" alt="Descripción de la imagen">
+
 <%@ include file="menu.jsp" %>
 
 <img id="logo" src="images/logo.png" alt="Descripción de la imagen">
 
-<h1 id="texto4">Mi Perfil</h1>
+<h2 class="texto4" id="text">Datos de usuario</h2>
+
+<h1 class="texto4">Mi Perfil</h1>
 <div class="form">
         <form id = "formulario" action="" method="GET">
             <input class="input100" type="text" placeholder="Nombre" maxlength="40" required/><br/>
@@ -32,8 +36,6 @@
             <input class="input108" type="text" placeholder="Cintura" maxlength="40" required/><br/>
             <input class="input109" type="text" placeholder="Objetivos" maxlength="40"/><br/>
             <input class="input110" type="submit" value="Confirmar cambios" /><br />
-
-
         </form>
     </div>
 </body>
