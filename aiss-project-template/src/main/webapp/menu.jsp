@@ -12,7 +12,7 @@
 <div class="dropdown">
   <img src="images/pngocean.com.png" width=40 height=40 alt="Menú">
   <div class="dropdown-content">
-  <p><a href="intro.jsp">Iniciar sesión</a></p>
+  <p><a href="Registro.jsp">Iniciar sesión</a></p>
   <p><a href="intro.jsp">Inicio</a></p>
   <p><a href="intro.jsp">Mis Objetivos</a></p>
   <p><a href="intro.jsp">Mis Comidas</a></p>
