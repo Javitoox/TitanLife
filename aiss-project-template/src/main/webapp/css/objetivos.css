@@ -137,12 +137,6 @@ input[id=done2]{
     text-align: center;
 
 }
-#text{
-    position:absolute;
-	top:110px;
-    left:325px;
-    
-}
 .texto4{
     font-family: 'Titillium Web', sans-serif;
     color:red;
