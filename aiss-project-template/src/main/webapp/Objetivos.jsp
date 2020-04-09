@@ -23,6 +23,13 @@
 <body>
 	<img id="logo" src="images/logo.png" alt="Descripción de la imagen">
 	
+	<div class="form3">
+		<form id = "formulario3" action="" method="GET">
+			<input type="text" id="datepicker"></br>
+			<input id="done2" type="submit" value="DONE" /><br/>
+		</form>
+	</div>
+	
 <%@include file="menu.jsp"%>
 
 <h1 class="texto4">Mis Objetivos</h1>
@@ -45,14 +52,7 @@
 			<input id="done1" type="submit" value="DONE" /><br/>
 		</form>
 	</div>
-	
-	<div class="form3">
-		<form id = "formulario3" action="" method="GET">
-			<input type="text" id="datepicker"></br>
-			<input id="done2" type="submit" value="DONE" /><br/>
-		</form>
-	</div>
-	
+			
 	<div class="cuadro3">
 	Objetivos corporales
 	</div>
