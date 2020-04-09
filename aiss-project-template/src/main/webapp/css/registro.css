@@ -34,7 +34,7 @@ input[type=submit]{
     font-size: 15px;
     color: white;
 }
-.cuadro {
+#cuadro {
    	width: 285px;
     background: #fff;
     border-radius: 2px;
@@ -58,4 +58,7 @@ h1{
  	border-width: 10px;
   	border-style: solid;
   	width:28%;
+}
+#boton:hover{
+	color:black;
 }

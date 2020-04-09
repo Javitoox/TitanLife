@@ -20,6 +20,7 @@
   <p><a href="intro.jsp">Mi Strava</a></p>
   <p><a href="Perfil.jsp">Mi Perfil</a></p>
   <p><a href="error.jsp">Error View</a></p>
+  <p><a href="Registro.jsp">Registro</a></p>
   <p><a href="InicioSesion.jsp">Inicio Sesion</a></p>
   
   </div>
