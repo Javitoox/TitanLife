@@ -1,0 +1,182 @@
+@charset "UTF-8";
+
+body{
+background-image: url(https://images.pexels.com/photos/703014/pexels-photo-703014.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940) ;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+.cuadro3{
+	font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: red;
+    background: white;
+    width: 20%;
+    height: 33px;
+    margin-top: -2.8%;
+    margin-left: 10%;
+    text-align: center;
+    border: red;
+}
+.cuadro4{
+   font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: red;
+    background: white;
+    width: 20%;
+    height: 33px;
+    margin-top: -2.8%;
+    margin-left: 75%;
+    text-align: center;
+    border: red;
+    }
+.cuadro5{
+   	font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: white;
+    background: red;
+    width: 8%;
+    height: 33px;
+    margin-top: 1.2%;
+    margin-left: 23%;
+    text-align: center;
+    border: red;
+    }
+.cuadro6{
+   font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: white;
+    background: red;
+    width: 9%;
+    height: 33px;
+    margin-top: -2.5%;
+    margin-left: 9%;
+    text-align: center;
+    border: red;
+    }
+
+input[id=boton]{
+ background-color: red;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 15px;
+    color: white;
+    width: 15%;
+    padding: 0 9px 0 9px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid red;
+    border-radius: 3px;
+    position: relative;
+    top: 133px;
+    left: 581px;
+    height: 36px;
+    text-align: center;
+}
+input[id=done1]{
+ background-color: red;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 15px;
+    color: white;
+    width: 3%;
+    padding: 0 48px 0 9px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid red;
+    border-radius: 9px;
+    position: relative;
+    top: 327px;
+    left: 940px;
+    height: 27px;
+    text-align: center;
+
+}
+input[list=opcionesDeportivas]{ 
+    width: 22%;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid white;
+    border-radius: 3px;
+    position: relative;
+    top: 124px;
+    left: 1000px;
+    height: 27px;
+}
+input[type=text]{
+   
+    width: 23%;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid white;
+    border-radius: 3px;
+    position: relative;
+    top: 140px;
+    left: 112.5px;
+    height: 27px;
+}
+
+input[id=done2]{
+	background-color: red;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 15px;
+    color: white;
+    width: 0%;
+    padding: 0 48px 0 9px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid red;
+    border-radius: 9px;
+    position: relative;
+    top: 340px;
+    left: 333px;
+    height: 27px;
+    text-align: center;
+
+}
+#text{
+    position:absolute;
+	top:110px;
+    left:325px;
+    
+}
+.texto4{
+    font-family: 'Titillium Web', sans-serif;
+    color:red;
+}
+.cuadro1{
+	font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: red;
+    background: white;
+    width: 15%;
+    height: 65px;
+    margin-top: -1%;
+    margin-left: 43%;
+    text-align: center;
+    border: black;
+}
+.cuadro2{
+	font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: red;
+    background: white;
+    width: 15%;
+    height: 65px;
+    margin-top: 3%;
+    margin-left: 43%;
+    text-align: center;
+    border: black;
+}
+#logo{
+    position:absolute;
+    width: 15%;
+    height: 30%;
+    right: 1%;
+    top:0;
+}

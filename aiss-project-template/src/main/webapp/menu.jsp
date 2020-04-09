@@ -14,7 +14,7 @@
   <div class="dropdown-content">
   <p><a href="Registro.jsp">Iniciar sesión</a></p>
   <p><a href="intro.jsp">Inicio</a></p>
-  <p><a href="intro.jsp">Mis Objetivos</a></p>
+  <p><a href="Objetivos.jsp">Mis Objetivos</a></p>
   <p><a href="intro.jsp">Mis Comidas</a></p>
   <p><a href="intro.jsp">Mis Videos</a></p>
   <p><a href="intro.jsp">Mi Strava</a></p>
