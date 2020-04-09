@@ -113,7 +113,7 @@ input[type=text]{
     box-sizing: border-box;
     border: 2px solid white;
     border-radius: 3px;
-    position: relative;
+	position:absolute;
     top: 140px;
     left: 112.5px;
     height: 27px;
