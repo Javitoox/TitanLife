@@ -22,21 +22,21 @@
 
 <h2 class="texto4" id="text">Datos de usuario</h2>
 
-<h1 class="texto4">Mi Perfil</h1>
-<div class="form">
-        <form id = "formulario" action="" method="GET">
-            <input type="text" placeholder="Nombre" maxlength="40" required/><br/>
-            <input type="text" placeholder="Apellidos" maxlength="40" required/><br/>
-            <input type="text" placeholder="Email" maxlength="40" required/><br/>
-            <input type="text" placeholder="**" maxlength="40" required/><br/>
-            <input type="text" placeholder="Altura" maxlength="40" required/><br/>
-            <input type="text" placeholder="Peso" maxlength="40" required/><br/>
-            <input type="text" placeholder="IMC" maxlength="40" required/><br/>
-            <input type="text" placeholder="Cadera" maxlength="40" required/><br/>
-            <input type="text" placeholder="Cintura" maxlength="40" required/><br/>
-            <input type="text" placeholder="Objetivos" maxlength="40"/><br/>
-            <input type="submit" value="Confirmar cambios" /><br />
-        </form>
-    </div>
+<h1 class="texto4">Mi Perfil</h1>	
+
+       <form id = "formulario" action="" method="GET">
+           <input type="text" placeholder="Nombre" maxlength="40" required/><br/>
+           <input type="text" placeholder="Apellidos" maxlength="40" required/><br/>
+           <input type="text" placeholder="Email" maxlength="40" required/><br/>
+           <input type="text" placeholder="**" maxlength="40" required/><br/>
+           <input type="text" placeholder="Altura" maxlength="40" required/><br/>
+           <input type="text" placeholder="Peso" maxlength="40" required/><br/>
+           <input type="text" placeholder="IMC" maxlength="40" required/><br/>
+           <input type="text" placeholder="Cadera" maxlength="40" required/><br/>
+           <input type="text" placeholder="Cintura" maxlength="40" required/><br/>
+           <input type="text" placeholder="Objetivos separados por ','" maxlength="40"/><br/>
+           <input type="submit" value="Confirmar cambios" /><br />
+       </form>
+
 </body>
 </html>

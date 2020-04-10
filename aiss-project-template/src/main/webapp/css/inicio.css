@@ -7,8 +7,8 @@
 }
 
 body{
-background: url(https://i.pinimg.com/564x/4e/1a/fb/4e1afb936e2b9032fce5f88674e55730.jpg) ;
-background-size:100%;
+    background: url(https://i.pinimg.com/564x/4e/1a/fb/4e1afb936e2b9032fce5f88674e55730.jpg) ;
+    background-size:100%;
 }
 
 #logo{
@@ -53,7 +53,7 @@ background-size:100%;
 @media only screen and (min-width: 760px) {
 	body{
 	background: url(/images/ipadsport.jpg) ;
-	background-size: 100%;
+	background-size:100%;
 	}
 	
 	#sentence{
@@ -66,11 +66,10 @@ background-size:100%;
 @media only screen and (min-width: 900px) {
 	body{
 	background: url(/images/sports.jpg) ;
-	background-size: 100%;
+	background-size:100%;
 	}
 	
 	#logo{
-	position:absolute;
 	width:30%;
 	height:60%;
 	top:4%;
@@ -78,7 +77,7 @@ background-size:100%;
 	}
 	
 	#sentence{
-	left:30%;
+	left:27%;
     }
     
     #enlace1{
@@ -97,4 +96,10 @@ background-size:100%;
 	 right:16%;
 	}
 	
+}
+
+@media only screen and (min-width: 1900px) {
+	#sentence{
+	left:35%;
+	}
 }
