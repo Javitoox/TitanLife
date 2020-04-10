@@ -3,6 +3,7 @@
 *{
 	box-sizing:border-box;
 }
+
 body{
 	background: url(https://i.pinimg.com/564x/96/cd/bf/96cdbfc7d0f74145bf18049ff02a3b9e.jpg) ;
 	background-size:100%;
@@ -92,11 +93,11 @@ input[type=submit] {
     top:0;
     }
     #formulario{
-    top:30%;
+    top:25%;
 	left:27%;
     }
     #text{
-	top:20%;
+	top:15%;
     left:26.8%;
 	}
 }
