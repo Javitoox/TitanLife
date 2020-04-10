@@ -1,114 +1,167 @@
 @charset "UTF-8";
 
+*{
+	box-sizing: border-box;
+}
+
 body{
-    background: url(/images/sports.jpg) ;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background: url(https://i.pinimg.com/564x/4e/1a/fb/4e1afb936e2b9032fce5f88674e55730.jpg) ;
+    background-size:100%;
 }
 
 #logo{
     position: absolute;
-    right:2%;
-
+    right:0;
+    top:0;
+    width:40%;
+    height:20%;
 }
+
 #loginAccount{
-    position: fixed;
-    left: 24%;
-    top: 20%;
     position: absolute;
+    left: 30%;
+    top: 30%;
+    color:white;
+    font-style:italic;
 }
 
-#campo1{
-    width: 20%;
+.campo{
+	position: absolute;
+    width: 50%;
     padding: 12px 20px;
-    margin: 8px 0;
-    position: relative;
-    top:195px;
-    left:320px;
+    top:40%;
+    left:23%;
     border-radius: 34px 34px 34px 34px;
     -moz-border-radius: 34px 34px 34px 34px;
     -webkit-border-radius: 34px 34px 34px 34px;
     border: 2px solid #303030;
 }
 #campo2{
-    width: 20%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    position: relative;
-    top:200px;
-    left:320px;
-    border-radius: 34px 34px 34px 34px;
-    -moz-border-radius: 34px 34px 34px 34px;
-    -webkit-border-radius: 34px 34px 34px 34px;
-    border: 2px solid #303030;
-
+    top:50%;
 }
-.logIn {
-    width: 25%;
+#logIn {
+	position: absolute;
+    width: 50%;
     border-radius: 9px;
-    top:360px;
-    left:313px;
+    top:60%;
+    left:23%;
     height:35px;
     background: #f14d4d;
     color: white;
     font-family: 'Source Sans Pro', sans-serif;
     text-align: center;
-    position: absolute;
 }
 
 #forgetPass{
     position: absolute;
-    left: 23%;
-    top: 71.5%;
-    font-size: 116%;
-    color:white;
-}
-
-#registro{
-    position: absolute;
-    left: 26%;
-    top: 425px;
-    font-size: 110%;
+    left: 18%;
+    top: 80%;
+    font-size: 66%;
     color:white;
 }
 
 #registrate{
     position: absolute;
-    left: 40%;
-    top: 71.5%;
-    font-size: 110%;
+    left: 60%;
+    top: 80%;
+    font-size: 60%;
     color:white;
 }
 
-.cuadro{
+#cuadro{
+	position: absolute;
     border: 1px solid rgb(0, 4, 7);
     opacity: 38%;
-    width: 28%;
+    width: 68%;
     background-color: black;
     border-radius: 2px;
-    padding: 34px 27px 84px 27px;
-    height: 328px;
-    top:100px;
-    left:270px;
-    border:thick;
-    position: absolute;
+    height: 60%;
+    top:30%;
+    left:15%;
 }
 
 #checkbox{
+	position: absolute;
     width: 20%;
     padding: 12px 20px;
     margin: 8px 0;
-    position: relative;
-    top:250px;
-    left:185px;
+    top:75%;
+    left:10%;
     border: 2px solid #303030;
 }
 #recuerda{
     position: absolute;
     left: 27%;
-    top: 405px;
+    top: 74%;
     font-size: 103%;
     color:white;
+}
+
+@media only screen and (min-width: 760px) {
+	body{
+	background: url(/images/ipadsport.jpg) ;
+	background-size:100%;
+	}
+	#forgetPass{
+    font-size: 100%;
+    }
+    #registrate{
+    font-size:100%;
+    }
+    #loginAccount{
+    left:39%;
+    }
+    #logo{
+    height:30%;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+	body{
+	background: url(/images/sports.jpg) ;
+	background-size:100%;
+	}
+	#cuadro{
+	width: 28%;
+	top:20%;
+	}
+	.campo{
+	width: 20%;
+	left:18%;
+	top:30%;
+	}
+	#campo2{
+	top:40%;
+	}
+	#loginAccount{
+    left:23%;
+    top:22%;
+    }
+    #logIn{
+    width: 20%;
+    left:18%;
+    top:50%;
+    }
+    #checkbox{
+    top:60%;
+    }
+    #recuerda{
+    top:58%;
+    left:24%;
+    }
+    #forgetPass{
+    top:70%;
+    left:16%;
+    }
+    #registrate{
+    top:70%;
+    left:35%;
+    }
+    #logo{
+    right:12%;
+    width:40%;
+    height:80%;
+    top:7%;
+    }
+	
 }

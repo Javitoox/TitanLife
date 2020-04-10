@@ -13,19 +13,18 @@
 <body>
 
 	<img id="logo" src="images/logo.png" alt="Logo TitanLife">
-    <div class="cuadro"></div>
-    <h1 id="loginAccount">Login to Your Account</h1><br>
+    <div id="cuadro"></div>
+    <p id="loginAccount">Login to Your Account</p>
     
         <form id="formulario" action="get">
             
-            <input id="campo1" type="text" name = "user" placeholder="Usuario" required/><br/>
-            <input id="campo2" type="password" name = "pass" placeholder="Contraseña" required/><br/>
-            <input class="logIn" type="submit" value="Iniciar sesión" /><br/>
-            <input id = "checkbox" type="checkbox" value = "Recordar contraseña"><br/>
+            <input class="campo" type="text" name = "user" placeholder="Usuario" required/><br/>
+            <input class="campo" id="campo2" type="password" name = "pass" placeholder="Contraseña" required/><br/>
+            <input id="logIn" type="submit"/><br/>
+            <input id = "checkbox" type="checkbox">
             <p id="recuerda"><strong>Recordar contraseña</strong> </p>
             <a id= "forgetPass" href="dondeSeaQueSeCambieLaContraseña">¿Has olvidado la contraseña?</a>
-            <p id= "registro"><strong>¿No tienes una cuenta?</strong></p><p>
-            <a id="registrate" href="Registro.jsp">Regístrate</a></p>
+            <a id="registrate" href="Registro.jsp">Regístrate</a>
             
         </form>
     

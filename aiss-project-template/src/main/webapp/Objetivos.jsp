@@ -11,11 +11,12 @@
 <link rel="apple-touch-icon" href="images/logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+<!-- ESTE ESTILO DA ERROR PORQUE NO ESTÁ EN NINGÚN LAO-->
+<link rel="stylesheet" href="/resources/demos/style.css"> 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
- $( function() {
+ $( function() { <!-- ESTO AQUÍ NO FERNANDO, LOS ESTILOS APARTE EN UN CSS-->
    $( "#datepicker" ).datepicker();
  } );
  </script>
