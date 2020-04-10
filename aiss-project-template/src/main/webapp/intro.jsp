@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<img id="logo" src="images/logo.png" alt="Descripción de la imagen">
+
 <%@ include file="menu.jsp" %>
 
 <div id="enlace1">
@@ -34,8 +36,6 @@
 <img src="images/pngwing.com.png" width=40 height=40 alt="Logo">
 </a>
 </div>
-
-<img id="logo" src="images/logo.png" alt="Descripción de la imagen">
 
 <h2 id="sentence"> No tengas un sueño,ten un plan.</h2>
 

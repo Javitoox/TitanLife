@@ -10,16 +10,13 @@ body{
 
 #logo{
     position: absolute;
-    width: 55%;
-    height: 110%;
-    top: -5%;
-    right: 0%;
+    right:2%;
 
 }
 #loginAccount{
     position: fixed;
-    left: 25%;
-    top: 32%;
+    left: 24%;
+    top: 20%;
     position: absolute;
 }
 
@@ -28,22 +25,19 @@ body{
     padding: 12px 20px;
     margin: 8px 0;
     position: relative;
-    top:284px;
+    top:195px;
     left:320px;
     border-radius: 34px 34px 34px 34px;
     -moz-border-radius: 34px 34px 34px 34px;
     -webkit-border-radius: 34px 34px 34px 34px;
     border: 2px solid #303030;
-    
-
-   
 }
 #campo2{
     width: 20%;
     padding: 12px 20px;
     margin: 8px 0;
     position: relative;
-    top:278px;
+    top:200px;
     left:320px;
     border-radius: 34px 34px 34px 34px;
     -moz-border-radius: 34px 34px 34px 34px;
@@ -53,10 +47,8 @@ body{
 }
 .logIn {
     width: 25%;
-    padding: 0 75px 0 9px;
-    box-sizing: border-box;
     border-radius: 9px;
-    top:440px;
+    top:360px;
     left:313px;
     height:35px;
     background: #f14d4d;
@@ -68,39 +60,38 @@ body{
 
 #forgetPass{
     position: absolute;
-    left: 28.4%;
-    top: 84%;
+    left: 23%;
+    top: 71.5%;
     font-size: 116%;
-
+    color:white;
 }
 
 #registro{
     position: absolute;
     left: 26%;
-    top: 77%;
+    top: 425px;
     font-size: 110%;
-
+    color:white;
 }
 
 #registrate{
     position: absolute;
     left: 40%;
-    top: 79.5%;
+    top: 71.5%;
     font-size: 110%;
-
+    color:white;
 }
 
 .cuadro{
     border: 1px solid rgb(0, 4, 7);
-    opacity: 28%;
+    opacity: 38%;
     width: 28%;
-    background: #fff;
+    background-color: black;
     border-radius: 2px;
     padding: 34px 27px 84px 27px;
     height: 328px;
-    margin-right: 25%;
-    margin-left: 20%;
-    margin-top: 12%;
+    top:100px;
+    left:270px;
     border:thick;
     position: absolute;
 }
@@ -110,13 +101,14 @@ body{
     padding: 12px 20px;
     margin: 8px 0;
     position: relative;
-    top:324px;
+    top:250px;
     left:185px;
     border: 2px solid #303030;
 }
 #recuerda{
     position: absolute;
     left: 27%;
-    top: 71.9%;
+    top: 405px;
     font-size: 103%;
+    color:white;
 }

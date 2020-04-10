@@ -2,50 +2,99 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@1,800&display=swap');
 
+*{
+	box-sizing: border-box;
+}
+
 body{
-background: url(/images/sports.jpg) ;
--webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
-background-size: cover;
+background: url(https://i.pinimg.com/564x/4e/1a/fb/4e1afb936e2b9032fce5f88674e55730.jpg) ;
+background-size:100%;
 }
 
 #logo{
+	position:absolute;
+	width:100%;
+	height:60%;
+	top:5%;
+	right:0.5%;
+}
+
+#enlace1{
+	 position:absolute;
+	 right:2%;
+}
+
+#enlace2{
+	 position:absolute;
+	 right:16%;
+}
+
+#enlace3{
+	 position:absolute;
+	 right:30%;
+}
+
+#enlace4{
+	 position:absolute;
+	 right:42%;
+}
+
+#sentence{
+	position:absolute;
+    top:60%;
+    left:20%;
+	font-family: 'Alegreya', serif;
+	font-size: 300%;
+	color:black;
+	-webkit-text-stroke: 1.75px #E33737;
+    text-shadow: 9px 9px 9px black;
+}
+
+@media only screen and (min-width: 760px) {
+	body{
+	background: url(/images/ipadsport.jpg) ;
+	background-size: 100%;
+	}
+	
+	#sentence{
+	left:10%;
+	}
+	
+}
+
+	
+@media only screen and (min-width: 900px) {
+	body{
+	background: url(/images/sports.jpg) ;
+	background-size: 100%;
+	}
+	
+	#logo{
 	position:absolute;
 	width:30%;
 	height:60%;
 	top:4%;
 	right:36%;
-}
-
-#enlace1{
-	 position:absolute;
-	 right:4%;
-}
-
-#enlace2{
-	 position:absolute;
-	 right:8%;
-}
-
-#enlace3{
-	 position:absolute;
-	 right:12%;
-}
-
-#enlace4{
-	 position:absolute;
-	 right:16%;
-}
-
-#sentence{
-	position:absolute;
-    bottom:20%;
-    right:26%;
-	font-family: 'Alegreya', serif;
-	font-size: 60px;
-	color:black;
-	-webkit-text-stroke: 1.75px #E33737;
-    text-shadow: 9px 9px 9px black;
-}
+	}
 	
+	#sentence{
+	left:30%;
+    }
+    
+    #enlace1{
+	 right:4%;
+     }
+     
+	#enlace2{
+	 right:8%;
+	}
+	
+	#enlace3{
+	 right:12%;
+	}
+
+	#enlace4{
+	 right:16%;
+	}
+	
+}

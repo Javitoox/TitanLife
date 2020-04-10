@@ -24,7 +24,8 @@
             <input id = "checkbox" type="checkbox" value = "Recordar contraseña"><br/>
             <p id="recuerda"><strong>Recordar contraseña</strong> </p>
             <a id= "forgetPass" href="dondeSeaQueSeCambieLaContraseña">¿Has olvidado la contraseña?</a>
-            <p id= "registro"><strong>¿No tienes una cuenta?</strong></p><p><a id="registrate" href="Registro.jsp">Regístrate</a></p>
+            <p id= "registro"><strong>¿No tienes una cuenta?</strong></p><p>
+            <a id="registrate" href="Registro.jsp">Regístrate</a></p>
             
         </form>
     
