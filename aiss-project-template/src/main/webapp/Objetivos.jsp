@@ -29,10 +29,9 @@
 			<input id="done2" type="submit" value="DONE" /><br/>
 		</form>
 	</div>
-	
 <%@include file="menu.jsp"%>
 
-<h1 class="texto4">Mis Objetivos</h1>
+<h1 class="texto4">Mi Perfil</h1>
 
 
 	<div class="form">
@@ -52,7 +51,8 @@
 			<input id="done1" type="submit" value="DONE" /><br/>
 		</form>
 	</div>
-			
+	
+		
 	<div class="cuadro3">
 	Objetivos corporales
 	</div>
