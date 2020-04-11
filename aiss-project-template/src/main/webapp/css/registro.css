@@ -1,12 +1,14 @@
 @charset "UTF-8";
 
-body{
-background-image: url(/images/sports.jpg) ;
--webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
-background-size: cover;
+*{
+	box-sizing: border-box;
 }
+
+body{
+    background-image: url(https://i.pinimg.com/564x/4e/1a/fb/4e1afb936e2b9032fce5f88674e55730.jpg) ;
+    background-size:100%;
+}
+
 input[type=text]{
 	outline:none;
 	border:none;
@@ -14,51 +16,94 @@ input[type=text]{
 	overflow: hidden;
 	font-family: 'Titillium Web', sans-serif;
     font-weight:bolder;
-    font-size: 15px;
+    font-size: 70%;
     color: black;
-    height: 15px;
-    width:287px;
+    width: 100%;
     border-bottom: 2px solid #F30A26;
   	margin-bottom: 2px;
 }
+
 input[type=submit]{
 	border:none;
-	height: 40px;
+	width: 100%;
     background-color: red;
     margin: 0%;
     margin-left: 0%;
     padding: 0px 9px 0 9px;
     border-radius: 3px;
-    width: 100%;
 	font-family: 'Titillium Web', sans-serif;
-    font-size: 15px;
+    font-size: 70%;
     color: white;
 }
+
 #cuadro {
-   	width: 285px;
+	position:absolute;
+	left:17%;
+	top:30%;
+   	width:68%;
+   	height: 440px;
     background: #fff;
     border-radius: 2px;
 	padding: 34px 27px 84px 27px;
-    height: 328px;
-    margin-right: 45%;
-    margin-left: 38%;
-    margin-top: 13%;
     opacity: 72%;
     border:thick;
 }
+
 h1{
+	position: absolute;
 	color: #424242;
-    left: 35.5%;
-    position: absolute;
-    top: -5%;
+	text-align:center;
+    left: 22%;
+    top: 10%;
     font-family: 'Titillium Web', sans-serif;
-    font-size: 78px;
     font-style:italic;
     border-color:#424242;
- 	border-width: 10px;
   	border-style: solid;
-  	width:28%;
+  	width:58%;
 }
+
 #boton:hover{
 	color:black;
+}
+
+@media only screen and (min-width: 760px) {
+	body{
+    background-image: url(/images/ipadsport.jpg);
+    background-size:100%;
+    }
+	#cuadro{
+	height: 530px;
+	}
+	input[type=text]{
+	font-size: 100%;
+	}
+	input[type=submit]{
+	font-size: 100%;
+	}
+	
+@media only screen and (min-width: 900px) {
+	body{
+	background: url(/images/sports.jpg) ;
+	background-size:100%;
+	}
+	#cuadro{
+	top:15%;
+	width:25%;
+	left:36%;
+	height:470px;
+	}
+	h1{
+	top:0;
+	width:20%;
+	left:38.5%;
+	}
+	input[type=text]{
+	font-size: 80%;
+	}
+	input[type=submit]{
+	font-size: 80%;
+	}
+	
+}
+
 }

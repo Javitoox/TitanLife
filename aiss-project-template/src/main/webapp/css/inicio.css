@@ -13,9 +13,9 @@ body{
 
 #logo{
 	position:absolute;
-	width:100%;
-	height:60%;
-	top:5%;
+	width:90%;
+	height:40%;
+	top:15%;
 	right:0.5%;
 }
 
@@ -42,9 +42,9 @@ body{
 #sentence{
 	position:absolute;
     top:60%;
-    left:20%;
+    left:5%;
 	font-family: 'Alegreya', serif;
-	font-size: 300%;
+	font-size: 200%;
 	color:black;
 	-webkit-text-stroke: 1.75px #E33737;
     text-shadow: 9px 9px 9px black;
@@ -57,11 +57,18 @@ body{
 	}
 	
 	#sentence{
-	left:10%;
+	left:17%;
+	font-size: 250%;
+	}
+	
+	#logo{
+	width:60%;
+	height:40%;
+	top:15%;
+	right:20%;
 	}
 	
 }
-
 	
 @media only screen and (min-width: 900px) {
 	body{
@@ -77,7 +84,7 @@ body{
 	}
 	
 	#sentence{
-	left:27%;
+	left:30%;
     }
     
     #enlace1{

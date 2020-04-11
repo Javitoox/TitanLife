@@ -14,7 +14,6 @@
 <body>
 	<h1>TITAN LIFE</h1>
 <div id="cuadro">
-	<div class="form">
         <form id = "formulario" action="" method="GET">
             <input id="Username" type="text" placeholder="Username" maxlength="40" required/><br/>    
             <input id="Email" type="text" placeholder="E-mail" maxlength="40" required/><br/> 
@@ -27,7 +26,6 @@
             <input id="Waist" type="text" placeholder="Waist Measurement (cm)" maxlength="40" required/><br/>
             <input id="boton" type="submit" value="SIGN ME UP" /><br/>
 			</form>
-		</div>
     </div> 
 </body>
 </html>
