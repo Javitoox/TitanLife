@@ -9,6 +9,7 @@
   position: absolute;
   background-color: rgb(255,0,0);
   min-width: 160px;
+  z-index:4;
 }
 
 .dropdown:hover .dropdown-content {

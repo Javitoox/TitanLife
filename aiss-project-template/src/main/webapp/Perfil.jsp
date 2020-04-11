@@ -13,10 +13,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
+<%@ include file="menu.jsp" %>
 
 <img id="love" src="https://i.pinimg.com/originals/58/b8/01/58b801823c2ee845a6fa3e749dbe3d83.png" alt="Descripción de la imagen">
-
-<%@ include file="menu.jsp" %>
 
 <img id="logo" src="images/logo.png" alt="Descripción de la imagen">
 

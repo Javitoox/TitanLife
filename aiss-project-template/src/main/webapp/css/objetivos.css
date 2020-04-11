@@ -1,8 +1,11 @@
 @charset "UTF-8";
 
+@import url("https://code.jquery.com/jquery-1.12.4.js");
+@import url("https://code.jquery.com/ui/1.12.1/jquery-ui.js");
+
 body{
-background-image: url(https://st4.depositphotos.com/1325564/22129/i/1600/depositphotos_221290504-stock-photo-sports-equipment-gym-vertical-photo.jpg) ;
-	background-size:124%;
+    background-image: url(https://st4.depositphotos.com/1325564/22129/i/1600/depositphotos_221290504-stock-photo-sports-equipment-gym-vertical-photo.jpg) ;
+    background-size:124%;
 }
 .cuadro3{
 	font-family: 'Titillium Web', sans-serif;
@@ -514,4 +517,5 @@ h1{
     text-align: center;
     position: absolute;
 }
+
 }

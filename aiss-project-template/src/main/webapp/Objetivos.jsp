@@ -11,15 +11,11 @@
 <link rel="apple-touch-icon" href="images/logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
- $( function() { 
-   $( "#datepicker" ).datepicker();
- } );
- </script>
 </head>
 <body>
+    <%@include file="menu.jsp"%>
+
+    <h1 class="texto4">Mis Objetivos</h1>
 	<img id="logo" src="images/logo.png" alt="Descripción de la imagen">
 	
 	<div class="cuadro4">
@@ -31,15 +27,14 @@
 	<div class="cuadro6">
 	xx.xx KG.
 	</div>	
-	
 	<div class="form3">
 		<form id = "formulario3" action="" method="GET">
-			<input type="text" id="datepicker"></br>
+			<input type="text" id="datepicker">
 			<input id="done2" type="submit" value="DONE" /><br/>
 		</form>
-		</div>
-		
-		<div class="form">
+	</div>
+
+	<div class="form">
 		<form id = "formulario" action="" method="GET">
 			<input id="boton" type="submit" value="GENERAR IMC" /><br/>
 		</form>
@@ -53,10 +48,6 @@
 	PESO ACTUAL<br/>
 	xx.xx KG.
 	</div>	
-	
-<%@include file="menu.jsp"%>
-
-<h1 class="texto4">Mis Objetivos</h1>
 
 	<div class="form2">
 		<form id = "formulario2" action="" method="GET">
@@ -70,14 +61,9 @@
 		</form>
 	</div>
 	
-		
 	<div class="cuadro3">
 	Objetivos corporales
 	</div>
-	
-		
-		
-	
 	
 </body>
 </html>
