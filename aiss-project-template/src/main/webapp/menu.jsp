@@ -16,7 +16,7 @@
   <p><a href="InicioSesion.jsp">Iniciar sesión</a></p>
   <p><a href="Registro.jsp">Registro</a></p>
   <p><a href="Objetivos.jsp">Mis Objetivos</a></p>
-  <p><a href="intro.jsp">Mis Comidas</a></p>
+  <p><a href="MisComidas.jsp">Mis Comidas</a></p>
   <p><a href="intro.jsp">Mis Videos</a></p>
   <p><a href="intro.jsp">Mi Strava</a></p>
   <p><a href="Perfil.jsp">Mi Perfil</a></p>
