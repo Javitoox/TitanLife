@@ -2,10 +2,14 @@ package aiss.model.repository;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import aiss.model.User;
 
 public class UserRepository {
+
+	private static final Logger log = Logger.getLogger(UserRepository.class.getName());
 
 	private Map<String,User> users;
 	private static UserRepository instance=null;
@@ -25,25 +29,34 @@ public class UserRepository {
 	}
 
 	public Map<String,User> getUsers() {
-		return users;
+		Map<String,User> us= users;
+//		log.log(Level.INFO, "La lista de usuarios " + us + " fue obtenida");
+		return us;
 	}
 
-	public void updateContact(User u) {
+	public void updateUser(User u) {
 		users.put(u.getUsername(), u);
+		log.log(Level.INFO, "El usuario " + u.getUsername() + " fue actualizado");
+
 	}
 
 	public User getUser(String un) {
-		return users.get(un);
+		User u =users.get(un);
+		log.log(Level.INFO, "El usuario " + u.getUsername() + " fue obtenido");
+		return u;
 	}
 
-	public User addContact(String username, String email, String password, String retype, Integer age, Float height, Float weight, Float hip, Float waist) {
-		User c = new User(username,email,password,retype,age,height,weight,hip,waist);
-		users.put(username,c);
-		return c;
+	public User addUser(String username, String email, String password, String retype, Integer age, Float height, Float weight, Float hip, Float waist) {
+		User u = new User(username,email,password,retype,age,height,weight,hip,waist);
+		users.put(username,u);
+//		log.log(Level.INFO, "El usuario " + u.getUsername() + " fue creado");
+		return u;
 	}
 
 	public void deleteContact(String un) {
+		User u=users.get(un);
 		users.remove(un);
+		log.log(Level.INFO, "El usuario " + u.getUsername() + " fue eliminado");
 	}
 
 }
