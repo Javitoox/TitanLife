@@ -18,7 +18,7 @@
 	
 <div id="cuadro">
         <form id = "formulario" action="<%= controller %>" method="GET">
-            <input id="Username" name="Username "type="text" placeholder="Username" maxlength="40" required/><br/>    
+            <input id="Username" name="Username"type="text" placeholder="Username" maxlength="40" required/><br/>    
             <input id="Email" name="Email" type="email" placeholder="E-mail" maxlength="40" required/><br/> 
             <input id="Password" name="Password" type="password" placeholder="Password" maxlength="40" required/><br/>
             <input id="Retype" name="Retype" type="password" placeholder="Retype" maxlength="40" required/><br/>
