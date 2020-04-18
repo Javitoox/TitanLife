@@ -47,7 +47,7 @@ public class UserRepository {
 		return u;
 	}
 
-	public User addUser(String username, String email, String password, String retype, Integer age, Float height, Float weight, Float hip, Float waist) {
+	public User addUser(String username, String email, String password, String retype, Integer age, Integer height, Integer weight, Integer hip, Integer waist) {
 		User u = new User(username,email,password,retype,age,height,weight,hip,waist);
 		users.put(username,u);
 		log.log(Level.INFO, "El usuario " + u.getUsername() + " fue creado");

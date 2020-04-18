@@ -7,12 +7,12 @@ public class User {
 	private String password;
 	private String retype;
 	private Integer age;
-	private Float height;
-	private Float weight;
-	private Float hip;
-	private Float waist;
+	private Integer height;
+	private Integer weight;
+	private Integer hip;
+	private Integer waist;
 	
-	public User(String username, String email, String password, String retype, Integer age, Float height, Float weight, Float hip, Float waist) {
+	public User(String username, String email, String password, String retype, Integer age, Integer height, Integer weight, Integer hip, Integer waist) {
 		this.username=username;
 		this.email=email;
 		this.password=password;
@@ -64,35 +64,35 @@ public class User {
 		this.age = age;
 	}
 
-	public Float getHeight() {
+	public Integer getHeight() {
 		return height;
 	}
 
-	public void setHeight(Float height) {
+	public void setHeight(Integer height) {
 		this.height = height;
 	}
 
-	public Float getWeight() {
+	public Integer getWeight() {
 		return weight;
 	}
 
-	public void setWeight(Float weight) {
+	public void setWeight(Integer weight) {
 		this.weight = weight;
 	}
 
-	public Float getHip() {
+	public Integer getHip() {
 		return hip;
 	}
 
-	public void setHip(Float hip) {
+	public void setHip(Integer hip) {
 		this.hip = hip;
 	}
 
-	public Float getWaist() {
+	public Integer getWaist() {
 		return waist;
 	}
 
-	public void setWaist(Float waist) {
+	public void setWaist(Integer waist) {
 		this.waist = waist;
 	}
 	

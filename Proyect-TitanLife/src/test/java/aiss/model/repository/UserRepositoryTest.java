@@ -22,9 +22,9 @@ private UserRepository repository;
 	public void setUp() throws Exception {
 		repository=UserRepository.getInstance();
 		repository.init();
-		repository.addUser("almafe2510", "almafe2510@gmail.com", "aLMAFe2510", "aLMAFe2510", 20, 1.7f, 59.7f, 23.5f, 12.4f);
-		repository.addUser("maribelrb", "maribelrb@gmail.com", "mARIBElRB", "mARIBElRB", 19, 1.6f, 53.7f, 24.5f, 13.4f);
-		repository.addUser("danifdez", "danifdez@gmail.com", "aLMAFe2510", "aLMAFe2510", 20, 1.8f, 60.7f, 25.5f, 14.4f);
+		repository.addUser("almafe2510", "almafe2510@gmail.com", "aLMAFe2510", "aLMAFe2510", 20, 17, 59, 23, 12);
+		repository.addUser("maribelrb", "maribelrb@gmail.com", "mARIBElRB", "mARIBElRB", 19, 16, 53, 24, 13);
+		repository.addUser("danifdez", "danifdez@gmail.com", "aLMAFe2510", "aLMAFe2510", 20, 18, 60, 25, 14);
 		
 	}
 
@@ -55,10 +55,10 @@ private UserRepository repository;
 		String oldPassword = u.getPassword();
 		String oldRetype= u.getRetype();
 		Integer oldAge=u.getAge();
-		Float oldHeight=u.getHeight();
-		Float oldWeight=u.getWeight();
-		Float oldHip=u.getHip();
-		Float oldWaist=u.getWaist();
+		Integer oldHeight=u.getHeight();
+		Integer oldWeight=u.getWeight();
+		Integer oldHip=u.getHip();
+		Integer oldWaist=u.getWaist();
 
 		
 		u.setUsername(oldUserName + "Test");
@@ -66,10 +66,10 @@ private UserRepository repository;
 		u.setPassword(oldPassword+"Test");
 		u.setRetype(oldRetype+"Test");
 		u.setAge(oldAge+3);
-		u.setHeight(oldHeight+1f);
-		u.setWeight(oldWeight+1f);
-		u.setHip(oldHip+1f);
-		u.setWaist(oldWaist+1f);
+		u.setHeight(oldHeight+1);
+		u.setWeight(oldWeight+1);
+		u.setHip(oldHip+1);
+		u.setWaist(oldWaist+1);
 
 		repository.updateUser(u);
 		
@@ -90,7 +90,7 @@ private UserRepository repository;
 	@Test
 	public void testAddUser() {
 		int numberUsers=repository.getUsers().size();
-		repository.addUser("rarapture", "rarapture@gmail.com", "beatrix", "beatrix", 19, 1.7f, 51.7f, 21.5f, 12.4f);
+		repository.addUser("rarapture", "rarapture@gmail.com", "beatrix", "beatrix", 19, 17, 51, 21, 12);
 		int newNumberUsers=repository.getUsers().size();
 		
 		assertTrue("The contact has not been added correctly", newNumberUsers==numberUsers+1);
