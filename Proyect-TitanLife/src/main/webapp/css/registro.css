@@ -49,6 +49,19 @@ input[type=submit]{
     border:thick;
 }
 
+#errores{
+	position:absolute;
+	left:30%;
+	top:30%;
+   	width:68%;
+   	height: 440px;
+    background: #fff;
+    border-radius: 2px;
+	padding: 34px 27px 84px 27px;
+    opacity: 72%;
+    border:thick;
+}
+
 h1{
 	position: absolute;
 	color: #424242;

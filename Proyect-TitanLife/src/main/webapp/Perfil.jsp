@@ -21,10 +21,12 @@
 
 <h2 class="texto4" id="text">Datos de usuario</h2>
 
-<h1 class="texto4">Mi Perfil</h1>	
+<h1 class="texto4">Mi Perfil</h1>
 
-       <form id = "formulario" action="" method="GET">
-           <input type="text" placeholder="Nombre" maxlength="40" required/><br/>
+<% String controller = "perfilcontroller"; %>		
+
+       <form id = "formulario" action="<%= controller %>" method="GET">
+           <input type="text" placeholder="Nombre" maxlength="40" required value="${user.username}"/><br/>
            <input type="text" placeholder="Apellidos" maxlength="40" required/><br/>
            <input type="text" placeholder="Email" maxlength="40" required/><br/>
            <input type="text" placeholder="**" maxlength="40" required/><br/>
