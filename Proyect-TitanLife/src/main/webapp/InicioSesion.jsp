@@ -11,15 +11,18 @@
 <link rel="apple-touch-icon" href="images/logo.png">
 </head>
 <body>
-
+	
 	<img id="logo" src="images/logo.png" alt="Logo TitanLife">
+	
+	<% String controller = "iniciosesioncontroller"; %>
+	
     <div id="cuadro"></div>
     <p id="loginAccount">Login to Your Account</p>
     
-        <form id="formulario" action="get">
+        <form id="formulario" action="<%=controller%>" method="GET">
             
-            <input class="campo" type="text" name = "user" placeholder="Usuario" required/><br/>
-            <input class="campo" id="campo2" type="password" name = "pass" placeholder="Contraseña" required/><br/>
+            <input class="campo" type="text" name = "Username" placeholder="Usuario" required/><br/>
+            <input class="campo" id="campo2" type="password" name = "Password" placeholder="Contraseña" required/><br/>
             <input id="logIn" type="submit"/><br/>
             <input id = "checkbox" type="checkbox">
             <p id="recuerda"><strong>Recordar contraseña</strong> </p>

@@ -81,7 +81,7 @@ public class ValidatorController  extends HttpServlet{
 
         // TODO: Forward to contact list view
         //request.setAttribute("message", "User created successfully");
-        request.getRequestDispatcher("/intro.jsp").forward(request, response);
+        request.getRequestDispatcher("/intro2.jsp").forward(request, response);
 //        String s = request.getRequestedSessionId();
         
 

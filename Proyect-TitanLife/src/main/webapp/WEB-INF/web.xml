@@ -22,6 +22,16 @@
         <url-pattern>/perfilcontroller</url-pattern>
     </servlet-mapping>
 
+     <servlet>
+        <servlet-name>InicioSesionController</servlet-name>
+        <servlet-class>aiss.controller.InicioSesionController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InicioSesionController</servlet-name>
+        <url-pattern>/iniciosesioncontroller</url-pattern>
+    </servlet-mapping>
+
+
 	<welcome-file-list>
 		<welcome-file>intro.jsp</welcome-file>
 	</welcome-file-list>

@@ -14,7 +14,7 @@
 
 <img id="logo" src="images/logo.png" alt="Descripción de la imagen">
 
-<%@ include file="menu2.jsp" %>
+<%@ include file="menu.jsp" %>
 
 <div id="enlace1">
 <a href="https://www.fatsecret.es/"> 

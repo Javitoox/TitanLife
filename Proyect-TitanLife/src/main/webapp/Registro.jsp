@@ -15,14 +15,8 @@
 	<h1>TITAN LIFE</h1>
 	
 	<% String controller = "validatorcontroller"; %>
-	<table>	
 	
-	<c:forEach items="${requestScope.validaciones}" var="entry">
-				<tr>
-					<td><c:out value="${entry.value}"/></td>
-			</tr>
-	</c:forEach>
-	</table>
+	
 <div id="cuadro">
         <form id = "formulario" name="formulario" action="<%= controller %>" method="GET">
             <input id="Username" name="Username"type="text" placeholder="Username" maxlength="40" required/><br/>    
