@@ -23,6 +23,21 @@ input[type=text]{
   	margin-bottom: 2px;
 }
 
+input[type=password]{
+	outline:none;
+	border:none;
+	display: block;
+	overflow: hidden;
+	font-family: 'Titillium Web', sans-serif;
+    font-weight:bolder;
+    font-size: 70%;
+    color: black;
+    width: 100%;
+    border-bottom: 2px solid #F30A26;
+  	margin-bottom: 2px;
+}
+
+
 input[type=submit]{
 	border:none;
 	width: 100%;
@@ -90,6 +105,9 @@ h1{
 	input[type=text]{
 	font-size: 100%;
 	}
+	input[type=password]{
+	font-size: 100%;
+	}
 	input[type=submit]{
 	font-size: 100%;
 	}
@@ -111,6 +129,9 @@ h1{
 	left:38.5%;
 	}
 	input[type=text]{
+	font-size: 80%;
+	}
+	input[type=password]{
 	font-size: 80%;
 	}
 	input[type=submit]{

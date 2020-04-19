@@ -15,14 +15,14 @@
 	<h1>TITAN LIFE</h1>
 	
 	<% String controller = "validatorcontroller"; %>
+	<div>${requestScope.validaciones}</div>
 	
-	
-<div id="cuadro">
+	<div id="cuadro">
         <form id = "formulario" name="formulario" action="<%= controller %>" method="GET">
             <input id="Username" name="Username"type="text" placeholder="Username" maxlength="40" required/><br/>    
             <input id="Email" name="Email" type="text" placeholder="E-mail" maxlength="40" required/><br/> 
-            <input id="Password" name="Password" type="text" placeholder="Password" maxlength="40" required/><br/>
-            <input id="Retype" name="Retype" type="text" placeholder="Retype" maxlength="40" required/><br/>
+            <input id="Password" name="Password" type="password" placeholder="Password" maxlength="40" required/><br/>
+            <input id="Retype" name="Retype" type="password" placeholder="Retype" maxlength="40" required/><br/>
             <input id="Age"  name="Age" type="text" placeholder="Age" maxlength="40" required/><br/>      
           	<input id="Height"  name="Height" type="text" placeholder="Height" maxlength="40"required/><br/>
             <input id="Weight"  name="Weight"  type="text" placeholder="Weight" maxlength="40"required/><br/>

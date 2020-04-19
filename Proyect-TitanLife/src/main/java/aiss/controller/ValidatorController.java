@@ -38,12 +38,11 @@ public class ValidatorController  extends HttpServlet{
         Integer hip =Integer.valueOf(request.getParameter("Hip"));
         Integer waist =Integer.valueOf(request.getParameter("Waist"));
         
-        List<String> validaciones = new ArrayList<>();
-//        HttpSession session = request.getSession();
-        
-//        String passwordRegexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
+        //List<String> validaciones = new ArrayList<>();
+        String validaciones = "";
+//      String passwordRegexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
 
-        
+//        String userRegexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$)";
         String emailRegexp = "[^@]+@[^@]+\\.[a-zA-Z]{2,}";
         String passwordRegexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}";
 
@@ -51,36 +50,36 @@ public class ValidatorController  extends HttpServlet{
         Map<String, User> users = singelton.getUsers();
         
         if(users.containsKey(username)) {
-        	validaciones.add("Usuario ya existente");
+        	//validaciones.add("Usuario ya existente");
+        	validaciones += "Usuario ya existente";
        }
         
         if(!Pattern.matches(emailRegexp, email)) {
-        	validaciones.add("Formato incorrecto del correo");
+        	//validaciones.add("Formato incorrecto del correo");
+        	validaciones += "Formato incorrecto del correo";
         }
         
 
         if(!Pattern.matches(passwordRegexp, password)) {
-        	validaciones.add("La contraseña debe incluir al menos una mayúscula, una minúscula, un dígito. Debe contener 8 o más carácteres");
-
+        	//validaciones.add("La contraseña debe incluir al menos una mayúscula, una minúscula, un dígito. Debe contener 8 o más carácteres");
+        	validaciones += "La contraseña debe incluir al menos una mayúscula, una minúscula, un dígito. Debe contener 8 o más carácteres";
         }
-//        validaciones="\n\n\n";
 
         if(!password.equals(retype)) {
-        	validaciones.add("La contraseña no coincide con la confirmación");
+        	//validaciones.add("La contraseña no coincide con la confirmación");
+        	validaciones += "La contraseña no coincide con la confirmación";
         }
-//        validaciones="\n\n\n";
 
         
-        if(!validaciones.isEmpty()) {
+        //if(!validaciones.isEmpty()) {
+        if(!validaciones.equals("")) {
         	request.setAttribute("validaciones", validaciones);
             request.getRequestDispatcher("/Registro.jsp").forward(request, response);
         }
-// TODO: Create contact in the repository
         UserRepository.getInstance().addUser(username, email, password, retype, age, height, weight, hip, waist);
 
 
-        // TODO: Forward to contact list view
-        //request.setAttribute("message", "User created successfully");
+//        request.setAttribute("validaciones", "Welcome to TitanLife!");
         request.getRequestDispatcher("/intro2.jsp").forward(request, response);
 //        String s = request.getRequestedSessionId();
         

@@ -29,7 +29,8 @@ public class InicioSesionController extends HttpServlet{
       String username =request.getParameter("Username");
       String password =request.getParameter("Password");
      
-      List<String> validaciones = new ArrayList<>();
+      //List<String> validaciones = new ArrayList<>();
+      String validaciones = "";
 //      HttpSession session = request.getSession();
     
 
@@ -37,11 +38,13 @@ public class InicioSesionController extends HttpServlet{
       Map<String, User> users = singelton.getUsers();
       
       if(!users.containsKey(username)) {
-      	validaciones.add("Usuario no existente");
+      	//validaciones.add("Usuario no existente");
+    	  validaciones += "Usuario no existente";
      }
       
       if(!users.get(username).getPassword().equals(password)) {
-    	  validaciones.add("El usuario y contraseña no coinciden");
+    	  //validaciones.add("El usuario y contraseña no coinciden");
+    	  validaciones += "El usuario y contraseña no coinciden";
       }
      
 

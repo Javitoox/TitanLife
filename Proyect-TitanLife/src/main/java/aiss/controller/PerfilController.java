@@ -30,9 +30,6 @@ public class PerfilController extends HttpServlet {
 	        Object user = session.getAttribute("Username");
 	        session.setAttribute("user", user);
 
-
-	        
-
 	    }
 
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
