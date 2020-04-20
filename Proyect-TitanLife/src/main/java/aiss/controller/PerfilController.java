@@ -1,6 +1,8 @@
 package aiss.controller;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
@@ -13,9 +15,10 @@ import aiss.model.User;
 import aiss.model.repository.UserRepository;
 
 public class PerfilController extends HttpServlet {
-	 /**
-	 * 
-	 */
+	
+    private static final Logger log = Logger.getLogger(PerfilController.class.getName());
+
+	
     private static final long serialVersionUID = 1L;
 
 	public PerfilController() {
@@ -65,6 +68,7 @@ public class PerfilController extends HttpServlet {
 	
 	        if(!validaciones.equals("")) {
 	         	request.setAttribute("validaciones", validaciones);
+	   		    log.log(Level.FINE, "Processing GET request:  "+ "El usuario " + uname + " no ha podido actualizarse correctamente.");
 	            request.getRequestDispatcher("/Perfil.jsp").forward(request, response);
 	        }
     	
@@ -77,8 +81,13 @@ public class PerfilController extends HttpServlet {
 	    	user.setWeight(weight);
 	    	user.setHip(hip);
 	    	user.setWaist(waist);
-         	singelton.updateUser(user);	    	
+	    	
+         	singelton.updateUser(user);	
+         	
 	     	misession.setAttribute("user", user);
+	     	
+   		    log.log(Level.FINE, "Processing GET request:  "+ "El usuario " + uname + " se ha podido actualizar correctamente.");
+   		    
 	        request.getRequestDispatcher("/Perfil.jsp").forward(request, response);
 	    }
 

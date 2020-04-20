@@ -3,6 +3,8 @@ package aiss.controller;
 import java.io.IOException;
 
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
@@ -17,7 +19,7 @@ import aiss.model.repository.UserRepository;
 public class ValidatorController  extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
-//    private static final Logger log = Logger.getLogger(ContactUpdateController.class.getName());
+    private static final Logger log = Logger.getLogger(ValidatorController.class.getName());
 
     public ValidatorController() {
         super();
@@ -76,11 +78,14 @@ public class ValidatorController  extends HttpServlet{
         //if(!validaciones.isEmpty()) {
         if(!validaciones.equals("")) {
         	request.setAttribute("validaciones", validaciones);
+   		    log.log(Level.FINE, "Processing GET request:  "+ "El usuario " + username + " fue registrado incorrectamente.");
             request.getRequestDispatcher("/Registro.jsp").forward(request, response);
         }
         User user = singelton.addUser(username, email, password, retype, age, height, weight, hip, waist);
 
         session.setAttribute("user", user);
+        
+	    log.log(Level.FINE, "Processing GET request:  "+ "El usuario " + username + " fue registrado correctamente.");
 
         request.getRequestDispatcher("/intro2.jsp").forward(request, response);
 

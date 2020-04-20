@@ -3,6 +3,8 @@ package aiss.controller;
 import java.io.IOException;
 
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +18,7 @@ import aiss.model.repository.UserRepository;
 public class InicioSesionController extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
-//  private static final Logger log = Logger.getLogger(ContactUpdateController.class.getName());
+  private static final Logger log = Logger.getLogger(InicioSesionController.class.getName());
 
   public InicioSesionController() {
       super();
@@ -48,15 +50,17 @@ public class InicioSesionController extends HttpServlet{
 
       if(!validaciones.isEmpty()) {
       	request.setAttribute("validaciones", validaciones);
-          request.getRequestDispatcher("/InicioSesion.jsp").forward(request, response);
+	    log.log(Level.FINE, "Processing GET request:  "+ "El usuario " + username + " fue loggeado incorrectamente.");
+        request.getRequestDispatcher("/InicioSesion.jsp").forward(request, response);
       }
       
       User user= singelton.getUser(username);
       
       session.setAttribute("user", user);
-
-      request.getRequestDispatcher("/intro2.jsp").forward(request, response);
       
+      log.log(Level.FINE, "Processing GET request:  "+ "El usuario " + username + " fue loggeado correctamente.");
+
+      request.getRequestDispatcher("/intro2.jsp").forward(request, response);  
 
   }
 
