@@ -22,9 +22,9 @@ private UserRepository repository;
 	public void setUp() throws Exception {
 		repository=UserRepository.getInstance();
 		repository.init();
-		repository.addUser("almafe2510", "almafe2510@gmail.com", "aLMAFe2510", "aLMAFe2510", 20, 17, 59, 23, 12);
-		repository.addUser("maribelrb", "maribelrb@gmail.com", "mARIBElRB", "mARIBElRB", 19, 16, 53, 24, 13);
-		repository.addUser("danifdez", "danifdez@gmail.com", "aLMAFe2510", "aLMAFe2510", 20, 18, 60, 25, 14);
+		repository.addUser("almafe2510", "almafe2510@gmail.com", "aLMAFe2510", "aLMAFe2510", 20, 17., 59., 23., 12.);
+		repository.addUser("maribelrb", "maribelrb@gmail.com", "mARIBElRB", "mARIBElRB", 19, 16., 53., 24., 13.);
+		repository.addUser("danifdez", "danifdez@gmail.com", "aLMAFe2510", "aLMAFe2510", 20, 18., 60., 25., 14.);
 		
 	}
 
@@ -55,10 +55,10 @@ private UserRepository repository;
 		String oldPassword = u.getPassword();
 		String oldRetype= u.getRetype();
 		Integer oldAge=u.getAge();
-		Integer oldHeight=u.getHeight();
-		Integer oldWeight=u.getWeight();
-		Integer oldHip=u.getHip();
-		Integer oldWaist=u.getWaist();
+		Double oldHeight=u.getHeight();
+		Double oldWeight=u.getWeight();
+		Double oldHip=u.getHip();
+		Double oldWaist=u.getWaist();
 
 		
 		u.setUsername(oldUserName + "Test");
@@ -90,7 +90,7 @@ private UserRepository repository;
 	@Test
 	public void testAddUser() {
 		int numberUsers=repository.getUsers().size();
-		repository.addUser("rarapture", "rarapture@gmail.com", "beatrix", "beatrix", 19, 17, 51, 21, 12);
+		repository.addUser("rarapture", "rarapture@gmail.com", "beatrix", "beatrix", 19, 17., 51., 21., 12.);
 		int newNumberUsers=repository.getUsers().size();
 		
 		assertTrue("The contact has not been added correctly", newNumberUsers==numberUsers+1);

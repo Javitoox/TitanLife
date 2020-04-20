@@ -11,12 +11,12 @@ public class User implements Serializable {
     private String password;
     private String retype;
     private Integer age;
-    private Integer height;
-    private Integer weight;
-    private Integer hip;
-    private Integer waist;
+    private Double height;
+    private Double weight;
+    private Double hip;
+    private Double waist;
 
-    public User(String username, String email, String password, String retype, Integer age, Integer height, Integer weight, Integer hip, Integer waist) {
+    public User(String username, String email, String password, String retype, Integer age, Double height, Double weight, Double hip, Double waist) {
         this.username=username;
         this.email=email;
         this.password=password;
@@ -68,35 +68,35 @@ public class User implements Serializable {
         this.age = age;
     }
 
-    public Integer getHeight() {
+    public Double getHeight() {
         return height;
     }
 
-    public void setHeight(Integer height) {
+    public void setHeight(Double height) {
         this.height = height;
     }
 
-    public Integer getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 
-    public Integer getHip() {
+    public Double getHip() {
         return hip;
     }
 
-    public void setHip(Integer hip) {
+    public void setHip(Double hip) {
         this.hip = hip;
     }
 
-    public Integer getWaist() {
+    public Double getWaist() {
         return waist;
     }
 
-    public void setWaist(Integer waist) {
+    public void setWaist(Double waist) {
         this.waist = waist;
     }
 }

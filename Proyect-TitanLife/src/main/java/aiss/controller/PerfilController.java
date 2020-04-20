@@ -33,10 +33,10 @@ public class PerfilController extends HttpServlet {
 	         String email =request.getParameter("Email");
 	         String password =request.getParameter("Password");
 	         Integer age =Integer.valueOf(request.getParameter("Age"));
-	         Integer height =Integer.valueOf(request.getParameter("Height"));
-	         Integer weight =Integer.valueOf(request.getParameter("Weight"));
-	         Integer hip =Integer.valueOf(request.getParameter("Hip"));
-	         Integer waist =Integer.valueOf(request.getParameter("Waist"));
+	         Double height =Double.valueOf(request.getParameter("Height"));
+	         Double weight =Double.valueOf(request.getParameter("Weight"));
+	         Double hip =Double.valueOf(request.getParameter("Hip"));
+	         Double waist =Double.valueOf(request.getParameter("Waist"));
 
 
 	        UserRepository singelton = UserRepository.getInstance();
@@ -56,7 +56,7 @@ public class PerfilController extends HttpServlet {
 	        }
 	        
 			if(!Pattern.matches(emailRegexp, email)) {
-			//validaciones.add("Formato incorrecto del correo");
+			   //validaciones.add("Formato incorrecto del correo");
 				validaciones += "Formato incorrecto del correo";
 			}
 	         
@@ -97,6 +97,3 @@ public class PerfilController extends HttpServlet {
 	       
 	    }
 	}
-
-
-

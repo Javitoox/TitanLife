@@ -34,10 +34,10 @@ public class ValidatorController  extends HttpServlet{
         String password =request.getParameter("Password");
         String retype =request.getParameter("Retype");
         Integer age =Integer.valueOf(request.getParameter("Age"));
-        Integer height =Integer.valueOf(request.getParameter("Height"));
-        Integer weight =Integer.valueOf(request.getParameter("Weight"));
-        Integer hip =Integer.valueOf(request.getParameter("Hip"));
-        Integer waist =Integer.valueOf(request.getParameter("Waist"));
+        Double height =Double.valueOf(request.getParameter("Height"));
+        Double weight =Double.valueOf(request.getParameter("Weight"));
+        Double hip =Double.valueOf(request.getParameter("Hip"));
+        Double waist =Double.valueOf(request.getParameter("Waist"));
         
         //List<String> validaciones = new ArrayList<>();
         String validaciones = "";
