@@ -44,6 +44,12 @@ input[type=text] {
 	border-radius: 9px;
 	font-family: 'Source Sans Pro', sans-serif;
 }
+input[type=email] {
+	margin: 8px 0;
+	border: 2px solid black;
+	border-radius: 9px;
+	font-family: 'Source Sans Pro', sans-serif;
+}
 
 input[type=submit] {
 	position:relative;

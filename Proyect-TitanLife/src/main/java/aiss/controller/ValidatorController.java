@@ -1,8 +1,7 @@
 package aiss.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -40,9 +39,7 @@ public class ValidatorController  extends HttpServlet{
         
         //List<String> validaciones = new ArrayList<>();
         String validaciones = "";
-//      String passwordRegexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
-
-//        String userRegexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$)";
+        HttpSession session = request.getSession(true);
         String emailRegexp = "[^@]+@[^@]+\\.[a-zA-Z]{2,}";
         String passwordRegexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}";
 
@@ -69,20 +66,17 @@ public class ValidatorController  extends HttpServlet{
         	//validaciones.add("La contraseña no coincide con la confirmación");
         	validaciones += "La contraseña no coincide con la confirmación";
         }
-
         
         //if(!validaciones.isEmpty()) {
         if(!validaciones.equals("")) {
         	request.setAttribute("validaciones", validaciones);
             request.getRequestDispatcher("/Registro.jsp").forward(request, response);
         }
-        UserRepository.getInstance().addUser(username, email, password, retype, age, height, weight, hip, waist);
+        User user = singelton.addUser(username, email, password, retype, age, height, weight, hip, waist);
 
+        session.setAttribute("user", user);
 
-//        request.setAttribute("validaciones", "Welcome to TitanLife!");
         request.getRequestDispatcher("/intro2.jsp").forward(request, response);
-//        String s = request.getRequestedSessionId();
-        
 
     }
 

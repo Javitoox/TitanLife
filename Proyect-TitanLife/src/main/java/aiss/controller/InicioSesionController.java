@@ -1,14 +1,14 @@
 package aiss.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import aiss.model.User;
 import aiss.model.repository.UserRepository;
@@ -31,9 +31,7 @@ public class InicioSesionController extends HttpServlet{
      
       //List<String> validaciones = new ArrayList<>();
       String validaciones = "";
-//      HttpSession session = request.getSession();
-    
-
+      HttpSession session = request.getSession(true);
       UserRepository singelton = UserRepository.getInstance();
       Map<String, User> users = singelton.getUsers();
       
@@ -52,6 +50,10 @@ public class InicioSesionController extends HttpServlet{
       	request.setAttribute("validaciones", validaciones);
           request.getRequestDispatcher("/InicioSesion.jsp").forward(request, response);
       }
+      
+      User user= singelton.getUser(username);
+      
+      session.setAttribute("user", user);
 
       request.getRequestDispatcher("/intro2.jsp").forward(request, response);
       

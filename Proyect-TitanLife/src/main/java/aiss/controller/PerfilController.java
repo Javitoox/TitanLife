@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import aiss.model.User;
 import aiss.model.repository.UserRepository;
 
 public class PerfilController extends HttpServlet {
@@ -25,11 +26,54 @@ public class PerfilController extends HttpServlet {
 	    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	        // TODO: Read request parameters
-	        
-	        HttpSession session = request.getSession();
-	        Object user = session.getAttribute("Username");
-	        session.setAttribute("user", user);
+	    	 String uname =request.getParameter("Username");
+	         String email =request.getParameter("Email");
+	         String password =request.getParameter("Password");
+	         Integer age =Integer.valueOf(request.getParameter("Age"));
+	         Integer height =Integer.valueOf(request.getParameter("Height"));
+	         Integer weight =Integer.valueOf(request.getParameter("Weight"));
+	         Integer hip =Integer.valueOf(request.getParameter("Hip"));
+	         Integer waist =Integer.valueOf(request.getParameter("Waist"));
 
+
+	        UserRepository singelton = UserRepository.getInstance();
+
+	    	HttpSession misession= (HttpSession) request.getSession(true);
+	    	 
+	    	User user= (User) misession.getAttribute("user");
+	    	
+	        String validaciones = "";
+	        String emailRegexp = "[^@]+@[^@]+\\.[a-zA-Z]{2,}";
+	        String passwordRegexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}";
+	        
+	    	 if(!Pattern.matches(emailRegexp, email)) {
+	         	//validaciones.add("Formato incorrecto del correo");
+	         	validaciones += "Formato incorrecto del correo";
+	         }
+	         
+
+	         if(!Pattern.matches(passwordRegexp, password)) {
+	         	//validaciones.add("La contraseña debe incluir al menos una mayúscula, una minúscula, un dígito. Debe contener 8 o más carácteres");
+	         	validaciones += "La contraseña debe incluir al menos una mayúscula, una minúscula, un dígito. Debe contener 8 o más carácteres";
+	         }
+
+	         if(!validaciones.equals("")) {
+	         	request.setAttribute("validaciones", validaciones);
+	            request.getRequestDispatcher("/Perfil.jsp").forward(request, response);
+	         }
+    	
+	    	user.setUsername(uname);
+	    	user.setEmail(email);
+	    	user.setPassword(password);
+	    	user.setRetype(password);
+	    	user.setAge(age);
+	    	user.setHeight(height);
+	    	user.setWeight(weight);
+	    	user.setHip(hip);
+	    	user.setWaist(waist);
+         	singelton.updateUser(user);	    	
+	     	misession.setAttribute("user", user);
+	        request.getRequestDispatcher("/Perfil.jsp").forward(request, response);
 	    }
 
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
