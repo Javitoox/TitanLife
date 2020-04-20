@@ -40,11 +40,17 @@ public class ValidatorController  extends HttpServlet{
         //List<String> validaciones = new ArrayList<>();
         String validaciones = "";
         HttpSession session = request.getSession(true);
+        String userRegexp = "^[a-zA-Z0-9_-]{3,15}$";
         String emailRegexp = "[^@]+@[^@]+\\.[a-zA-Z]{2,}";
         String passwordRegexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}";
 
         UserRepository singelton = UserRepository.getInstance();
         Map<String, User> users = singelton.getUsers();
+        
+        if(!Pattern.matches(userRegexp, username)) {
+        	//validaciones.add("El nombre de usuario presenta un formato incorrecto.");
+        	//validaciones += "El nombre de usuario presenta un formato incorrecto.";
+        }
         
         if(users.containsKey(username)) {
         	//validaciones.add("Usuario ya existente");

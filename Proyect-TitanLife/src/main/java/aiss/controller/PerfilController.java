@@ -43,24 +43,30 @@ public class PerfilController extends HttpServlet {
 	    	User user= (User) misession.getAttribute("user");
 	    	
 	        String validaciones = "";
+	        String userRegexp = "^[a-zA-Z0-9_-]{3,15}$";
 	        String emailRegexp = "[^@]+@[^@]+\\.[a-zA-Z]{2,}";
 	        String passwordRegexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}";
 	        
-	    	 if(!Pattern.matches(emailRegexp, email)) {
-	         	//validaciones.add("Formato incorrecto del correo");
-	         	validaciones += "Formato incorrecto del correo";
-	         }
+	        if(!Pattern.matches(userRegexp, uname)) {
+	        	//validaciones.add("El nombre de usuario presenta un formato incorrecto.");
+	        	validaciones += "El nombre de usuario presenta un formato incorrecto.";
+	        }
+	        
+			if(!Pattern.matches(emailRegexp, email)) {
+			//validaciones.add("Formato incorrecto del correo");
+				validaciones += "Formato incorrecto del correo";
+			}
 	         
 
-	         if(!Pattern.matches(passwordRegexp, password)) {
+	        if(!Pattern.matches(passwordRegexp, password)) {
 	         	//validaciones.add("La contraseña debe incluir al menos una mayúscula, una minúscula, un dígito. Debe contener 8 o más carácteres");
 	         	validaciones += "La contraseña debe incluir al menos una mayúscula, una minúscula, un dígito. Debe contener 8 o más carácteres";
-	         }
-
-	         if(!validaciones.equals("")) {
+	        }
+	
+	        if(!validaciones.equals("")) {
 	         	request.setAttribute("validaciones", validaciones);
 	            request.getRequestDispatcher("/Perfil.jsp").forward(request, response);
-	         }
+	        }
     	
 	    	user.setUsername(uname);
 	    	user.setEmail(email);
