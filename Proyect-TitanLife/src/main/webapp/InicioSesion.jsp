@@ -21,8 +21,8 @@
     
         <form id="formulario" action="<%=controller%>" method="GET">
             
-            <input class="campo" type="text" name = "Username" placeholder="Usuario" required/><br/>
-            <input class="campo" id="campo2" type="password" name = "Password" placeholder="Contraseña" required/><br/>
+            <input class="campo" type="text" name = "Username" placeholder="Usuario" value="${requestScope.username}" required/><br/>
+            <input class="campo" type="password" id="campo2"  name = "Password" placeholder="Contraseña" value="${requestScope.password}" required/><br/>
             <input id="logIn" type="submit"/><br/>
             <input id = "checkbox" type="checkbox">
             <p id="recuerda"><strong>Recordar contraseña</strong> </p>

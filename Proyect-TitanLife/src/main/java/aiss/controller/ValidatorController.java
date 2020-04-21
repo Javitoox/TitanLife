@@ -76,7 +76,7 @@ public class ValidatorController  extends HttpServlet{
         UserRepository singelton = UserRepository.getInstance();
         Map<String, User> users = singelton.getUsers();        
         
-        if(username==null||email==null||password==null||retype==null||String.valueOf(age)==null||String.valueOf(height)==null||String.valueOf(weight)==null||String.valueOf(hip)==null||String.valueOf(waist)==null) {
+        if(username==""||email==""||password==""||retype==""||String.valueOf(age)==""||String.valueOf(height)==""||String.valueOf(weight)==""||String.valueOf(hip)==""||String.valueOf(waist)=="") {
         	validaciones += "Los campos no pueden quedar vacíos";
         }
         
@@ -128,8 +128,21 @@ public class ValidatorController  extends HttpServlet{
         
         //if(!validaciones.isEmpty()) {
         if(!validaciones.equals("")) {
-        	request.setAttribute("validaciones", validaciones);
+        	
+        	request.setAttribute("username", username);
+        	request.setAttribute("email", email);
+        	request.setAttribute("password", password);
+        	request.setAttribute("retype", retype);
+        	request.setAttribute("age", age);
+        	request.setAttribute("height", height.intValue());
+        	request.setAttribute("weight", weight.intValue());
+        	request.setAttribute("hip", hip.intValue());
+        	request.setAttribute("waist", waist.intValue());
+        	
+         	request.setAttribute("validaciones", validaciones);
+        	
    		    log.log(Level.FINE, "Processing GET request:  "+ "El usuario " + username + " fue registrado incorrectamente.");
+   		    
             request.getRequestDispatcher("/Registro.jsp").forward(request, response);
         }
         

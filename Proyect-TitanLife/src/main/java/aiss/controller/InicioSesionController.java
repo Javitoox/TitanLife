@@ -49,6 +49,8 @@ public class InicioSesionController extends HttpServlet{
      
 
       if(!validaciones.isEmpty()) {
+    	request.setAttribute("username", username);
+      	request.setAttribute("password", password); 
       	request.setAttribute("validaciones", validaciones);
 	    log.log(Level.FINE, "Processing GET request:  "+ "El usuario " + username + " fue loggeado incorrectamente.");
         request.getRequestDispatcher("/InicioSesion.jsp").forward(request, response);
