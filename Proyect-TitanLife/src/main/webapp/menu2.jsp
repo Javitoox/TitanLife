@@ -13,7 +13,7 @@
   <img src="images/pngocean.com.png" width=40 height=40 alt="Menú">
   <div class="dropdown-content">
   <p><a href="InicioSesion.jsp">Iniciar sesión</a></p>
-  <p><a href="Registro.jsp">Registro</a></p>
+  <p><a href="/validatorController">Registro</a></p>
   </div>
 </div>
 </body>

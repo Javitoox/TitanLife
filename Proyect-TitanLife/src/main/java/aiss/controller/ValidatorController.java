@@ -17,18 +17,11 @@ import aiss.model.repository.UserRepository;
 import aiss.model.titan.User;
 
 public class ValidatorController  extends HttpServlet{
-    private static final long serialVersionUID = 1L;
 
     private static final Logger log = Logger.getLogger(ValidatorController.class.getName());
-
-    public ValidatorController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
+   
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        // TODO: Read request parameters
+    	
     	
         String username =request.getParameter("Username");
         String email =request.getParameter("Email");

@@ -10,7 +10,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ValidatorController</servlet-name>
-        <url-pattern>/validatorcontroller</url-pattern>
+        <url-pattern>/validatorController</url-pattern>
     </servlet-mapping>
     
     <servlet>
@@ -19,7 +19,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>PerfilController</servlet-name>
-        <url-pattern>/perfilcontroller</url-pattern>
+        <url-pattern>/perfilController</url-pattern>
     </servlet-mapping>
 
      <servlet>
@@ -28,7 +28,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>InicioSesionController</servlet-name>
-        <url-pattern>/iniciosesioncontroller</url-pattern>
+        <url-pattern>/inicioSesionController</url-pattern>
     </servlet-mapping>
 
 

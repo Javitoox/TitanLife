@@ -17,7 +17,6 @@
 	<% String controller = "validatorcontroller"; %>
 	<div>${requestScope.validaciones}</div>
 	
-	
 	<div id="cuadro">
         <form id = "formulario" name="formulario" action="<%= controller %>" method="GET">
             <input id="Username" name="Username"type="text" placeholder="Username" maxlength="40" value="${requestScope.username}" required/><br/>    
