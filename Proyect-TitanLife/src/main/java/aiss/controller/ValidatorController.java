@@ -55,7 +55,6 @@ public class ValidatorController  extends HttpServlet{
         Double hip =Double.valueOf(request.getParameter("Hip"));
         Double waist =Double.valueOf(request.getParameter("Waist"));
         
-        //List<String> validaciones = new ArrayList<>();
         String validaciones = "";
         
         //Session
@@ -77,56 +76,49 @@ public class ValidatorController  extends HttpServlet{
         Map<String, User> users = singelton.getUsers();        
         
         if(username==""||email==""||password==""||retype==""||String.valueOf(age)==""||String.valueOf(height)==""||String.valueOf(weight)==""||String.valueOf(hip)==""||String.valueOf(waist)=="") {
-        	validaciones += "Los campos no pueden quedar vacíos";
+        	validaciones += "Los campos no pueden quedar vacíos\n";
         }
         
         if(users.containsKey(username)) {
-        	//validaciones.add("Usuario ya existente");
-        	validaciones += "Usuario ya existente";
-       }
+        	validaciones += "Usuario ya existente\n";
+        }
         
         if(!Pattern.matches(userRegexp, username)) {
-        	//validaciones.add("El nombre de usuario presenta un formato incorrecto.");
-        	validaciones += "El nombre de usuario presenta un formato incorrecto.";
+        	validaciones += "El nombre de usuario presenta un formato incorrecto\n";
         }
         
         if(!Pattern.matches(emailRegexp, email)) {
-        	//validaciones.add("Formato incorrecto del correo");
-        	validaciones += "Formato incorrecto del correo";
+        	validaciones += "Formato incorrecto del correo\n";
         }
         
         if(!Pattern.matches(passwordRegexp, password)) {
-        	//validaciones.add("La contraseña debe incluir al menos una mayúscula, una minúscula, un dígito. Debe contener 8 o más carácteres");
-        	validaciones += "La contraseña debe incluir al menos una mayúscula, una minúscula, un dígito. Debe contener 8 o más carácteres";
+        	validaciones += "La contraseña debe incluir al menos una mayúscula, una minúscula, un dígito. Debe contener 8 o más carácteres\n";
         }
 
         if(!password.equals(retype)) {
-        	//validaciones.add("La contraseña no coincide con la confirmación");
-        	validaciones += "La contraseña no coincide con la confirmación";
+        	validaciones += "La contraseña no coincide con la confirmación\n";
         }
         
         if(!Pattern.matches(ageRegexp, request.getParameter("Age"))) {
-        	//validaciones.add("La contraseña debe incluir al menos una mayúscula, una minúscula, un dígito. Debe contener 8 o más carácteres");
-        	validaciones += "Formato incorrecto de la edad";
-        }
-        if(!Pattern.matches(heightRegexp, request.getParameter("Height"))) {
-        	//validaciones.add("La contraseña debe incluir al menos una mayúscula, una minúscula, un dígito. Debe contener 8 o más carácteres");
-        	validaciones += "Formato incorrecto de la altura";
-        }
-        if(Pattern.matches(weightRegexp, String.valueOf(weight))) {
-        	//validaciones.add("La contraseña debe incluir al menos una mayúscula, una minúscula, un dígito. Debe contener 8 o más carácteres");
-        	validaciones += "Formato incorrecto del peso";
-        }
-        if(!Pattern.matches(hipRegexp, request.getParameter("Hip"))) {
-        	//validaciones.add("La contraseña debe incluir al menos una mayúscula, una minúscula, un dígito. Debe contener 8 o más carácteres");
-        	validaciones += "Formato incorrecto de la cadera";
-        }
-        if(!Pattern.matches(waistRegexp, request.getParameter("Waist"))) {
-        	//validaciones.add("La contraseña debe incluir al menos una mayúscula, una minúscula, un dígito. Debe contener 8 o más carácteres");
-        	validaciones += "Formato incorrecto de la cintura";
+        	validaciones += "Formato incorrecto de la edad\n";
         }
         
-        //if(!validaciones.isEmpty()) {
+        if(!Pattern.matches(heightRegexp, request.getParameter("Height"))) {
+        	validaciones += "Formato incorrecto de la altura\n";
+        }
+        
+        if(Pattern.matches(weightRegexp, String.valueOf(weight))) {
+        	validaciones += "Formato incorrecto del peso\n";
+        }
+        
+        if(!Pattern.matches(hipRegexp, request.getParameter("Hip"))) {
+        	validaciones += "Formato incorrecto de la cadera\n";
+        }
+        
+        if(!Pattern.matches(waistRegexp, request.getParameter("Waist"))) {
+        	validaciones += "Formato incorrecto de la cintura\n";
+        }
+        
         if(!validaciones.equals("")) {
         	
         	request.setAttribute("username", username);
@@ -134,26 +126,26 @@ public class ValidatorController  extends HttpServlet{
         	request.setAttribute("password", password);
         	request.setAttribute("retype", retype);
         	request.setAttribute("age", age);
-        	request.setAttribute("height", height.intValue());
-        	request.setAttribute("weight", weight.intValue());
-        	request.setAttribute("hip", hip.intValue());
-        	request.setAttribute("waist", waist.intValue());
+        	request.setAttribute("height", height);
+        	request.setAttribute("weight", weight);
+        	request.setAttribute("hip", hip);
+        	request.setAttribute("waist", waist);
         	
          	request.setAttribute("validaciones", validaciones);
         	
    		    log.log(Level.FINE, "Processing GET request:  "+ "El usuario " + username + " fue registrado incorrectamente.");
    		    
             request.getRequestDispatcher("/Registro.jsp").forward(request, response);
+        }else {
+        	User user = singelton.addUser(username, email, password, retype, age, height, weight, hip, waist);
+
+            session.setAttribute("user", user);
+            
+    	    log.log(Level.FINE, "Processing GET request:  "+ "El usuario " + username + " fue registrado correctamente.");
+
+            request.getRequestDispatcher("/intro2.jsp").forward(request, response);
+
         }
-        
-        User user = singelton.addUser(username, email, password, retype, age, height, weight, hip, waist);
-
-        session.setAttribute("user", user);
-        
-	    log.log(Level.FINE, "Processing GET request:  "+ "El usuario " + username + " fue registrado correctamente.");
-
-        request.getRequestDispatcher("/intro2.jsp").forward(request, response);
-
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

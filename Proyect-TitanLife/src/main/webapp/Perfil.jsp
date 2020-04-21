@@ -23,7 +23,8 @@
 
 <h1 class="texto4">Mi Perfil</h1>
 
-<% String controller = "perfilcontroller"; %>		
+<% String controller = "perfilcontroller"; %>
+<div>${requestScope.validaciones}</div>		
 
        <form id = "formulario" action="<%= controller %>" method="GET">
             <input id="Username" name="Username"type="text" placeholder="Username" maxlength="40" value="${user.username}" required/><br/>    

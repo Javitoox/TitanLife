@@ -15,6 +15,7 @@
 	<img id="logo" src="images/logo.png" alt="Logo TitanLife">
 	
 	<% String controller = "iniciosesioncontroller"; %>
+	<div>${requestScope.validaciones}</div>
 	
     <div id="cuadro"></div>
     <p id="loginAccount">Login to Your Account</p>
