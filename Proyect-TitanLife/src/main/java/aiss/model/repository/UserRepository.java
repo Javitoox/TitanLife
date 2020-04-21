@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import aiss.model.User;
+import aiss.model.titan.User;
 
 public class UserRepository {
     private static final Logger log = Logger.getLogger(UserRepository.class.getName());

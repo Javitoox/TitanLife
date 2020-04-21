@@ -11,7 +11,7 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
-import aiss.model.User;
+import aiss.model.titan.User;
 
 
 public class UserRepositoryTest {

@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import aiss.model.User;
 import aiss.model.repository.UserRepository;
+import aiss.model.titan.User;
 
 public class ValidatorController  extends HttpServlet{
     private static final long serialVersionUID = 1L;

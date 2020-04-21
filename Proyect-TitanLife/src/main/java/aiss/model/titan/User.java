@@ -1,11 +1,7 @@
-package aiss.model;
-import java.io.Serializable;
+package aiss.model.titan;
 
-public class User implements Serializable {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class User {
+	
 	private String username;
     private String email;
     private String password;
