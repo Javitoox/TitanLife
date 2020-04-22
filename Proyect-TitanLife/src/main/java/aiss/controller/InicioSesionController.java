@@ -34,7 +34,7 @@ public class InicioSesionController extends HttpServlet{
       String validaciones = "";
       HttpSession session = request.getSession(true);
       UserRepository singelton = UserRepository.getInstance();
-      Map<String, User> users = singelton.getUsers();
+      Map<Integer, User> users = singelton.getUsers();
       
       if(!users.containsKey(username)) {
     	  validaciones += "Usuario no existente";
@@ -55,7 +55,7 @@ public class InicioSesionController extends HttpServlet{
         
       }else {
     	  
-    	  User user= singelton.getUser(username);
+    	  User user= singelton.getUser(0);
           
           session.setAttribute("user", user);
           

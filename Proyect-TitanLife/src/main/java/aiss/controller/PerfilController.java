@@ -68,7 +68,7 @@ public class PerfilController extends HttpServlet {
 	        
 	        //Declaración patrón Singelton
 	        UserRepository singelton = UserRepository.getInstance();
-	        Map<String, User> users = singelton.getUsers(); 
+	        Map<Integer, User> users = singelton.getUsers(); 
 	        
 	        //Session
 	        
@@ -129,11 +129,6 @@ public class PerfilController extends HttpServlet {
 		    	user.setEmail(email);
 		    	user.setPassword(password);
 		    	user.setRetype(password);
-		    	user.setAge(age);
-		    	user.setHeight(height);
-		    	user.setWeight(weight);
-		    	user.setHip(hip);
-		    	user.setWaist(waist);
 		    	
 	         	singelton.updateUser(user);	
 		     	

@@ -1,27 +1,40 @@
 package aiss.model.titan;
 
+import java.util.List;
+
 public class User {
 	
+	private Integer id;
 	private String username;
     private String email;
     private String password;
     private String retype;
-    private Integer age;
-    private Double height;
-    private Double weight;
-    private Double hip;
-    private Double waist;
+    private DataBMI datosBMI;
+    private List<Objetivo> objetivos;
 
-    public User(String username, String email, String password, String retype, Integer age, Double height, Double weight, Double hip, Double waist) {
+    //Cuando se registre un usuario, pondremos los objetivos a null hasta que más adelante sean seleccionados
+    public User(Integer id,String username, String email, String password, String retype, String age,
+    		String height, String weight, String hip, String waist, String sex) {
+    	this.id=id;
         this.username=username;
         this.email=email;
         this.password=password;
         this.retype=retype;
-        this.age=age;
-        this.height=height;
-        this.weight=weight;
-        this.hip=hip;
-        this.waist=waist;
+        this.objetivos=null;
+        DataBMI datos=new DataBMI();
+        datos.setAge(age);
+        Height altura=new Height();
+        altura.setValue(height);
+        altura.setValue("cm");
+        datos.setHeight(altura);
+        Weight peso=new Weight();
+        peso.setValue(weight);
+        peso.setValue("kg");
+        datos.setWeight(peso);
+        datos.setHip(hip);
+        datos.setWaist(waist);
+        datos.setSex(sex);
+        this.datosBMI=datos;
     }
 
     public String getUsername() {
@@ -56,43 +69,24 @@ public class User {
         this.retype = retype;
     }
 
-    public Integer getAge() {
-        return age;
-    }
+	public DataBMI getDatosBMI() {
+		return datosBMI;
+	}
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+	public void setDatosBMI(DataBMI datosBMI) {
+		this.datosBMI = datosBMI;
+	}
 
-    public Double getHeight() {
-        return height;
-    }
+	public List<Objetivo> getObjetivos() {
+		return objetivos;
+	}
 
-    public void setHeight(Double height) {
-        this.height = height;
-    }
+	public void setObjetivos(List<Objetivo> objetivos) {
+		this.objetivos = objetivos;
+	}
 
-    public Double getWeight() {
-        return weight;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setWeight(Double weight) {
-        this.weight = weight;
-    }
-
-    public Double getHip() {
-        return hip;
-    }
-
-    public void setHip(Double hip) {
-        this.hip = hip;
-    }
-
-    public Double getWaist() {
-        return waist;
-    }
-
-    public void setWaist(Double waist) {
-        this.waist = waist;
-    }
 }

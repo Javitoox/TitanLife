@@ -66,7 +66,7 @@ public class ValidatorController  extends HttpServlet{
         //Declaración patrón Singelton
 
         UserRepository singelton = UserRepository.getInstance();
-        Map<String, User> users = singelton.getUsers();        
+        Map<Integer, User> users = singelton.getUsers();        
         
         if(username==""||email==""||password==""||retype==""||String.valueOf(age)==""||String.valueOf(height)==""||String.valueOf(weight)==""||String.valueOf(hip)==""||String.valueOf(waist)=="") {
         	validaciones += "Los campos no pueden quedar vacíos\n";
@@ -130,7 +130,7 @@ public class ValidatorController  extends HttpServlet{
    		    
             request.getRequestDispatcher("/Registro.jsp").forward(request, response);
         }else {
-        	User user = singelton.addUser(username, email, password, retype, age, height, weight, hip, waist);
+        	User user = null;
 
             session.setAttribute("user", user);
             
