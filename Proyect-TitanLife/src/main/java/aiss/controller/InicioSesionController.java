@@ -2,8 +2,6 @@ package aiss.controller;
 
 import java.io.IOException;
 
-import java.util.Map;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -20,56 +18,31 @@ public class InicioSesionController extends HttpServlet{
 
   private static final Logger log = Logger.getLogger(InicioSesionController.class.getName());
 
-  public InicioSesionController() {
-      super();
-      // TODO Auto-generated constructor stub
-  }
-
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-      // TODO: Read request parameters
-      String username =request.getParameter("Username");
-      String password =request.getParameter("Password");
-    
-      String validaciones = "";
-      HttpSession session = request.getSession(true);
-      UserRepository singelton = UserRepository.getInstance();
-      Map<Integer, User> users = singelton.getUsers();
-      
-      if(!users.containsKey(username)) {
-    	  validaciones += "Usuario no existente";
-     }
-      
-      else if(!users.get(username).getPassword().equals(password)) {
-    	  validaciones += "El usuario y contraseña no coinciden";
-      }
-     
-
-      if(!validaciones.equals("")) {
-    	  
-    	request.setAttribute("username", username);
-      	request.setAttribute("password", password); 
-      	request.setAttribute("validaciones", validaciones);
-	    log.log(Level.FINE, "Processing GET request:  "+ "El usuario " + username + " fue loggeado incorrectamente.");
-        request.getRequestDispatcher("/InicioSesion.jsp").forward(request, response);
-        
-      }else {
-    	  
-    	  User user= singelton.getUser(0);
-          
-          session.setAttribute("user", user);
-          
-          log.log(Level.FINE, "Processing GET request:  "+ "El usuario " + username + " fue loggeado correctamente.");
-
-          request.getRequestDispatcher("/intro2.jsp").forward(request, response);  
-          
-      }
+	  //La sesión aquí siempre estará desconectada
+	  if(request.getParameter("username")==null) {
+		  request.getRequestDispatcher("inicioSesion.jsp").forward(request, response);
+	  }else {
+		  String username=request.getParameter("username");
+		  String password=request.getParameter("password");
+		  UserRepository repository=UserRepository.getInstance();
+		  User u=repository.findByUsername(username);
+		  if(u!=null && u.getPassword().equals(password)) {
+			  HttpSession sesion=request.getSession(true);
+			  sesion.setAttribute("user", u);
+			  log.info("Usuario "+username+" logueado");
+			  request.getRequestDispatcher("/conexionController?sesion=1").forward(request, response);
+		  }else {
+			  request.setAttribute("validaciones", "Usuario o contraseña no existentes");
+			  request.setAttribute("username", username);
+			  request.setAttribute("password", password);
+			  request.getRequestDispatcher("inicioSesion.jsp").forward(request, response);
+		  }
+	  }
 
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      // TODO Auto-generated method stub
       doGet(request, response);
-     
   }
 }

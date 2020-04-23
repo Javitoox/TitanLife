@@ -1,6 +1,7 @@
 
 package aiss.model.titan;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -15,9 +16,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "value",
     "unit"
 })
-public class Height {
-
-    @JsonProperty("value")
+public class Height implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	@JsonProperty("value")
     private String value;
     @JsonProperty("unit")
     private String unit;

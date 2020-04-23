@@ -1,6 +1,7 @@
 
 package aiss.model.titan;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -19,9 +20,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "waist",
     "hip"
 })
-public class DataBMI {
+public class DataBMI implements Serializable{
 
-    @JsonProperty("weight")
+	private static final long serialVersionUID = 1L;
+	
+	@JsonProperty("weight")
     private Weight weight;
     @JsonProperty("height")
     private Height height;

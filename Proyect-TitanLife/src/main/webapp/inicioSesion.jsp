@@ -13,22 +13,21 @@
 <body>
 	
 	<img id="logo" src="images/logo.png" alt="Logo TitanLife">
-	
-	<% String controller = "iniciosesioncontroller"; %>
+
 	<div>${requestScope.validaciones}</div>
 	
     <div id="cuadro"></div>
     <p id="loginAccount">Login to Your Account</p>
     
-        <form id="formulario" action="<%=controller%>" method="GET">
+        <form id="formulario" action="/inicioSesionController" method="GET">
             
-            <input class="campo" type="text" name = "Username" placeholder="Usuario" value="${requestScope.username}" required/><br/>
-            <input class="campo" type="password" id="campo2"  name = "Password" placeholder="Contraseña" value="${requestScope.password}" required/><br/>
+            <input class="campo" type="text" name = "username" placeholder="Username" value="${requestScope.username}" required/><br/>
+            <input class="campo" type="password" id="campo2"  name = "password" placeholder="Password" value="${requestScope.password}" required/><br/>
             <input id="logIn" type="submit"/><br/>
             <input id = "checkbox" type="checkbox">
             <p id="recuerda"><strong>Recordar contraseña</strong> </p>
             <a id= "forgetPass" href="dondeSeaQueSeCambieLaContraseña">¿Has olvidado la contraseña?</a>
-            <a id="registrate" href="Registro.jsp">Regístrate</a>
+            <a id="registrate" href="/validatorController">Regístrate</a>
             
         </form>
     

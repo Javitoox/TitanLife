@@ -44,7 +44,7 @@ public class UserRepository {
 
     public Map<Integer,User> getUsers() {
         Map<Integer,User> us= users;
-        log.log(Level.INFO, "La lista de usuarios " + us + " fue obtenida");
+        log.log(Level.INFO, "Los usuarios fueron obtenidos: "+us);
         return us;
     }
 
@@ -75,4 +75,22 @@ public class UserRepository {
         users.remove(id);
         log.log(Level.INFO, "El usuario " + u.getUsername() + " fue eliminado");
     }
+    
+    public List<Objetivo> getObjetivosAplicacion() {
+    	log.info("Objetivos de la aplicación volcados");
+    	return objetivosAplicacion;
+    }
+    
+    public User findByUsername(String username){
+		User result=null;
+		for(User u:users.values()){
+			if(u.getUsername().equals(username)){
+				result=u;
+				log.info(username+" encontrado en el repositorio de la aplicación");
+				break;
+			}
+		}
+		return result;
+	}
+
 }

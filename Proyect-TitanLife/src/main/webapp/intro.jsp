@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,7 +15,10 @@
 
 <img id="logo" src="images/logo.png" alt="Descripción de la imagen">
 
-<%@ include file="menu2.jsp" %>
+<c:choose>
+   <c:when test="${param['sesion']=='1'}"><%@ include file="menu.jsp" %></c:when> 
+   <c:otherwise><%@ include file="menu2.jsp" %></c:otherwise>
+</c:choose>
 
 <div id="enlace1">
 <a href="https://www.fatsecret.es/"> 

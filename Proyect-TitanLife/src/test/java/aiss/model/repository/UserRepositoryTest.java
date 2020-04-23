@@ -93,6 +93,21 @@ private UserRepository repository;
 		assertNull("The user has not been deleted", u);
 		assertTrue("The user has not been delected correctly", newNumberUsers==numberUsers-1);
 	}
+	
+	@Test
+	public void testGetObjetivosAplicacion() {
+		assertNotNull("Objetives not load correctly",repository.getObjetivosAplicacion());
+	}
+	
+	@Test (expected=NullPointerException.class)
+	public void inicioObjetivosUsuario() {
+		repository.getUser(1).getObjetivos().remove(0);
+	}
+	
+	@Test
+	public void encontrarUsuario() {
+		assertTrue("User not found",repository.findByUsername("almafe2510")!=null);
+	}
 }
 
 
