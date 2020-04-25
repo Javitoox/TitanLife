@@ -1,0 +1,18 @@
+{	
+    "Youtube": { 
+        "tokenUrl": "",
+        "clientId": "",
+        "clientSecret": "",
+        "authorizationFormUrl": "",
+        "scopes": []
+    },
+    
+    "Strava": {
+        "tokenUrl": "",
+        "clientId": "",
+        "clientSecret": "",
+        "authorizationFormUrl": "",
+        "scopes": []
+    }
+    
+}
