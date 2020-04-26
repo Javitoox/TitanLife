@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import aiss.model.repository.UserRepository;
-import aiss.model.utility.Validacion;
+import aiss.utility.Validacion;
 
 public class ValidatorController  extends HttpServlet{
 

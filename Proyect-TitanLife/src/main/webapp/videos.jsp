@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,20 +20,10 @@
 <%@ include file="menu.jsp" %>
 
 <img id="logoSD" src="images/logo.png" alt="Descripción de la imagen">
-<h1 class="InitialText">Mis Videos</h1>	
-<div class="box">
-  <div class="container-1">
-      <span class="icon"><i class="fa fa-search"></i></span>
-      <input type="search" id="search" placeholder="Search..." />
-  </div>
-</div>
-<iframe id="testvideo" width=35% height=35% src="https://www.youtube.com/embed/VZEzB06SP28" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
 <div class="scroll">
-	<iframe  width="600" height="315" src="https://www.youtube.com/embed/VZEzB06SP28" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-<iframe width="600" height="315" src="https://www.youtube.com/embed/MTEeMy4nPYw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
+<c:forEach items="${videos}" var="video">
+        <iframe  width="600" height="315" src="https://www.youtube.com/embed/${video.id.videoId}"></iframe>
+</c:forEach>
 </div>
 </body>
 </html>

@@ -15,7 +15,7 @@
   <p><a href="/conexionController?sesion=1">Inicio</a></p>
   <p><a href="/misObjetivosController">Mis Objetivos</a></p>
   <p><a href="MisComidas.jsp">Mis Comidas</a></p>
-  <p><a href="videos.jsp">Mis Videos</a></p>
+  <p><a href="/youtubeVideosController">Mis Videos</a></p>
   <p><a href="strava.jsp">Mi Strava</a></p>
   <p><a href="perfil.jsp">Mi Perfil</a></p>
   <p><a href="/conexionController">Desconectar</a></p>

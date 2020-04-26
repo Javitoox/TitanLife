@@ -1,4 +1,4 @@
-package aiss.model.utility;
+package aiss.utility;
 
 import java.util.ArrayList;
 import java.util.List;
