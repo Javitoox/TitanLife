@@ -26,8 +26,8 @@ public class YoutubeVideosController extends HttpServlet {
 				request.setAttribute("videos", yv.getItems());
 				request.getRequestDispatcher("/videos.jsp").forward(request, response);
 			}else {
-				log.warning("Videos not found, redirecting to initial page");
-				request.getRequestDispatcher("/conexionController").forward(request, response);
+				log.warning("Videos not found, redirecting error page");
+				request.getRequestDispatcher("/error.jsp").forward(request, response);
 			}
         }else {
         	log.info("Trying to access Youtube without an access token, redirecting to OAuth servlet");

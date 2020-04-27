@@ -14,12 +14,12 @@ body{
     top:0;
 }
 .scroll {
-  position:absolute;	
-  background-color: transparent;
-  width: 32%;
+  display:flex;
+  position:absolute;
+  width:32%;
   overflow: scroll;
-  top:5%;
-  left: 12%;
+  top:30%;
+  left:30%;
 }
  @media only screen and (max-width: 770px) {
  #logoSD{

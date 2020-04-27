@@ -22,7 +22,7 @@ public class YoutubeResource {
     }
     
     public YoutubeVideo getSearchVideos(String search) {
-    	String url=uriSearch+"?part=id&order=relevance&type=video&q="+search;
+    	String url=uriSearch+"?part=id&order=date&maxResults=20&type=video&q="+search;
     	ClientResource cr = new ClientResource(url);
     	ChallengeResponse chr = new ChallengeResponse(ChallengeScheme.HTTP_OAUTH_BEARER);
         chr.setRawValue(access_token);

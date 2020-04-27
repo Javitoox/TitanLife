@@ -22,7 +22,9 @@
 <img id="logoSD" src="images/logo.png" alt="Descripción de la imagen">
 <div class="scroll">
 <c:forEach items="${videos}" var="video">
-        <iframe  width="600" height="315" src="https://www.youtube.com/embed/${video.id.videoId}"></iframe>
+        <div>
+        <iframe width="600" height="315" src="https://www.youtube.com/embed/${video.id.videoId}"></iframe>
+        </div>
 </c:forEach>
 </div>
 </body>
