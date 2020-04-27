@@ -8,11 +8,11 @@
     },
     
     "Strava": {
-        "tokenUrl": "",
-        "clientId": "",
-        "clientSecret": "",
-        "authorizationFormUrl": "",
-        "scopes": []
+        "tokenUrl": "https://www.strava.com/api/v3/oauth/token",
+        "clientId": "46775",
+        "clientSecret": "0c7ac138b754e1af780c376faaa6c0ada549553c",
+        "authorizationFormUrl": "https://www.strava.com/api/v3/oauth/authorize",
+        "scopes": ["activity:write"]
     }
     
 }
