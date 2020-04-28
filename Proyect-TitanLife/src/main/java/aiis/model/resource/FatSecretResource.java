@@ -12,14 +12,13 @@ public class FatSecretResource {
 	
 	private static final Logger log = Logger.getLogger(FatSecretResource.class.getName());
 	private final static String tokenURL = "https://www.fatsecret.com/oauth/request_token";
-	private final static String requestURL = "https://platform.fatsecret.com/rest/server.api";
 	
 	public static void authv1() {
-		String [] gp=Oauth1Utility.generateOauthParams();
-		String params=Oauth1Utility.paramify(gp);
+		String[] p=Oauth1Utility.generateOauthParams();
+		String params=Oauth1Utility.paramify(p);
 		String sign="";
 		try {
-			sign = "oauth_signature="+Oauth1Utility.sign("POST", requestURL, gp);
+			sign = "oauth_signature="+Oauth1Utility.sign("GET", tokenURL, p);
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -28,7 +27,7 @@ public class FatSecretResource {
 		ClientResource cr = new ClientResource(uri);
 		try {
 			log.info("Obtaining Request Token of FastSecret... Uri:"+uri);
-    		cr.post("");
+    		cr.get();
     	}
     	catch(ResourceException re) {
     		log.warning("Error obtaining a Request Token of FastSecret: " + cr.getResponse().getStatus());

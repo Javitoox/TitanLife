@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import aiis.model.resource.FatSecretResource;
-import aiss.controller.YoutubeVideosController;
-import aiss.utility.Oauth1Utility;
 
 /**
  * Servlet implementation class Oauth1Controller
@@ -18,8 +16,6 @@ import aiss.utility.Oauth1Utility;
 public class Oauth1Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger log = Logger.getLogger(Oauth1Controller.class.getName());
-	private final String tokenURL="https://www.fatsecret.com/oauth/request_token";
-	private final String key="6f5db4f8911e45adb1fdc22b4a879d9b";
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String oauth_token;

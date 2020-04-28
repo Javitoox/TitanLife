@@ -14,14 +14,22 @@ public class Oauth1Utility {
 	private static final String APP_KEY="6f5db4f8911e45adb1fdc22b4a879d9b";
 	private static final String APP_SECRET="180a4ed480b244b3ae6cbabca19c6c76";
 	private static final String APP_SIGNATURE_METHOD="HmacSHA1";
+	private static final String CALLBACK="http://localhost:8090/oauth1Controller/FatSecret";
 	
 	private static String nonce() {
-		Random r = new Random();
-		StringBuffer n = new StringBuffer();
-		for (int i = 0; i < r.nextInt(8) + 2; i++) {
-			n.append(r.nextInt(26) + 'a');
-		}
-		return n.toString();
+		int leftLimit = 97; // letter 'a'
+	    int rightLimit = 122; // letter 'z'
+	    int targetStringLength = 10;
+	    Random random = new Random();
+	    StringBuilder buffer = new StringBuilder(targetStringLength);
+	    for (int i = 0; i < targetStringLength; i++) {
+	        int randomLimitedInt = leftLimit + (int) 
+	          (random.nextFloat() * (rightLimit - leftLimit + 1));
+	        buffer.append((char) randomLimitedInt);
+	    }
+	    String generatedString = buffer.toString();
+	 
+	    return generatedString;
 	}
 	
 	public static String[] generateOauthParams() {
@@ -31,8 +39,7 @@ public class Oauth1Utility {
 				"oauth_timestamp=" + new Long(System.currentTimeMillis() / 1000).toString(),
 				"oauth_nonce=" + nonce(),
 				"oauth_version=1.0",
-				"a=foo",
-				"z=bar"
+				"oauth_callback=" + CALLBACK
 		};
 		return a;
 	}
