@@ -15,11 +15,14 @@ public class ConexionController extends HttpServlet {
 	private static final Logger log = Logger.getLogger(ConexionController.class.getName());
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("sesion")!=null) {
+		if(request.getParameter("sesion")!=null && request.getParameter("sesion").equals("0")) {
+			log.info("Desconexión del usuario: "+((User) request.getSession().getAttribute("user")).getUsername());
+			request.getSession().invalidate();
+		}
+			
+		if(request.getSession().getAttribute("user")!=null) {
 			request.getRequestDispatcher("intro.jsp?sesion=1").forward(request, response);
 		}else {
-			log.info("Desconexión del usuario: "+((User) request.getSession().getAttribute("user")).getUsername());
-			request.getSession().removeAttribute("user");
 			request.getRequestDispatcher("intro.jsp").forward(request, response);
 		}
 	}

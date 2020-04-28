@@ -18,7 +18,7 @@
   <p><a href="/youtubeVideosController">Mis Videos</a></p>
   <p><a href="strava.jsp">Mi Strava</a></p>
   <p><a href="perfil.jsp">Mi Perfil</a></p>
-  <p><a href="/conexionController">Desconectar</a></p>
+  <p><a href="/conexionController?sesion=0">Desconectar</a></p>
   </div>
 </div>
 </body>

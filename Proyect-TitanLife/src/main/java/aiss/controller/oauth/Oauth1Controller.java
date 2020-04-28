@@ -1,6 +1,10 @@
 package aiss.controller.oauth;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -22,7 +26,21 @@ public class Oauth1Controller extends HttpServlet {
 		String oauth_token_secret;
 		String oauth_callback_confirmed;
 		
-		FatSecretResource.authv1();
+	    try {
+			FatSecretResource.authv1();
+		} catch (InvalidKeyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		oauth_token=request.getParameter("oauth_token");
 		oauth_token_secret=request.getParameter("oauth_token_secret");

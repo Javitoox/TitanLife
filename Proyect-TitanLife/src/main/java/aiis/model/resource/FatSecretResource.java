@@ -1,6 +1,9 @@
 package aiis.model.resource;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Logger;
 
 import org.restlet.resource.ClientResource;
@@ -11,20 +14,11 @@ import aiss.utility.Oauth1Utility;
 public class FatSecretResource {
 	
 	private static final Logger log = Logger.getLogger(FatSecretResource.class.getName());
-	private final static String tokenURL = "https://www.fatsecret.com/oauth/request_token";
 	
-	public static void authv1() {
-		String[] p=Oauth1Utility.generateOauthParams();
-		String params=Oauth1Utility.paramify(p);
-		String sign="";
-		try {
-			sign = "oauth_signature="+Oauth1Utility.sign("GET", tokenURL, p);
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String uri=tokenURL+"?"+params+"&"+sign;
-		ClientResource cr = new ClientResource(uri);
+	public static void authv1() throws InvalidKeyException, NoSuchAlgorithmException, 
+	UnsupportedEncodingException, URISyntaxException {
+		String uri = Oauth1Utility.generateRequest();
+		ClientResource cr = new ClientResource(uri); 
 		try {
 			log.info("Obtaining Request Token of FastSecret... Uri:"+uri);
     		cr.get();

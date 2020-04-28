@@ -31,7 +31,7 @@ public class InicioSesionController extends HttpServlet{
 			  HttpSession sesion=request.getSession(true);
 			  sesion.setAttribute("user", u);
 			  log.info("Usuario "+username+" logueado");
-			  request.getRequestDispatcher("/conexionController?sesion=1").forward(request, response);
+			  request.getRequestDispatcher("/conexionController").forward(request, response);
 		  }else {
 			  request.setAttribute("validaciones", "Usuario o contraseña no existentes");
 			  request.setAttribute("username", username);

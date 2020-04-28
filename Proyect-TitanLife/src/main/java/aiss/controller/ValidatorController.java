@@ -42,7 +42,7 @@ public class ValidatorController  extends HttpServlet{
             	repository.addUser(username,email,password,retype,age,height,weight,hip,waist,sex);
             	HttpSession sesion=request.getSession(true);
             	sesion.setAttribute("user", repository.findByUsername(username));
-            	request.getRequestDispatcher("/conexionController?sesion=1").forward(request, response);
+            	request.getRequestDispatcher("/conexionController").forward(request, response);
             }else {
             	log.info("Validación de usuario incorrecta");
             	request.setAttribute("validaciones", validaciones);

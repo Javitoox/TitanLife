@@ -1,13 +1,23 @@
 package aiss.utility;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URLEncoder;
-import java.util.Arrays;
-import java.util.Random;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+
+import org.apache.commons.codec.binary.Base64;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URIUtils;
+import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.message.BasicNameValuePair;
 
 public class Oauth1Utility {
 	
@@ -16,90 +26,51 @@ public class Oauth1Utility {
 	private static final String APP_SIGNATURE_METHOD="HmacSHA1";
 	private static final String CALLBACK="http://localhost:8090/oauth1Controller/FatSecret";
 	
-	private static String nonce() {
-		int leftLimit = 97; // letter 'a'
-	    int rightLimit = 122; // letter 'z'
-	    int targetStringLength = 10;
-	    Random random = new Random();
-	    StringBuilder buffer = new StringBuilder(targetStringLength);
-	    for (int i = 0; i < targetStringLength; i++) {
-	        int randomLimitedInt = leftLimit + (int) 
-	          (random.nextFloat() * (rightLimit - leftLimit + 1));
-	        buffer.append((char) randomLimitedInt);
-	    }
-	    String generatedString = buffer.toString();
-	 
-	    return generatedString;
-	}
-	
-	public static String[] generateOauthParams() {
-		String[] a = {
-				"oauth_consumer_key=" + APP_KEY,
-				"oauth_signature_method=HMAC-SHA1",
-				"oauth_timestamp=" + new Long(System.currentTimeMillis() / 1000).toString(),
-				"oauth_nonce=" + nonce(),
-				"oauth_version=1.0",
-				"oauth_callback=" + CALLBACK
-		};
-		return a;
-	}
-	
-	private static String join(String[] params, String separator) {
-		StringBuffer b = new StringBuffer();
-		for (int i = 0; i < params.length; i++) {
-			if (i > 0) {
-				b.append(separator);
-			}
-			b.append(params[i]);
-		}
-		return b.toString();
-	}
+	private static String getSignature(String url, String params) throws UnsupportedEncodingException, NoSuchAlgorithmException,
+            InvalidKeyException {
+        StringBuilder base = new StringBuilder();
+        base.append("GET&");
+        base.append(url);
+        base.append("&");
+        base.append(params);
+        System.out.println("String for oauth_signature generation:" + base);
+        
+        byte[] keyBytes = (APP_SECRET + "&").getBytes("UTF-8");
 
-	
-	public static String paramify(String[] params) {
-		String[] p = Arrays.copyOf(params, params.length);
-		Arrays.sort(p);
-		return join(p, "&");
-	}
-	
-	private static String encode(String url) {
-		if (url == null)
-			return "";
+        SecretKey key = new SecretKeySpec(keyBytes, APP_SIGNATURE_METHOD);
 
-		try {
-			return URLEncoder.encode(url, "utf-8")
-					.replace("+", "%20")
-					.replace("!", "%21")
-					.replace("*", "%2A")
-					.replace("\\", "%27")
-					.replace("(", "%28")
-					.replace(")", "%29");
-		}
-		catch (UnsupportedEncodingException wow) {
-			throw new RuntimeException(wow.getMessage(), wow);
-		}
-	}
+        Mac mac = Mac.getInstance(APP_SIGNATURE_METHOD);
+        mac.init(key);
+
+        Base64 base64 = new Base64();
+        return new String(base64.encode(mac.doFinal(base.toString().getBytes(
+        		"UTF-8"))), "UTF-8").trim();
+    }
 	
-	public static String sign(String method, String uri, String[] params) throws UnsupportedEncodingException {
-		String encodedURI = encode(uri);
-		String encodedParams = encode(paramify(params));
-		
-		String[] p = {method, encodedURI, encodedParams};
-		
-		String text = join(p, "&");
-		String key = APP_SECRET + "&";
-		SecretKey sk = new SecretKeySpec(key.getBytes(), APP_SIGNATURE_METHOD);
-		String sign = "";
-		try {
-			Mac m = Mac.getInstance(APP_SIGNATURE_METHOD);
-			m.init(sk);
-			sign = encode(new String(Base64.encode(m.doFinal(text.getBytes()), Base64.DEFAULT)).trim());
-		} catch(java.security.NoSuchAlgorithmException e) {
-			System.out.println("NoSuchAlgorithmException: " + e.getMessage());
-		} catch(java.security.InvalidKeyException e) {
-			System.out.println("InvalidKeyException: " + e.getMessage());
-		}
-		return sign;
+	public static String generateRequest() throws InvalidKeyException, UnsupportedEncodingException,
+	NoSuchAlgorithmException, URISyntaxException {
+        List<NameValuePair> qparams = new ArrayList<NameValuePair>();
+        qparams.add(new BasicNameValuePair("oauth_consumer_key", APP_KEY));
+        qparams.add(new BasicNameValuePair("oauth_signature_method",
+                "HMAC-SHA1"));
+        qparams.add(new BasicNameValuePair("oauth_timestamp", ""
+                + (System.currentTimeMillis() / 1000)));
+        qparams.add(new BasicNameValuePair("oauth_nonce", ""
+                + (int) (Math.random() * 100000000)));
+        qparams.add(new BasicNameValuePair("oauth_version", "1.0"));
+        qparams.add(new BasicNameValuePair("oauth_callback", CALLBACK));
+        
+        String signature = getSignature(URLEncoder.encode(
+        		"https://www.fatsecret.com/oauth/request_token", "UTF-8"),
+                URLEncoder.encode(URLEncodedUtils.format(qparams, "UTF-8"), "UTF-8"));
+        
+        qparams.add(new BasicNameValuePair("oauth_signature", signature));
+        
+        URI uri = URIUtils.createURI("https", "www.fatsecret.com", -1,
+                "/oauth/request_token",
+                URLEncodedUtils.format(qparams, "UTF-8"), null);
+        
+        return uri.toString();
 	}
 	
 }
