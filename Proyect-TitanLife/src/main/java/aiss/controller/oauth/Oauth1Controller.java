@@ -26,10 +26,7 @@ public class Oauth1Controller extends HttpServlet {
 		String oauth_token_secret;
 		String oauth_callback_confirmed;
 		
-		String uri=  tokenURL+"?oauth_consumer_key="+key+"&oauth_signature_method=HMAC-SHA1&oauth_timestamp="
-		+Oauth1Utility.generateTimeStampt()+"&oauth_nonce="+Oauth1Utility.generateRandomString()+"&oauth_version=1.0"
-				+ "&oauth_callback=http://localhost:8090/oauth1Controller/FatSecret";
-		FatSecretResource.authv1(uri);
+		FatSecretResource.authv1();
 		
 		oauth_token=request.getParameter("oauth_token");
 		oauth_token_secret=request.getParameter("oauth_token_secret");

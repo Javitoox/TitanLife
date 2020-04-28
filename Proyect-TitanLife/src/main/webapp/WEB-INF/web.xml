@@ -132,8 +132,6 @@
     <servlet-name>StravaOAuth2Callback</servlet-name>
     <url-pattern>/oauth2callback/Strava</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <description></description>
     <display-name>FatSecretCaloriesController</display-name>
