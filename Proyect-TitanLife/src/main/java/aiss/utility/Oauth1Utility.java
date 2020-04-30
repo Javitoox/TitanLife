@@ -22,7 +22,7 @@ import org.apache.http.message.BasicNameValuePair;
 public class Oauth1Utility {
 	
 	private static final String APP_KEY="6f5db4f8911e45adb1fdc22b4a879d9b";
-	private static final String APP_SECRET="180a4ed480b244b3ae6cbabca19c6c76";
+	private static final String APP_SECRET="1fb3621313824e6ab2f9604be9f7fbff";
 	private static final String APP_SIGNATURE_METHOD="HmacSHA1";
 	private static final String CALLBACK="http://localhost:8090/oauth1Controller/FatSecret";
 	

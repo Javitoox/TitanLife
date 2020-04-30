@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <welcome-file-list>
+    <welcome-file>intro.jsp</welcome-file>
+  </welcome-file-list>
+  <error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/error.jsp</location>
+  </error-page>
+  <!-- ############################# Controllers ##################################### -->
   <servlet>
     <servlet-name>ValidatorController</servlet-name>
     <servlet-class>aiss.controller.ValidatorController</servlet-class>
@@ -24,13 +32,6 @@
     <servlet-name>InicioSesionController</servlet-name>
     <url-pattern>/inicioSesionController</url-pattern>
   </servlet-mapping>
-  <welcome-file-list>
-    <welcome-file>intro.jsp</welcome-file>
-  </welcome-file-list>
-  <error-page>
-    <exception-type>java.lang.Throwable</exception-type>
-    <location>/error.jsp</location>
-  </error-page>
   <servlet>
     <description></description>
     <display-name>ConexionController</display-name>
@@ -63,6 +64,28 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>FatSecretCaloriesController</display-name>
+    <servlet-name>FatSecretCaloriesController</servlet-name>
+    <servlet-class>aiss.controller.FatSecretCaloriesController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FatSecretCaloriesController</servlet-name>
+    <url-pattern>/fatSecretCaloriesController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Oauth1Controller</display-name>
+    <servlet-name>Oauth1Controller</servlet-name>
+    <servlet-class>aiss.controller.oauth.Oauth1Controller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Oauth1Controller</servlet-name>
+    <url-pattern>/oauth1Controller/FatSecret</url-pattern>
+  </servlet-mapping>
+  <!-- ############################# Oauth 2 ##################################### -->
+  <!-- Youtube -->
+  <servlet>
+    <description></description>
     <servlet-name>YoutubeAuthController</servlet-name>
     <servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
     <init-param>
@@ -91,7 +114,7 @@
     <servlet-name>YoutubeOAuth2Callback</servlet-name>
     <url-pattern>/oauth2callback/Youtube</url-pattern>
   </servlet-mapping>
-  
+  <!-- Strava -->
    <servlet>
     <description></description>
     <display-name>StravaActivityController</display-name>
@@ -132,24 +155,5 @@
     <servlet-name>StravaOAuth2Callback</servlet-name>
     <url-pattern>/oauth2callback/Strava</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>FatSecretCaloriesController</display-name>
-    <servlet-name>FatSecretCaloriesController</servlet-name>
-    <servlet-class>aiss.controller.FatSecretCaloriesController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>FatSecretCaloriesController</servlet-name>
-    <url-pattern>/fatSecretCaloriesController</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>Oauth1Controller</display-name>
-    <servlet-name>Oauth1Controller</servlet-name>
-    <servlet-class>aiss.controller.oauth.Oauth1Controller</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Oauth1Controller</servlet-name>
-    <url-pattern>/oauth1Controller/FatSecret</url-pattern>
-  </servlet-mapping>
+  
 </web-app>

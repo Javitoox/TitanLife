@@ -18,7 +18,7 @@
     <div class = "texto">
         <h3 id="texto1"><strong>The Page You Request Could Not Be Found</strong> </h3>
         <h3 id="texto2">Please,</h3>
-        <h3 id=texto3><a href="/conexionController?sesion=1">try again later.</a> </h3>
+        <h3 id=texto3><a href="/conexionController?sesion=0">try again later.</a> </h3>
     </div>
 	
   </body>

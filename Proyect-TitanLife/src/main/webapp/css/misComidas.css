@@ -8,6 +8,12 @@ body{
     background: url(/images/fondo_ipad.jpg);
     background-size: 110%;
 }
+#search{
+	position:absolute;
+	top:67%;
+	right:12%;
+}
+
 #logo{
     position:absolute;
     width: 180px;

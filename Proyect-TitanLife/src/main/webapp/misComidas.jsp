@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -36,40 +37,20 @@
     </ul>
 
     <ul class="mealsKcal">  
-        <li>Melón 500gr - 110kcal</li>
-        <li>Pollo 330gr - 410kcal</li>
-        <li>Plátano -90kcal</li>
-        <li>Monster 500ml - 15kcal</li>
+        <c:forEach items="${requestScope.foods}" var="food">
+                <li>${food}</li>
+		</c:forEach>
     </ul>
 
     <h1 id="consumidas">625 Kcal <br>Consumidas</h1>
     <h1 id="restantes">+ 1300 Kcal Restantes</h1>
     </div>
-    <div class="box">
-        <div class="container-1">
-            <span class="icon"><i class="fa fa-search"></i></span>
-            <input type="search" id="search" placeholder="Search..." />
-        </div>
-    </div>
-    
-    <h1 id="titulo">Recomendaciones de comidas <br> según sus Objetivos:</h1>
 
-    <form id = "formulario" action="MisComidas.jsp">
-
-        <select id = "comidas" multiple>
-            <option value="1">Avena 200gr - 610kcal</option>
-            <option value="2">Pisto 330 - 510kcal</option>
-            <option value="3">Zumo naranja 250ml - 40kcal</option>
-            <option value="4">Pasta variada 400 - 800kcal</option>
-            <option value="5">Plátano - 90Kcal</option>
-            <option value="6">Sandía 500gr - 110Kcal</option>
-            <option value="7">Rabano 200gr - 130Kcal</option>
-            <option value="8">Pepino 100gr - 70Kcal</option>
-            <option value="9">Mango 120gr - 70Kcal</option>
-            <option value="10">Plátano 110gr - 80Kcal</option>
-        </select>
-        
+    <form id = "formulario" action="/fatSecretCaloriesController">
+    <div>
+        <input id="search" type="text" name="search" placeholder="Search" maxlength="40" required>   
         <input type="submit" value="Añadir a la lista">
+    </div>
     </form>
 
 </body>
