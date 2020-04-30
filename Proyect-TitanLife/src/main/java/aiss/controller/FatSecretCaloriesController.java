@@ -22,7 +22,7 @@ public class FatSecretCaloriesController extends HttpServlet {
 		String search=request.getParameter("search");
 		if(search!=null && !search.equals("")) {
 			List<CompactFood> lc=FatSecretResource.searchFood(search);
-			List<String> l=new ArrayList<>();
+			List<String> l=new ArrayList<>(); 
 			for(Integer i=0;i<=4;i++) {
 				l.add(lc.get(i).getName()+", "+lc.get(i).getDescription());
 			}
