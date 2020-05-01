@@ -30,7 +30,7 @@ public class StravaActivityController extends HttpServlet {
 	        	StravaToken st= StravaResource.primer(code);
 	        	String acesstoken = st.getAccessToken();
 	        	request.getSession().setAttribute("Strava-token", acesstoken);
-	        	log.info("Accestoken: "+acesstoken);
+	        	log.info("Accestoken: "+acesstoken); 
 	        	request.getRequestDispatcher("/stravaActivityController").forward(request, response);
 	        }
         }else {
