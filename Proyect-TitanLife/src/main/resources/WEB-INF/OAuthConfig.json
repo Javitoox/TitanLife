@@ -2,17 +2,9 @@
     "Youtube": { 
         "tokenUrl": "https://accounts.google.com/o/oauth2/token",
         "clientId": "1026245294779-ppdcsj8pj20fmjqlofqrmvq3665k0sj7.apps.googleusercontent.com",
-        "clientSecret": "1oj-p_I1T-PyuYN8O9OR8JWI",
+        "clientSecret": "iWeytRiq-mH3DLli1xPwWs2e",
         "authorizationFormUrl": "https://accounts.google.com/o/oauth2/auth",
         "scopes": ["https://www.googleapis.com/auth/youtube.upload","https://www.googleapis.com/auth/youtube","https://www.googleapis.com/auth/youtube.force-ssl"]
-    },
-    
-    "Strava": {
-        "tokenUrl": "https://www.strava.com/api/v3/oauth/token",
-        "clientId": "46775",
-        "clientSecret": "0c7ac138b754e1af780c376faaa6c0ada549553c",
-        "authorizationFormUrl": "https://www.strava.com/api/v3/oauth/authorize",
-        "scopes": ["activity:write"]
     }
     
 }

@@ -16,7 +16,7 @@
   <p><a href="/misObjetivosController">Mis Objetivos</a></p>
   <p><a href="/fatSecretCaloriesController">Mis Comidas</a></p>
   <p><a href="/youtubeVideosController">Mis Videos</a></p>
-  <p><a href="strava.jsp">Mi Strava</a></p>
+  <p><a href="/stravaActivityController">Mi Strava</a></p>
   <p><a href="perfil.jsp">Mi Perfil</a></p>
   <p><a href="/conexionController?sesion=0">Desconectar</a></p>
   </div>

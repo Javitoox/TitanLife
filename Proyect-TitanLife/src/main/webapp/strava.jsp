@@ -18,28 +18,66 @@
 <img id="logoSVS" src="images/logo.png" alt="Descripción de la imagen">
 <h1 class="InitialTextSV">Mi Strava</h1>
 <h1 class="ScrollText">Mis Rutas</h1>	
-<h1 class="ScrollTextCreadas">Mis Publicaciones</h1>	
-<a class="boton_personalizado" href="REDIRIGE A AÑADIR EN STRAVA">Add</a>
-<a class="boton_personalizado_enlace" href="REDIRIGE A AÑADIR EN STRAVA">Vincular Strava</a>
-<!--  <div class="scrollSVS">
-<iframe width="600" height="315" src="https://www.youtube.com/embed/BQ3aAX38kjI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<iframe width="600" height="315" src="https://www.youtube.com/embed/0AmhFng8ufQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></iframe>
+<h1 class="ScrollTextCreadas">Mis Publicaciones</h1>
+	<div>${requestScope.validaciones}</div>
+
+<button id="btn-abrir-popup" class="btn-abrir-popup">Add</button>
+
+<div class="contenedor">	
+
+<div class="overlay" id="overlay">
+			<div class="popup" id="popup">
+				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+				<h3>AÑADE</h3>
+				<h4>una actividad en tu perfil.</h4>
+				<form id = "formulario" name="formulario" action="/stravaPostActivityController" method="GET">
+					<div class="contenedor-inputs">
+            				<input id="Name" name="Name"type="text" placeholder="Nombre actividad" maxlength="40" required/><br/>    
+							<select name="Type" required>
+								<option value="Ride">Ride</option>
+								<option value="Run">Run</option>
+								<option value="Swim">Swim</option>
+								<option value="Hike">Hike</option>
+								<option value="Walk">Walk</option>
+								<option value="AlpineSki">Alpine Ski</option>
+								<option value="BackcountrySki">Backcountry Ski</option>
+								<option value="Canoeing">Canoe</option>
+								<option value="Crossfit">Crossfit</option>
+								<option value="EBikeRide">E-Bike Ride</option>
+								<option value="Elliptical">Elliptical</option>
+								<option value="Handcycle">Handcycle</option>
+								<option value="IceSkate">Ice Skate</option>
+								<option value="InlineSkate">Inline Skate</option>
+								<option value="Kayaking">Kayaking</option>
+								<option value="Kitesurf">Kitesurf</option>
+								<option value="NordicSki">Nordic Ski</option>
+								<option value="RockClimbing">Rock Climb</option>
+								<option value="RollerSki">Roller Ski</option>
+								<option value="Rowing">Rowing</option>
+								<option value="Snowboard">Snowboard</option>
+								<option value="Snowshoe">Snowshoe</option>
+								<option value="StairStepper">Stair-Stepper</option>
+								<option value="StandUpPaddling">Stand Up Paddling</option>
+								<option value="Surfing">Surfing</option>
+								<option value="Velomobile">Velomobile</option>
+								<option value="VirtualRide">Virtual Ride</option>
+								<option value="VirtualRun">Virtual Run</option>
+								<option value="WeightTraining">Weight Training</option>
+								<option value="Wheelchair">Wheelchair</option>
+								<option value="Windsurf">Windsurf</option>
+								<option value="Workout">Workout</option>
+								<option value="Yoga">Yoga</option>
+							</select><br/>            		
+							<input id="Date" name="Date" type="text" placeholder="Hora inicio (Format example: 13:32:11)" maxlength="8" required/><br/>
+            				<input id="Elapsed"  name="Elapsed" type="text" placeholder="Tiempo transcurrido en seg" maxlength="6" required/><br/>      
+          					<input id="Description"  name="Description" type="text" placeholder="Descripción" maxlength="100" required/><br/>
+            				<input id="Distance"  name="Distance"  type="text" placeholder="Distancia recorrida" maxlength="6" required/><br/>
+            				<input id="boton" class="btn-submit" type="submit" value="AÑADIR ACTIVIDAD" /><br/>
+					</div>
+				</form>
+			</div>
+		</div>
 </div>
-<div class="scrollSVCreadas">
-<iframe width="600" height="315" src="https://www.youtube.com/embed/0AmhFng8ufQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></iframe>
-</div>-->
-<div id="cuadro">
-        <form id = "formulario" name="formulario" action="/stravaActivityController" method="GET">
-            <input id="Name" name="Name"type="text" placeholder="Username" maxlength="40" required/><br/>    
-            <input id="Type" name="Type" type="text" placeholder="E-mail" maxlength="40" required/><br/> 
-            <input id="Date" name="Date" type="text" placeholder="Retype password" maxlength="40" required/><br/>
-            <input id="Elapsed"  name="Elapsed" type="text" placeholder="Age (Format example: 19)" maxlength="6" required/><br/>      
-          	<input id="Description"  name="Description" type="text" placeholder="Height (Format example(cm): 170.00)" maxlength="6" required/><br/>
-            <input id="Distance"  name="Distance"  type="text" placeholder="Weight (Format example(kg): 68.00)" maxlength="6" required/><br/>
-            <input id="Trainer"  name="Trainer" type="text" placeholder="Hip (Format example(cm): 80.00)" maxlength="1" required/><br/>
-            <input id="Commute"  name="Commute" type="text" placeholder="Waist (Format example(cm): 80.00)" maxlength="1" required/><br/>
-            <input id="boton" type="submit" value="SIGN ME UP" /><br/>
-        </form>
-    </div> 
+<script src="js/popup.js"></script>
 </body>
 </html>

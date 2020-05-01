@@ -1,5 +1,8 @@
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -35,18 +38,33 @@
 	</div>
 
 	<div>
-		<form action="" method="GET">
-			<input class="boton" id="" type="submit" value="GENERAR IMC" />
+		<form action="/misObjetivosController" method="GET" >
+			<input name="IMC" class="boton" type="submit" value="GENERAR IMC" />
 		</form>
 	</div>
 	
 	<div class="cuadro" id="cuadro1">
-	IMC ACTUAL
-	xx.xx%
+	IMC ACTUAL	
+	
+	<c:if test="${not empty sessionScope['bmi'] and not null}">
+   		 ${sessionScope['bmi']}
+	</c:if>
+	<c:if test="${empty sessionScope['bmi'] or null}">
+   		 XX.XX%
+	</c:if>
+	
+	
 	</div>
 	<div class="cuadro" id="cuadro2">
 	PESO ACTUAL
-	xx.xx KG.
+	
+	<c:if test="${not empty sessionScope['peso'] and not null}">
+   		  ${sessionScope['peso']}
+	</c:if>
+	<c:if test="${ empty sessionScope['peso'] or null}">
+   		  XX.XX KG.
+	</c:if>
+	
 	</div>	
 
 	<div>

@@ -28,11 +28,11 @@ public class User implements Serializable{
         datos.setAge(age);
         Height altura=new Height();
         altura.setValue(height);
-        altura.setValue("cm");
+        altura.setUnit("cm");
         datos.setHeight(altura);
         Weight peso=new Weight();
         peso.setValue(weight);
-        peso.setValue("kg");
+        peso.setUnit("kg");
         datos.setWeight(peso);
         datos.setHip(hip);
         datos.setWaist(waist);
