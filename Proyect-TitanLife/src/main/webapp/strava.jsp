@@ -21,7 +21,7 @@
 <h1 class="ScrollTextCreadas">Mis Publicaciones</h1>
 	<div>${requestScope.validaciones}</div>
 
-<button id="btn-abrir-popup" class="btn-abrir-popup">Add</button>
+<button id="btn-abrir-popup" class="btn-abrir-popup">Add Activity</button>
 
 <div class="contenedor">	
 

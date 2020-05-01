@@ -36,30 +36,23 @@ public class StravaPostActivityController extends HttpServlet {
         String elapsedRegexp = "^[0-9]{1,40}$";
         String descriptionRegexp = "^[a-zA-Z0-9_-]{3,40}$";
         String distanceRegexp = "^[0-9]{1,40}$";
-        String horaRegexp = "HH:mm:ss";
-
-        
-        if(!Pattern.matches(nameRegexp, name)) {
+    
+        if(!Pattern.matches(nameRegexp, name.replace(" ", ""))) {
         	validaciones+="Formato incorrecto del nombre";        	
         }
         if(!Pattern.matches(elapsedRegexp, elapsed)) {
         	validaciones+="Formato incorrecto de el tiempo transcurrido";
         }
-        if(!Pattern.matches(descriptionRegexp, description)) {
+        if(!Pattern.matches(descriptionRegexp, description.replace(" ", ""))) {
         	validaciones+="Formato incorrecto de la descripción";
         }
         if(!Pattern.matches(distanceRegexp, distance)) {
         	validaciones+="Formato incorrecto de la distancia";
         }
-        if(!Pattern.matches(horaRegexp, d.toString())) {
-        	validaciones+="Formato incorrecto de la fecha";
-
-        }
-        
 		if(validaciones!="") {
 			request.setAttribute("validaciones", validaciones);
 			request.getRequestDispatcher("/strava.jsp").forward(request, response);
-
+	
 		}else {
 		
 		boolean yv=yr.postStravaRoute(name, type, d, Integer.valueOf(elapsed), description, Float.parseFloat(distance),accessToken);

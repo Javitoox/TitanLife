@@ -42,8 +42,8 @@
 		</c:forEach>
     </ul>
 
-    <h1 id="consumidas">625 Kcal <br>Consumidas</h1>
-    <h1 id="restantes">+ 1300 Kcal Restantes</h1>
+    <h1 id="consumidas">[Aquí se mostrarán las <br> Kcal Consumidas]</h1>
+    <h1 id="restantes">[Aquí se mostrarán las <br> Kcal Restantes]</h1>
     </div>
 
     <form id = "formulario" action="/fatSecretCaloriesController">

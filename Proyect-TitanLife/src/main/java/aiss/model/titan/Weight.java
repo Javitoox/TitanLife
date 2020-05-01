@@ -57,4 +57,10 @@ public class Weight implements Serializable{
         this.additionalProperties.put(name, value);
     }
 
+	@Override
+	public String toString() {
+		return value;
+	}
+    
+
 }

@@ -74,7 +74,7 @@ public class StravaResource {
 	    	  }
 	    	  
 	    	  return null;
-	    	}
+	    }
 	    
   	  @SuppressWarnings("unchecked")
 	    public static void addHeader(ClientResource cr, String headerName, String headerValue) {
