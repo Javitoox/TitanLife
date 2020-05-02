@@ -3,6 +3,10 @@ package aiss.model.titan;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 1L;

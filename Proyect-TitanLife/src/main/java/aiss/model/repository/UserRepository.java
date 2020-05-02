@@ -11,6 +11,10 @@ import aiss.model.titan.Objetivo;
 import aiss.model.titan.TipoDesgasteCalorico;
 import aiss.model.titan.User;
 
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.IdentityType;
+
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class UserRepository {
     private static final Logger log = Logger.getLogger(UserRepository.class.getName());
 

@@ -4,6 +4,10 @@ package aiss.model.titan;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "waist",
     "hip"
 })
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class DataBMI implements Serializable{
 
 	private static final long serialVersionUID = 1L;
