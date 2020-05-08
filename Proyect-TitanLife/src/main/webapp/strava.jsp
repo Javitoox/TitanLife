@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<%@ include file="menu.jsp" %>
+<%@ include file="includes/menu.jsp" %>
 <img id="logoSVS" src="images/logo.png" alt="Descripción de la imagen">
 <h1 class="InitialTextSV">Mi Strava</h1>
 <h1 class="ScrollText">Mis Rutas</h1>	

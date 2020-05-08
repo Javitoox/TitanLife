@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<%@ include file="menu.jsp" %>
+<%@ include file="includes/menu.jsp" %>
 
 <img id="logoSD" src="images/logo.png" alt="Descripción de la imagen">
 <div class="scroll">

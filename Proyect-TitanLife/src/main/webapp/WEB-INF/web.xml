@@ -7,7 +7,6 @@
     <exception-type>java.lang.Throwable</exception-type>
     <location>/error.jsp</location>
   </error-page>
-  <!-- ############################# Controllers ##################################### -->
   <servlet>
     <servlet-name>ValidatorController</servlet-name>
     <servlet-class>aiss.controller.ValidatorController</servlet-class>
@@ -82,7 +81,7 @@
     <servlet-name>Oauth1Controller</servlet-name>
     <url-pattern>/oauth1Controller/FatSecret</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <description></description>
     <display-name>StravaActivityController</display-name>
     <servlet-name>StravaActivityController</servlet-name>
@@ -92,7 +91,7 @@
     <servlet-name>StravaActivityController</servlet-name>
     <url-pattern>/stravaActivityController</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <description></description>
     <display-name>StravaPostActivityController</display-name>
     <servlet-name>StravaPostActivityController</servlet-name>
@@ -102,8 +101,16 @@
     <servlet-name>StravaPostActivityController</servlet-name>
     <url-pattern>/stravaPostActivityController</url-pattern>
   </servlet-mapping>
-  <!-- ############################# Oauth 2 ##################################### -->
-  <!-- Youtube -->
+  <servlet>
+    <description></description>
+    <display-name>ParseoObjetivosController</display-name>
+    <servlet-name>ParseoObjetivosController</servlet-name>
+    <servlet-class>aiss.controller.ParseoObjetivosController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ParseoObjetivosController</servlet-name>
+    <url-pattern>/parseoObjetivosController</url-pattern>
+  </servlet-mapping>
   <servlet>
     <description></description>
     <servlet-name>YoutubeAuthController</servlet-name>
@@ -134,5 +141,14 @@
     <servlet-name>YoutubeOAuth2Callback</servlet-name>
     <url-pattern>/oauth2callback/Youtube</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <description></description>
+    <display-name>ObjetivosCorporalesController</display-name>
+    <servlet-name>ObjetivosCorporalesController</servlet-name>
+    <servlet-class>aiss.controller.ObjetivosCorporalesController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ObjetivosCorporalesController</servlet-name>
+    <url-pattern>/objetivosCorporalesController</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -29,7 +29,7 @@ public class InicioSesionController extends HttpServlet{
 		  User u=repository.findByUsername(username);
 		  if(u!=null && u.getPassword().equals(password)) {
 			  HttpSession sesion=request.getSession(true);
-			  sesion.setAttribute("user", u);
+			  sesion.setAttribute("username", username);
 			  log.info("Usuario "+username+" logueado");
 			  request.getRequestDispatcher("/conexionController").forward(request, response);
 		  }else {

@@ -16,8 +16,8 @@
 <img id="logo" src="images/logo.png" alt="Descripción de la imagen">
 
 <c:choose>
-   <c:when test="${param['sesion']=='1'}"><%@ include file="menu.jsp" %></c:when> 
-   <c:otherwise><%@ include file="menu2.jsp" %></c:otherwise>
+   <c:when test="${param['sesion']=='1'}"><%@ include file="includes/menu.jsp" %></c:when> 
+   <c:otherwise><%@ include file="includes/menu2.jsp" %></c:otherwise>
 </c:choose>
 
 <div id="enlace1">

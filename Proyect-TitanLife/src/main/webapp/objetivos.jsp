@@ -1,7 +1,9 @@
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="aiss.model.repository.UserRepository"%>
+<%@ page import="aiss.model.titan.Objetivo"%>
+<%@ page import="aiss.model.titan.User"%>
+<%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -16,24 +18,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <%@include file="menu.jsp"%>
+    <%@include file="includes/menu.jsp"%>
+    <%User u=UserRepository.getInstance().findByUsername((String)session.getAttribute("username")); %>
 
     <h1 id="text">Mis Objetivos</h1>
 	<img id="logo" src="images/logo.png" alt="Descripción de la imagen">
-	
 	<div class="cuadro" id="cuadro4">
 	Objetivos corporales
 	</div>	
 	<div class="cuadro" id="cuadro5">
-	xx.xx%
+	<%
+	   if(u.getImcObj()!=null && !u.getImcObj().equals("")){
+	 %>
+   		<%= u.getImcObj() %>
+	<%}else{ %>
+   		 XX.XX%
+	<%} %>
 	</div>
-	<div class="cuadro" id="cuadro6">
-	xx.xx KG.
-	</div>	
 	<div >
-		<form action="" method="GET">
-			<input class="obj" id="objPeso" type="text" >
-			<input class="boton" id="done2" type="submit" value="DONE" />
+		<form action="/objetivosCorporalesController" method="GET">
+		    <% if(u.getPesoObj()==null || u.getPesoObj().equals("")){ %>
+			<input name="pesoObj" placeholder="Peso (Formato ej(kg): 74.00))" class="obj" id="objPeso" type="text" required>
+			<%}else{ %>
+			<input name="pesoObj" placeholder="Peso (Formato ej(kg): 74.00))" class="obj" id="objPeso" type="text" value="<%= u.getPesoObj() %>" required>
+			<%} %>
+			<input name="fechaObj" placeholder="Fecha para su objetivo" class="obj" id="objPeso2" type="date" value="<%= u.getFechaObj() %>" required>
+			<% if(u.getImc()==null || u.getImc().equals("")){ %>
+			<input class="boton" id="done2" type="submit" value="DONE" disabled/>
+			<span class="advert">Debe de generar su IMC primero</span>
+			<%}else{ %>
+			<input class="boton" id="done2" type="submit" value="DONE"/>
+			<%} %>
+			<span class="advert">${requestScope.validaciones}</span>
 		</form>
 	</div>
 
@@ -45,36 +61,41 @@
 	
 	<div class="cuadro" id="cuadro1">
 	IMC ACTUAL	
-	
-	<c:if test="${not empty sessionScope['bmi'] and not null}">
-   		 ${sessionScope['bmi']}
-	</c:if>
-	<c:if test="${empty sessionScope['bmi'] or null}">
+	<%
+	   if(u.getImc()!=null && !u.getImc().equals("")){
+	 %>
+   		<%= u.getImc() %>
+	<%}else{ %>
    		 XX.XX%
-	</c:if>
-	
+	<%} %>
 	
 	</div>
 	<div class="cuadro" id="cuadro2">
 	PESO ACTUAL
-	
-	<c:if test="${not empty sessionScope['peso'] and not null}">
-   		  ${sessionScope['peso']}
-	</c:if>
-	<c:if test="${ empty sessionScope['peso'] or null}">
-   		  XX.XX KG.
-	</c:if>
-	
+    <%= u.getDatosBMI().getWeight().getValue()+" kg" %>
+   
 	</div>	
 
 	<div>
-		<form action="" method="GET">
-			<input class="obj" id="objDep" placeholder="Objetivos separados por ','" list="opcionesDeportivas" name="opDep"/>
-				<datalist id="opcionesDeportivas">
-				  	<option>Fuerza</option>
-					<option>Fuerza explosiva</option>
-					<option>Fuerza de resistencia</option>
-				</datalist>
+		<form action="/parseoObjetivosController" method="GET">
+			<select multiple required class="obj" id="objDep" name="opDep">
+			<%
+			List<Objetivo> o=u.getObjetivos();
+			List<Objetivo> objetivos=UserRepository.getInstance().getObjetivosAplicacion();
+			
+			for(Objetivo obj: objetivos){
+				if(o!=null && o.contains(obj)){
+				%>		
+				<option value='<%= obj.getNombre() %>' label='<%= obj.getNombre() %>' selected/>
+				<%
+				}else{
+				%>
+				<option value='<%= obj.getNombre() %>' label='<%= obj.getNombre() %>'/>
+				<%
+				}
+			}
+			%>
+			</select>
 			<input class="boton" id="done1" type="submit" value="DONE" />
 		</form>
 	</div>

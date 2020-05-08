@@ -1,6 +1,7 @@
 package aiss.model.repository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,10 +12,6 @@ import aiss.model.titan.Objetivo;
 import aiss.model.titan.TipoDesgasteCalorico;
 import aiss.model.titan.User;
 
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.IdentityType;
-
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class UserRepository {
     private static final Logger log = Logger.getLogger(UserRepository.class.getName());
 
@@ -36,13 +33,47 @@ public class UserRepository {
     public void init() {
         users = new HashMap<Integer,User>();
         //Añadimos al repositorio los objetivos que tendrá nuestra aplicación
-        objetivosAplicacion.add(new Objetivo("Fuerza general",TipoDesgasteCalorico.BAJO));
-        objetivosAplicacion.add(new Objetivo("Resistencia general",TipoDesgasteCalorico.MEDIO));
+        objetivosAplicacion.add(new Objetivo("Atletismo principiante",TipoDesgasteCalorico.ALTO));
+        objetivosAplicacion.add(new Objetivo("Atletismo medio",TipoDesgasteCalorico.ALTO));
+        objetivosAplicacion.add(new Objetivo("Boxeo principiante",TipoDesgasteCalorico.BAJO));
+        objetivosAplicacion.add(new Objetivo("Boxeo medio",TipoDesgasteCalorico.MEDIO));
+        objetivosAplicacion.add(new Objetivo("Boxeo avanzado",TipoDesgasteCalorico.ALTO));
+        objetivosAplicacion.add(new Objetivo("Crossfit principiante",TipoDesgasteCalorico.MEDIO));
+        objetivosAplicacion.add(new Objetivo("Crossfit medio",TipoDesgasteCalorico.MEDIO));
+        objetivosAplicacion.add(new Objetivo("Crossfit avanzado",TipoDesgasteCalorico.ALTO));
         objetivosAplicacion.add(new Objetivo("Cardio general",TipoDesgasteCalorico.ALTO));
-        objetivosAplicacion.add(new Objetivo("Calistenia",TipoDesgasteCalorico.ALTO));
+        objetivosAplicacion.add(new Objetivo("Cardio avanzado",TipoDesgasteCalorico.ALTO));
+        objetivosAplicacion.add(new Objetivo("Calistenia principiante",TipoDesgasteCalorico.ALTO));
+        objetivosAplicacion.add(new Objetivo("Calistenia nivel medio",TipoDesgasteCalorico.ALTO));
+        objetivosAplicacion.add(new Objetivo("Calistenia avanzado",TipoDesgasteCalorico.ALTO));
         objetivosAplicacion.add(new Objetivo("Corredor avanzado",TipoDesgasteCalorico.ALTO));
         objetivosAplicacion.add(new Objetivo("Corredor medio",TipoDesgasteCalorico.MEDIO));
-        objetivosAplicacion.add(new Objetivo("Powerlifting",TipoDesgasteCalorico.BAJO));
+        objetivosAplicacion.add(new Objetivo("Corredor principiante",TipoDesgasteCalorico.BAJO));
+        objetivosAplicacion.add(new Objetivo("Fuerza general",TipoDesgasteCalorico.BAJO));
+        objetivosAplicacion.add(new Objetivo("Fuerza bruta",TipoDesgasteCalorico.MEDIO));
+        objetivosAplicacion.add(new Objetivo("Resistencia general",TipoDesgasteCalorico.MEDIO));
+        objetivosAplicacion.add(new Objetivo("Resistencia avanzada",TipoDesgasteCalorico.ALTO));
+        objetivosAplicacion.add(new Objetivo("Powerlifting principiante",TipoDesgasteCalorico.BAJO));
+        objetivosAplicacion.add(new Objetivo("Powerlifting medio",TipoDesgasteCalorico.MEDIO));
+        objetivosAplicacion.add(new Objetivo("Powerlifting avanzado",TipoDesgasteCalorico.ALTO));
+        objetivosAplicacion.add(new Objetivo("Natación principiante",TipoDesgasteCalorico.MEDIO));
+        objetivosAplicacion.add(new Objetivo("Natación medio",TipoDesgasteCalorico.ALTO));
+        objetivosAplicacion.add(new Objetivo("Natación avanzado",TipoDesgasteCalorico.ALTO));
+        objetivosAplicacion.add(new Objetivo("Ciclismo principiante",TipoDesgasteCalorico.MEDIO));
+        objetivosAplicacion.add(new Objetivo("Ciclismo medio",TipoDesgasteCalorico.ALTO));
+        objetivosAplicacion.add(new Objetivo("Ciclismo avanzado",TipoDesgasteCalorico.ALTO));
+        objetivosAplicacion.add(new Objetivo("Hits baja intensidad",TipoDesgasteCalorico.BAJO));
+        objetivosAplicacion.add(new Objetivo("Hits media intensidad",TipoDesgasteCalorico.MEDIO));
+        objetivosAplicacion.add(new Objetivo("Hits alta intensidad",TipoDesgasteCalorico.ALTO));
+        objetivosAplicacion.add(new Objetivo("Powerbuilding principiante",TipoDesgasteCalorico.BAJO));
+        objetivosAplicacion.add(new Objetivo("Powerbuilding medio",TipoDesgasteCalorico.MEDIO));
+        objetivosAplicacion.add(new Objetivo("Powerbuilding avanzado",TipoDesgasteCalorico.ALTO));
+        objetivosAplicacion.add(new Objetivo("Halterofilia principiante",TipoDesgasteCalorico.BAJO));
+        objetivosAplicacion.add(new Objetivo("Halterofilia media",TipoDesgasteCalorico.MEDIO));
+        objetivosAplicacion.add(new Objetivo("Halterofilia avanzada",TipoDesgasteCalorico.ALTO));
+        objetivosAplicacion.add(new Objetivo("Senderismo general",TipoDesgasteCalorico.MEDIO));
+        objetivosAplicacion.add(new Objetivo("Senderismo alta intensidad",TipoDesgasteCalorico.ALTO));
+        Collections.sort(objetivosAplicacion);
         log.info("Cargados los objetivos de la aplicación");
     }
 
@@ -91,6 +122,18 @@ public class UserRepository {
 			if(u.getUsername().equals(username)){
 				result=u;
 				log.info(username+" encontrado en el repositorio de la aplicación");
+				break;
+			}
+		}
+		return result;
+	}
+    
+    public Objetivo findByObjetiveName(String objetiveName){
+    	Objetivo result=null;
+		for(Objetivo o:objetivosAplicacion){
+			if(o.getNombre().equals(objetiveName)){
+				result=o;
+				log.info(objetiveName+" encontrado en el repositorio de la aplicación de los objetivos");
 				break;
 			}
 		}

@@ -1,27 +1,32 @@
 package aiss.utility;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+
+import org.eclipse.jetty.util.log.Log;
 
 import aiss.model.repository.UserRepository;
 import aiss.model.titan.User;
 
 public class Validacion {
+	//Expresiones regulares usadas
+    private static final String usernameRegexp = "^[a-zA-Z0-9_-]{3,40}$";
+    private static final String ageRegexp = "^[0-9]{1,3}$";
+    private static final String heightRegexp = "^[0-9]*\\.[0-9]{2}$";
+    private static final String weightRegexp = "^[0-9]*\\.[0-9]{2}$";
+    private static final String hipRegexp = "^[0-9]*\\.[0-9]{2}$";
+    private static final String waistRegexp = "^[0-9]*\\.[0-9]{2}$";
+    private static final String emailRegexp = "[^@]+@[^@]+\\.[a-zA-Z]{2,}";
+    private static final String passwordRegexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}";
+    private static final String sexRegexp= "^[mf]{1}$";
+	
+	
 	public static String validacion(String username,String email,String password,String retype,String age,String height
 			,String weight,String hip,String waist,String sex) {
 		
 		String validaciones="";
-		
-		//Expresiones regulares usadas
-        String usernameRegexp = "^[a-zA-Z0-9_-]{3,40}$";
-        String ageRegexp = "^[0-9]{1,3}$";
-        String heightRegexp = "^[0-9]*\\.[0-9]{2}$";
-        String weightRegexp = "^[0-9]*\\.[0-9]{2}$";
-        String hipRegexp = "^[0-9]*\\.[0-9]{2}$";
-        String waistRegexp = "^[0-9]*\\.[0-9]{2}$";
-        String emailRegexp = "[^@]+@[^@]+\\.[a-zA-Z]{2,}";
-        String passwordRegexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}";
         String sexRegexp= "^[mf]{1}$";
         
         UserRepository repository=UserRepository.getInstance();
@@ -76,18 +81,6 @@ public class Validacion {
 			,String weight,String hip,String waist,String sex) {
 		
 		String validaciones="";
-		
-		//Expresiones regulares usadas
-        String usernameRegexp = "^[a-zA-Z0-9_-]{3,40}$";
-        String ageRegexp = "^[0-9]{1,3}$";
-        String heightRegexp = "^[0-9]*\\.[0-9]{2}$";
-        String weightRegexp = "^[0-9]*\\.[0-9]{2}$";
-        String hipRegexp = "^[0-9]*\\.[0-9]{2}$";
-        String waistRegexp = "^[0-9]*\\.[0-9]{2}$";
-        String emailRegexp = "[^@]+@[^@]+\\.[a-zA-Z]{2,}";
-        String passwordRegexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}";
-        String sexRegexp= "^[mf]{1}$";
-        
         UserRepository repository=UserRepository.getInstance();
         
         List<String> usernames=new ArrayList<>();
@@ -133,4 +126,18 @@ public class Validacion {
 		
 		return validaciones;
 	}
+	
+	public static String validacionObjCorp(String peso, String fecha) {
+		String validaciones="";
+		if(!Pattern.matches(weightRegexp,peso)) {
+        	validaciones += "|Formato incorrecto del peso";
+        }
+		LocalDate hoy=LocalDate.now();
+		LocalDate nuevo=LocalDate.parse(fecha);
+		if(!hoy.isBefore(nuevo)) {
+        	validaciones += "|La fecha debe ser posterior al día de hoy";
+        }
+		return validaciones;
+	}
+	
 }

@@ -14,7 +14,7 @@
 	<link rel="apple-touch-icon" href="images/logo.png">
 </head>
 <body>
-     <%@ include file="menu.jsp" %>
+     <%@ include file="includes/menu.jsp"%>
      <h1 id="texto">Mis Comidas</h1>
     <img id="logo" src="images/logo.png" alt="Logo">
     <div id="calendario">
