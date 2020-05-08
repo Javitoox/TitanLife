@@ -32,7 +32,7 @@ public class ObjetivosCorporalesController extends HttpServlet {
 				log.info("Formato incorrecto de los campos en objetivos corporales");
 				request.setAttribute("validaciones", validaciones);
 				request.getRequestDispatcher("/objetivos.jsp").forward(request, response);
-			}else {
+			}else { 
 				u.setPesoObj(pesoObj);
 				u.setFechaObj(fechaObj);
 				log.info("Peso y fecha objetivos cargados para el usuario "+u.getUsername());
