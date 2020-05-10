@@ -7,7 +7,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import aiss.model.repository.UserRepository;
 import aiss.model.titan.DataBMI;
@@ -19,14 +18,7 @@ import aiss.utility.Validacion;
 public class PerfilController extends HttpServlet {
 	
     private static final Logger log = Logger.getLogger(PerfilController.class.getName());
-
-	
     private static final long serialVersionUID = 1L;
-
-	public PerfilController() {
-	        super();
-	        // TODO Auto-generated constructor stub
-	    }
 
 	    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -40,20 +32,16 @@ public class PerfilController extends HttpServlet {
             String waist=request.getParameter("Waist");
             String sex=request.getParameter("Sex");
             
-            UserRepository repository=UserRepository.getInstance();
-            HttpSession misession= (HttpSession) request.getSession(true);   	 
-            User user= (User) misession.getAttribute("user");	
+            User user=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
             String validaciones = Validacion.validacion2(user,username, email, password, age, height, weight, hip, waist, sex);
             
             if(!validaciones.equals("")) {            	
             	log.info("La actualizacion del usario " + username + " no se pudo realizar.");
             	request.setAttribute("validaciones", validaciones);
-                misession.setAttribute("user", user);
-
-            	
             }else {            	
             	log.info("El perfil del usuario " + username + " fue actualizado correctamente");
             	user.setUsername(username);
+            	request.getSession().setAttribute("username", username);
             	user.setEmail(email);
             	user.setPassword(password);
             	user.setRetype(password);
@@ -68,10 +56,7 @@ public class PerfilController extends HttpServlet {
             	datosBMI.setWaist(waist);
             	datosBMI.setAge(age);
             	datosBMI.setSex(sex);
-				user.setDatosBMI(datosBMI);            	
-            	repository.updateUser(user);  
-                misession.setAttribute("user", user);
-
+				user.setDatosBMI(datosBMI);
             }
             
             request.getRequestDispatcher("/perfil.jsp").forward(request, response);
