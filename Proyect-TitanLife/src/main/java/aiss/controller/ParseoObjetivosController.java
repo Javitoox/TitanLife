@@ -30,6 +30,7 @@ public class ParseoObjetivosController extends HttpServlet {
 				ob.add(r.findByObjetiveName(objetivo));
 			}
 			u.setObjetivos(ob);
+			request.getSession().setAttribute("user", u);
 			log.info("Asignados los objetivos correspondientes al usuario "+u.getUsername());
 			request.getRequestDispatcher("/objetivos.jsp").forward(request, response);
 		}else {

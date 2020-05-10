@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import aiss.model.repository.UserRepository;
+import aiss.model.titan.User;
 import aiss.utility.Validacion;
 
 public class ValidatorController  extends HttpServlet{
@@ -39,9 +40,11 @@ public class ValidatorController  extends HttpServlet{
            
             if(validaciones=="") {
             	log.info("Validación de usuario "+username+" correcta");
-            	repository.addUser(username,email,password,retype,age,height,weight,hip,waist,sex);
+            	User user = repository.addUser(username,email,password,retype,age,height,weight,hip,waist,sex);            
             	HttpSession sesion=request.getSession(true);
             	sesion.setAttribute("username", username);
+            	sesion.setAttribute("user", user);
+
             	request.getRequestDispatcher("/conexionController").forward(request, response);
             }else {
             	log.info("Validación de usuario incorrecta");

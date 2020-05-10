@@ -59,5 +59,11 @@ public class Objetivo implements Serializable , Comparable<Objetivo>{
 		// TODO Auto-generated method stub
 		return nombre.compareTo(o.getNombre());
 	}
+
+	@Override
+	public String toString() {
+		return  nombre;
+	}
+	
 	
 }
