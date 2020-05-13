@@ -20,7 +20,7 @@ public class ValidatorController  extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
     	if(request.getParameter("username")==null) {
-    		log.info("Usuario todavía no registrado");
+    		log.info("Usuario todavía no registrado ");
     		request.getRequestDispatcher("registro.jsp").forward(request, response);
     	}else {
     		String username=request.getParameter("username");
