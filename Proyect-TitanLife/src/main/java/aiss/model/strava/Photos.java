@@ -13,38 +13,51 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "id",
-    "resource_state"
+    "primary",
+    "use_primary_photo",
+    "count"
 })
 @JsonIgnoreProperties(ignoreUnknown=true)
 
-public class Athlete {
+public class Photos {
 
-    @JsonProperty("id")
-    private Integer id;
-    @JsonProperty("resource_state")
-    private Integer resourceState;
+    @JsonProperty("primary")
+    private Primary primary;
+    @JsonProperty("use_primary_photo")
+    private Boolean usePrimaryPhoto;
+    @JsonProperty("count")
+    private Integer count;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("id")
-    public Integer getId() {
-        return id;
+    @JsonProperty("primary")
+    public Primary getPrimary() {
+        return primary;
     }
 
-    @JsonProperty("id")
-    public void setId(Integer id) {
-        this.id = id;
+    @JsonProperty("primary")
+    public void setPrimary(Primary primary) {
+        this.primary = primary;
     }
 
-    @JsonProperty("resource_state")
-    public Integer getResourceState() {
-        return resourceState;
+    @JsonProperty("use_primary_photo")
+    public Boolean getUsePrimaryPhoto() {
+        return usePrimaryPhoto;
     }
 
-    @JsonProperty("resource_state")
-    public void setResourceState(Integer resourceState) {
-        this.resourceState = resourceState;
+    @JsonProperty("use_primary_photo")
+    public void setUsePrimaryPhoto(Boolean usePrimaryPhoto) {
+        this.usePrimaryPhoto = usePrimaryPhoto;
+    }
+
+    @JsonProperty("count")
+    public Integer getCount() {
+        return count;
+    }
+
+    @JsonProperty("count")
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     @JsonAnyGetter

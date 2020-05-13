@@ -14,37 +14,63 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "id",
-    "resource_state"
+    "unique_id",
+    "urls",
+    "source"
 })
 @JsonIgnoreProperties(ignoreUnknown=true)
 
-public class Athlete {
+public class Primary {
 
     @JsonProperty("id")
-    private Integer id;
-    @JsonProperty("resource_state")
-    private Integer resourceState;
+    private Object id;
+    @JsonProperty("unique_id")
+    private String uniqueId;
+    @JsonProperty("urls")
+    private Urls urls;
+    @JsonProperty("source")
+    private Integer source;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("id")
-    public Integer getId() {
+    public Object getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(Object id) {
         this.id = id;
     }
 
-    @JsonProperty("resource_state")
-    public Integer getResourceState() {
-        return resourceState;
+    @JsonProperty("unique_id")
+    public String getUniqueId() {
+        return uniqueId;
     }
 
-    @JsonProperty("resource_state")
-    public void setResourceState(Integer resourceState) {
-        this.resourceState = resourceState;
+    @JsonProperty("unique_id")
+    public void setUniqueId(String uniqueId) {
+        this.uniqueId = uniqueId;
+    }
+
+    @JsonProperty("urls")
+    public Urls getUrls() {
+        return urls;
+    }
+
+    @JsonProperty("urls")
+    public void setUrls(Urls urls) {
+        this.urls = urls;
+    }
+
+    @JsonProperty("source")
+    public Integer getSource() {
+        return source;
+    }
+
+    @JsonProperty("source")
+    public void setSource(Integer source) {
+        this.source = source;
     }
 
     @JsonAnyGetter

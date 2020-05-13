@@ -13,6 +13,136 @@ body{
 	margin: 20px auto;
 }
 
+.max{
+	width: 61%;
+    height: 26.45%;
+    left: 2%;
+    top: 70%;
+    padding: 69px 0px 0px 108px;
+    position: absolute;
+    background: white;
+    opacity: 93%;
+    font-size: 167%;
+    font-family: 'Titillium Web', sans-serif;
+    border-radius: 3px;
+}
+.max2{
+	width: 129%;
+    height: 0%;
+    left: 0%;
+    top: 0%;
+    padding: 66px 0px 0px 59px;
+    position: absolute;
+    opacity: 93%;
+    font-size: 124%;
+    font-family: 'Titillium Web', sans-serif;
+    border-radius: 3px;
+}
+.max3{
+	width: 61%;
+    height: 0%;
+    left: 63.5%;
+    top: 0%;
+    padding: 52px 0px 0px 108px;
+    position: absolute;
+    opacity: 93%;
+    font-size: 193%;
+    font-family: 'Titillium Web', sans-serif;
+    border-radius: 3px;
+}
+
+.cont {
+	width: 31%;
+    height: 69.55%;
+    left: 66%;
+    top: 24%;
+    margin: 20px auto;
+    position: absolute;
+    background: white;
+    opacity: 93%;
+}
+.cont form{
+	
+padding: 67px 0px 35px 54px;
+}
+
+.cont form input[type=text]{
+	width: 86%;
+    margin-bottom: 10px;
+    height: 36px;
+    font-size: 13px;
+    line-height: 52px;
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif;
+    border: 1px solid #BBBBBB;
+}
+.cont form input[type=submit]{
+    width: 86%;
+    margin-bottom: 10px;
+    height: 49px;
+    font-size: 16px;
+    line-height: 52px;
+    text-align: center;
+    border-radius: 3px;
+    font-family: 'Titillium Web', sans-serif;
+    border: 1px solid #BBBBBB;
+    cursor: pointer;
+    color: white;
+    background: red;
+    transition: .3s ease all;
+    padding: 0px 9px 0px 9px;
+    
+}
+.cont form select{
+	width: 86%;
+    margin-bottom: 10px;
+    height: 36px;
+    font-size: 13px;
+    line-height: 52px;
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif;
+    border: 1px solid #BBBBBB;
+}
+.cont form .btn-submit2:hover {
+	background: orange;
+}
+.scroll {
+ 	display: flex;
+    position: absolute;
+    width: 61%;
+    height: 40.75%;
+    overflow: scroll;
+    top: 27%;
+    left: 2%;
+    
+}
+#agenda {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#agenda td, agenda th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    background:white;
+    font-family: 'Titillium Web', sans-serif;
+    
+    
+}
+
+
+#agenda tr:hover {background-color: #ddd;}
+
+#agenda th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: red;
+    border-radius: 3px;
+    color: white;
+}
 
 /* ------------------------- */
 /* POPUP */
@@ -82,18 +212,18 @@ body{
 }
 
 .popup form .contenedor-inputs input[type=text]{
-width: 64%;
-    margin-bottom: 10px;
+    width: 64%;
+    margin-bottom: 20px;
     height: 36px;
     font-size: 13px;
     line-height: 52px;
     text-align: center;
     font-family: 'Titillium Web', sans-serif;
-    border: 1px solid #BBBBBB
+    border: 1px solid #BBBBBB;
 }
 .popup form .contenedor-inputs input[type=submit]{
     width: 64%;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     height: 49px;
     font-size: 16px;
     line-height: 52px;
@@ -109,14 +239,14 @@ width: 64%;
     
 }
 .popup form .contenedor-inputs select{
-width: 64%;
-    margin-bottom: 10px;
+    width: 64%;
+    margin-bottom: 16px;
     height: 36px;
     font-size: 13px;
     line-height: 52px;
     text-align: center;
     font-family: 'Titillium Web', sans-serif;
-    border: 1px solid #BBBBBB
+    border: 1px solid #BBBBBB;
 }
 .popup form .btn-submit:hover {
 	background: orange;
@@ -190,27 +320,27 @@ width: 64%;
    color:red;
 }
 .ScrollText{
-   position:absolute;	
-   font-family: 'Titillium Web', sans-serif;
-   font-size:150%;
-   color:red;
-   left: 9%;
-   top:18%;
+	position: absolute;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 150%;
+    color: red;
+    left: 2%;
+    top: 16%;
 }
 .ScrollTextCreadas{
-   position:absolute;	
-   font-family: 'Titillium Web', sans-serif;
-   font-size:150%;
-   color:red;
-   left: 50%;
-   top:18%;
+	position: absolute;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 150%;
+    color: red;
+    left: 66%;
+    top: 16%;
 }
 
 .btn-abrir-popup{
 	font-family: 'Titillium Web', sans-serif;
 	position:absolute;	
 	left: 20%;
-    top:19.8%;
+    top:17.8%;
     text-decoration: none;
     padding: 5px;
     font-weight: 510;

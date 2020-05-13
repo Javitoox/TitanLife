@@ -28,6 +28,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "start_date_local",
     "timezone",
     "utc_offset",
+    "start_latlng",
+    "end_latlng",
+    "location_city",
+    "location_state",
+    "location_country",
     "achievement_count",
     "kudos_count",
     "comment_count",
@@ -43,28 +48,47 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "from_accepted_tag",
     "average_speed",
     "max_speed",
+    "average_cadence",
+    "average_temp",
+    "average_watts",
+    "weighted_average_watts",
+    "kilojoules",
     "device_watts",
     "has_heartrate",
+    "max_watts",
+    "elev_high",
+    "elev_low",
     "pr_count",
     "total_photo_count",
     "has_kudoed",
     "workout_type",
+    "suffer_score",
     "description",
     "calories",
-    "segment_efforts"
+    "segment_efforts",
+    "splits_metric",
+    "laps",
+    "gear",
+    "partner_brand_tag",
+    "photos",
+    "highlighted_kudosers",
+    "device_name",
+    "embed_token",
+    "segment_leaderboard_opt_out",
+    "leaderboard_opt_out"
 })
 @JsonIgnoreProperties(ignoreUnknown=true)
 
-public class StravaActivity {
+public class StravaActivityU {
 
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
     @JsonProperty("resource_state")
     private Integer resourceState;
     @JsonProperty("external_id")
-    private Object externalId;
+    private String externalId;
     @JsonProperty("upload_id")
-    private Object uploadId;
+    private Integer uploadId;
     @JsonProperty("athlete")
     private Athlete athlete;
     @JsonProperty("name")
@@ -87,6 +111,16 @@ public class StravaActivity {
     private String timezone;
     @JsonProperty("utc_offset")
     private Integer utcOffset;
+    @JsonProperty("start_latlng")
+    private List<Double> startLatlng = null;
+    @JsonProperty("end_latlng")
+    private List<Double> endLatlng = null;
+    @JsonProperty("location_city")
+    private Object locationCity;
+    @JsonProperty("location_state")
+    private Object locationState;
+    @JsonProperty("location_country")
+    private String locationCountry;
     @JsonProperty("achievement_count")
     private Integer achievementCount;
     @JsonProperty("kudos_count")
@@ -112,15 +146,31 @@ public class StravaActivity {
     @JsonProperty("gear_id")
     private String gearId;
     @JsonProperty("from_accepted_tag")
-    private Object fromAcceptedTag;
+    private Boolean fromAcceptedTag;
     @JsonProperty("average_speed")
-    private Integer averageSpeed;
+    private Double averageSpeed;
     @JsonProperty("max_speed")
-    private Integer maxSpeed;
+    private Double maxSpeed;
+    @JsonProperty("average_cadence")
+    private Double averageCadence;
+    @JsonProperty("average_temp")
+    private Integer averageTemp;
+    @JsonProperty("average_watts")
+    private Double averageWatts;
+    @JsonProperty("weighted_average_watts")
+    private Integer weightedAverageWatts;
+    @JsonProperty("kilojoules")
+    private Double kilojoules;
     @JsonProperty("device_watts")
     private Boolean deviceWatts;
     @JsonProperty("has_heartrate")
     private Boolean hasHeartrate;
+    @JsonProperty("max_watts")
+    private Integer maxWatts;
+    @JsonProperty("elev_high")
+    private Double elevHigh;
+    @JsonProperty("elev_low")
+    private Double elevLow;
     @JsonProperty("pr_count")
     private Integer prCount;
     @JsonProperty("total_photo_count")
@@ -128,23 +178,45 @@ public class StravaActivity {
     @JsonProperty("has_kudoed")
     private Boolean hasKudoed;
     @JsonProperty("workout_type")
-    private Object workoutType;
+    private Integer workoutType;
+    @JsonProperty("suffer_score")
+    private Object sufferScore;
     @JsonProperty("description")
-    private Object description;
+    private String description;
     @JsonProperty("calories")
-    private Integer calories;
+    private Double calories;
     @JsonProperty("segment_efforts")
-    private List<Object> segmentEfforts = null;
+    private List<SegmentEffort> segmentEfforts = null;
+    @JsonProperty("splits_metric")
+    private List<SplitsMetric> splitsMetric = null;
+    @JsonProperty("laps")
+    private List<Lap> laps = null;
+    @JsonProperty("gear")
+    private Gear gear;
+    @JsonProperty("partner_brand_tag")
+    private Object partnerBrandTag;
+    @JsonProperty("photos")
+    private Photos photos;
+    @JsonProperty("highlighted_kudosers")
+    private List<HighlightedKudoser> highlightedKudosers = null;
+    @JsonProperty("device_name")
+    private String deviceName;
+    @JsonProperty("embed_token")
+    private String embedToken;
+    @JsonProperty("segment_leaderboard_opt_out")
+    private Boolean segmentLeaderboardOptOut;
+    @JsonProperty("leaderboard_opt_out")
+    private Boolean leaderboardOptOut;
     @JsonIgnore
     private java.util.Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("id")
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -159,22 +231,22 @@ public class StravaActivity {
     }
 
     @JsonProperty("external_id")
-    public Object getExternalId() {
+    public String getExternalId() {
         return externalId;
     }
 
     @JsonProperty("external_id")
-    public void setExternalId(Object externalId) {
+    public void setExternalId(String externalId) {
         this.externalId = externalId;
     }
 
     @JsonProperty("upload_id")
-    public Object getUploadId() {
+    public Integer getUploadId() {
         return uploadId;
     }
 
     @JsonProperty("upload_id")
-    public void setUploadId(Object uploadId) {
+    public void setUploadId(Integer uploadId) {
         this.uploadId = uploadId;
     }
 
@@ -286,6 +358,56 @@ public class StravaActivity {
     @JsonProperty("utc_offset")
     public void setUtcOffset(Integer utcOffset) {
         this.utcOffset = utcOffset;
+    }
+
+    @JsonProperty("start_latlng")
+    public List<Double> getStartLatlng() {
+        return startLatlng;
+    }
+
+    @JsonProperty("start_latlng")
+    public void setStartLatlng(List<Double> startLatlng) {
+        this.startLatlng = startLatlng;
+    }
+
+    @JsonProperty("end_latlng")
+    public List<Double> getEndLatlng() {
+        return endLatlng;
+    }
+
+    @JsonProperty("end_latlng")
+    public void setEndLatlng(List<Double> endLatlng) {
+        this.endLatlng = endLatlng;
+    }
+
+    @JsonProperty("location_city")
+    public Object getLocationCity() {
+        return locationCity;
+    }
+
+    @JsonProperty("location_city")
+    public void setLocationCity(Object locationCity) {
+        this.locationCity = locationCity;
+    }
+
+    @JsonProperty("location_state")
+    public Object getLocationState() {
+        return locationState;
+    }
+
+    @JsonProperty("location_state")
+    public void setLocationState(Object locationState) {
+        this.locationState = locationState;
+    }
+
+    @JsonProperty("location_country")
+    public String getLocationCountry() {
+        return locationCountry;
+    }
+
+    @JsonProperty("location_country")
+    public void setLocationCountry(String locationCountry) {
+        this.locationCountry = locationCountry;
     }
 
     @JsonProperty("achievement_count")
@@ -409,33 +531,83 @@ public class StravaActivity {
     }
 
     @JsonProperty("from_accepted_tag")
-    public Object getFromAcceptedTag() {
+    public Boolean getFromAcceptedTag() {
         return fromAcceptedTag;
     }
 
     @JsonProperty("from_accepted_tag")
-    public void setFromAcceptedTag(Object fromAcceptedTag) {
+    public void setFromAcceptedTag(Boolean fromAcceptedTag) {
         this.fromAcceptedTag = fromAcceptedTag;
     }
 
     @JsonProperty("average_speed")
-    public Integer getAverageSpeed() {
+    public Double getAverageSpeed() {
         return averageSpeed;
     }
 
     @JsonProperty("average_speed")
-    public void setAverageSpeed(Integer averageSpeed) {
+    public void setAverageSpeed(Double averageSpeed) {
         this.averageSpeed = averageSpeed;
     }
 
     @JsonProperty("max_speed")
-    public Integer getMaxSpeed() {
+    public Double getMaxSpeed() {
         return maxSpeed;
     }
 
     @JsonProperty("max_speed")
-    public void setMaxSpeed(Integer maxSpeed) {
+    public void setMaxSpeed(Double maxSpeed) {
         this.maxSpeed = maxSpeed;
+    }
+
+    @JsonProperty("average_cadence")
+    public Double getAverageCadence() {
+        return averageCadence;
+    }
+
+    @JsonProperty("average_cadence")
+    public void setAverageCadence(Double averageCadence) {
+        this.averageCadence = averageCadence;
+    }
+
+    @JsonProperty("average_temp")
+    public Integer getAverageTemp() {
+        return averageTemp;
+    }
+
+    @JsonProperty("average_temp")
+    public void setAverageTemp(Integer averageTemp) {
+        this.averageTemp = averageTemp;
+    }
+
+    @JsonProperty("average_watts")
+    public Double getAverageWatts() {
+        return averageWatts;
+    }
+
+    @JsonProperty("average_watts")
+    public void setAverageWatts(Double averageWatts) {
+        this.averageWatts = averageWatts;
+    }
+
+    @JsonProperty("weighted_average_watts")
+    public Integer getWeightedAverageWatts() {
+        return weightedAverageWatts;
+    }
+
+    @JsonProperty("weighted_average_watts")
+    public void setWeightedAverageWatts(Integer weightedAverageWatts) {
+        this.weightedAverageWatts = weightedAverageWatts;
+    }
+
+    @JsonProperty("kilojoules")
+    public Double getKilojoules() {
+        return kilojoules;
+    }
+
+    @JsonProperty("kilojoules")
+    public void setKilojoules(Double kilojoules) {
+        this.kilojoules = kilojoules;
     }
 
     @JsonProperty("device_watts")
@@ -456,6 +628,36 @@ public class StravaActivity {
     @JsonProperty("has_heartrate")
     public void setHasHeartrate(Boolean hasHeartrate) {
         this.hasHeartrate = hasHeartrate;
+    }
+
+    @JsonProperty("max_watts")
+    public Integer getMaxWatts() {
+        return maxWatts;
+    }
+
+    @JsonProperty("max_watts")
+    public void setMaxWatts(Integer maxWatts) {
+        this.maxWatts = maxWatts;
+    }
+
+    @JsonProperty("elev_high")
+    public Double getElevHigh() {
+        return elevHigh;
+    }
+
+    @JsonProperty("elev_high")
+    public void setElevHigh(Double elevHigh) {
+        this.elevHigh = elevHigh;
+    }
+
+    @JsonProperty("elev_low")
+    public Double getElevLow() {
+        return elevLow;
+    }
+
+    @JsonProperty("elev_low")
+    public void setElevLow(Double elevLow) {
+        this.elevLow = elevLow;
     }
 
     @JsonProperty("pr_count")
@@ -489,43 +691,153 @@ public class StravaActivity {
     }
 
     @JsonProperty("workout_type")
-    public Object getWorkoutType() {
+    public Integer getWorkoutType() {
         return workoutType;
     }
 
     @JsonProperty("workout_type")
-    public void setWorkoutType(Object workoutType) {
+    public void setWorkoutType(Integer workoutType) {
         this.workoutType = workoutType;
     }
 
+    @JsonProperty("suffer_score")
+    public Object getSufferScore() {
+        return sufferScore;
+    }
+
+    @JsonProperty("suffer_score")
+    public void setSufferScore(Object sufferScore) {
+        this.sufferScore = sufferScore;
+    }
+
     @JsonProperty("description")
-    public Object getDescription() {
+    public String getDescription() {
         return description;
     }
 
     @JsonProperty("description")
-    public void setDescription(Object description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
     @JsonProperty("calories")
-    public Integer getCalories() {
+    public Double getCalories() {
         return calories;
     }
 
     @JsonProperty("calories")
-    public void setCalories(Integer calories) {
+    public void setCalories(Double calories) {
         this.calories = calories;
     }
 
     @JsonProperty("segment_efforts")
-    public List<Object> getSegmentEfforts() {
+    public List<SegmentEffort> getSegmentEfforts() {
         return segmentEfforts;
     }
 
     @JsonProperty("segment_efforts")
-    public void setSegmentEfforts(List<Object> segmentEfforts) {
+    public void setSegmentEfforts(List<SegmentEffort> segmentEfforts) {
         this.segmentEfforts = segmentEfforts;
+    }
+
+    @JsonProperty("splits_metric")
+    public List<SplitsMetric> getSplitsMetric() {
+        return splitsMetric;
+    }
+
+    @JsonProperty("splits_metric")
+    public void setSplitsMetric(List<SplitsMetric> splitsMetric) {
+        this.splitsMetric = splitsMetric;
+    }
+
+    @JsonProperty("laps")
+    public List<Lap> getLaps() {
+        return laps;
+    }
+
+    @JsonProperty("laps")
+    public void setLaps(List<Lap> laps) {
+        this.laps = laps;
+    }
+
+    @JsonProperty("gear")
+    public Gear getGear() {
+        return gear;
+    }
+
+    @JsonProperty("gear")
+    public void setGear(Gear gear) {
+        this.gear = gear;
+    }
+
+    @JsonProperty("partner_brand_tag")
+    public Object getPartnerBrandTag() {
+        return partnerBrandTag;
+    }
+
+    @JsonProperty("partner_brand_tag")
+    public void setPartnerBrandTag(Object partnerBrandTag) {
+        this.partnerBrandTag = partnerBrandTag;
+    }
+
+    @JsonProperty("photos")
+    public Photos getPhotos() {
+        return photos;
+    }
+
+    @JsonProperty("photos")
+    public void setPhotos(Photos photos) {
+        this.photos = photos;
+    }
+
+    @JsonProperty("highlighted_kudosers")
+    public List<HighlightedKudoser> getHighlightedKudosers() {
+        return highlightedKudosers;
+    }
+
+    @JsonProperty("highlighted_kudosers")
+    public void setHighlightedKudosers(List<HighlightedKudoser> highlightedKudosers) {
+        this.highlightedKudosers = highlightedKudosers;
+    }
+
+    @JsonProperty("device_name")
+    public String getDeviceName() {
+        return deviceName;
+    }
+
+    @JsonProperty("device_name")
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
+    }
+
+    @JsonProperty("embed_token")
+    public String getEmbedToken() {
+        return embedToken;
+    }
+
+    @JsonProperty("embed_token")
+    public void setEmbedToken(String embedToken) {
+        this.embedToken = embedToken;
+    }
+
+    @JsonProperty("segment_leaderboard_opt_out")
+    public Boolean getSegmentLeaderboardOptOut() {
+        return segmentLeaderboardOptOut;
+    }
+
+    @JsonProperty("segment_leaderboard_opt_out")
+    public void setSegmentLeaderboardOptOut(Boolean segmentLeaderboardOptOut) {
+        this.segmentLeaderboardOptOut = segmentLeaderboardOptOut;
+    }
+
+    @JsonProperty("leaderboard_opt_out")
+    public Boolean getLeaderboardOptOut() {
+        return leaderboardOptOut;
+    }
+
+    @JsonProperty("leaderboard_opt_out")
+    public void setLeaderboardOptOut(Boolean leaderboardOptOut) {
+        this.leaderboardOptOut = leaderboardOptOut;
     }
 
     @JsonAnyGetter

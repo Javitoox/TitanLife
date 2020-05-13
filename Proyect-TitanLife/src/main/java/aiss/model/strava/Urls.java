@@ -13,38 +13,38 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "id",
-    "resource_state"
+    "100",
+    "600"
 })
 @JsonIgnoreProperties(ignoreUnknown=true)
 
-public class Athlete {
+public class Urls {
 
-    @JsonProperty("id")
-    private Integer id;
-    @JsonProperty("resource_state")
-    private Integer resourceState;
+    @JsonProperty("100")
+    private String _100;
+    @JsonProperty("600")
+    private String _600;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("id")
-    public Integer getId() {
-        return id;
+    @JsonProperty("100")
+    public String get100() {
+        return _100;
     }
 
-    @JsonProperty("id")
-    public void setId(Integer id) {
-        this.id = id;
+    @JsonProperty("100")
+    public void set100(String _100) {
+        this._100 = _100;
     }
 
-    @JsonProperty("resource_state")
-    public Integer getResourceState() {
-        return resourceState;
+    @JsonProperty("600")
+    public String get600() {
+        return _600;
     }
 
-    @JsonProperty("resource_state")
-    public void setResourceState(Integer resourceState) {
-        this.resourceState = resourceState;
+    @JsonProperty("600")
+    public void set600(String _600) {
+        this._600 = _600;
     }
 
     @JsonAnyGetter

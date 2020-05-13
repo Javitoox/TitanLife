@@ -103,6 +103,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>StravaUpdateActivityController</display-name>
+    <servlet-name>StravaUpdateActivityController</servlet-name>
+    <servlet-class>aiss.controller.StravaUpdateActivityController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StravaUpdateActivityController</servlet-name>
+    <url-pattern>/stravaUpdateActivityController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>ParseoObjetivosController</display-name>
     <servlet-name>ParseoObjetivosController</servlet-name>
     <servlet-class>aiss.controller.ParseoObjetivosController</servlet-class>

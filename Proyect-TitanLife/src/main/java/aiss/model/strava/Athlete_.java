@@ -2,10 +2,10 @@
 package aiss.model.strava;
 
 import java.util.HashMap;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -13,43 +13,25 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "id",
-    "polyline",
-    "resource_state",
-    "summary_polyline"
+    "resource_state"
 })
-@JsonIgnoreProperties(ignoreUnknown=true)
-
-public class Map {
+public class Athlete_ {
 
     @JsonProperty("id")
-    private String id;
-    @JsonProperty("polyline")
-    private String polyline;
+    private Integer id;
     @JsonProperty("resource_state")
     private Integer resourceState;
-    @JsonProperty("summary_polyline")
-    private String summaryPolyline;
     @JsonIgnore
-    private java.util.Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("id")
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
-    }
-
-    @JsonProperty("polyline")
-    public String getPolyline() {
-        return polyline;
-    }
-
-    @JsonProperty("polyline")
-    public void setPolyline(String polyline) {
-        this.polyline = polyline;
     }
 
     @JsonProperty("resource_state")
@@ -62,18 +44,8 @@ public class Map {
         this.resourceState = resourceState;
     }
 
-    @JsonProperty("summary_polyline")
-    public String getSummaryPolyline() {
-        return summaryPolyline;
-    }
-
-    @JsonProperty("summary_polyline")
-    public void setSummaryPolyline(String summaryPolyline) {
-        this.summaryPolyline = summaryPolyline;
-    }
-
     @JsonAnyGetter
-    public java.util.Map<String, Object> getAdditionalProperties() {
+    public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
     }
 

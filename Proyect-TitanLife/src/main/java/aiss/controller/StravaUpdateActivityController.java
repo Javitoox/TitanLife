@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,15 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import aiis.model.resource.StravaResource;
 import aiss.model.repository.UserRepository;
-
 import aiss.model.strava.StravaActivityC;
 import aiss.model.strava.StravaActivityG;
 import aiss.model.titan.User;
 
-
-public class StravaPostActivityController extends HttpServlet {
+public class StravaUpdateActivityController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = Logger.getLogger(StravaPostActivityController.class.getName());
+	private static final Logger log = Logger.getLogger(StravaUpdateActivityController.class.getName());
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -33,6 +30,7 @@ public class StravaPostActivityController extends HttpServlet {
 		String accessToken = (String) request.getSession().getAttribute("Strava-token");			
 		StravaResource yr=new StravaResource(accessToken);
 		String name = request.getParameter("Name");
+		String newname = request.getParameter("NewName");
 		String type = request.getParameter("Type");
 		String elapsed = request.getParameter("Elapsed");
 		String description = request.getParameter("Description");
@@ -63,36 +61,46 @@ public class StravaPostActivityController extends HttpServlet {
 			request.getRequestDispatcher("/strava.jsp").forward(request, response);
 	
 		}else {
-
-		boolean yv=yr.postStravaRoute(name, type, d, Integer.valueOf(elapsed), description, Float.parseFloat(distance),accessToken);
-		
-		if(yv==true) {
-			log.info("Strava route created succesfully");
-			StravaActivityG[] sag=yr.getStravaActivity();
-			
-			List<StravaActivityC> san= new ArrayList<>();
-
-			for(Integer i =0;i<sag.length;i++) {	
-				if(i.equals(0)) {
-					log.info("El sag"+sag[i].getName());
+			int i =0;
+			String id=null;
+			while(i<u.getActividades().size()) {
+				
+				if(name.equals(u.getActividades().get(i).getName())) {
+					id=String.valueOf(u.getActividades().get(i).getId());
+				}else {
+					
 				}
-
-				san.add(yr.getStravaActivityC(sag[i].getId().toString()));
+				
+				
+				i++;
+				
 			}
 			
+		
+		boolean yv=yr.uploadStravaActivityC(id,newname, type, d, Integer.valueOf(elapsed), description, Float.parseFloat(distance));
+		
+		if(yv==true) {
+			log.warning("Error obtaining strava route");
+
+			
+			request.getRequestDispatcher("/error.jsp").forward(request, response);
+		}else {
+			StravaActivityG[] sag=yr.getStravaActivity();
+			List<StravaActivityC> san= new ArrayList<>();
+			for(StravaActivityG sa: sag) {
+				san.add(yr.getStravaActivityC(sa.getId().toString()));
+			}
 			for(StravaActivityC st :san) {
 				st.setStartDateLocal(yr.fromISOtoString(st.getStartDateLocal()));					
 			}
-
+			log.info("Strava route created succesfully");
 			
 			u.setActividades(san);
+
 			String res=yr.max(u.getActividades());
 			log.info("Max"+res);
 			request.setAttribute("res", res);
 			request.getRequestDispatcher("/strava.jsp").forward(request, response);
-		}else {
-			log.warning("Error obtaining strava route");
-			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 	}
 }
