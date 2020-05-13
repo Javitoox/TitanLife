@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="aiss.model.strava.StravaActivityC"%>
+    <%@ page import="aiss.model.titan.User"%>
+    <%@ page import="java.util.List"%>
+    <%@ page import="aiss.model.repository.UserRepository"%>
+    <%@ page import="aiis.model.resource.StravaResource"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,23 +23,102 @@
 <%@ include file="includes/menu.jsp" %>
 <img id="logoSVS" src="images/logo.png" alt="Descripción de la imagen">
 <h1 class="InitialTextSV">Mi Strava</h1>
-<h1 class="ScrollText">Mis Rutas</h1>	
-<h1 class="ScrollTextCreadas">Mis Publicaciones</h1>
-	<div>${requestScope.validaciones}</div>
-
+<h1 class="ScrollText">Mis Actividades</h1>	
+<h1 class="ScrollTextCreadas">Editar Actividades</h1>
+	
 <button id="btn-abrir-popup" class="btn-abrir-popup">Add Activity</button>
 
-<div class="contenedor">	
+    <%User u=UserRepository.getInstance().findByUsername((String)session.getAttribute("username"));
+	String accessToken = (String) request.getSession().getAttribute("Strava-token");
+	StravaResource yr=new StravaResource(accessToken);
 
-<div class="overlay" id="overlay">
-			<div class="popup" id="popup">
-				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
-				<h3>AÑADE</h3>
-				<h4>una actividad en tu perfil.</h4>
-				<form id = "formulario" name="formulario" action="/stravaPostActivityController" method="GET">
-					<div class="contenedor-inputs">
-            				<input id="Name" name="Name"type="text" placeholder="Nombre actividad" maxlength="40" required/><br/>    
-							<select name="Type" required>
+    List<StravaActivityC> ls=u.getActividades();
+	if(ls.isEmpty()==true){
+		%>
+		
+		
+		<% 
+		
+	}else{
+
+		%>
+	
+
+<div class="scroll">
+<table id="agenda">
+			<tr>
+				<th>Foto</th>
+				<th>Nombre</th>
+				<th>Tipo</th>
+				<th>Hora Inicio</th>
+				<th>Tiempo transcurrido</th>
+				<th>Descripcion</th>
+				<th>Distancia</th>	
+				<th>Calorias</th>	
+				
+				
+			</tr>
+<%
+		
+
+			for(StravaActivityC sa: ls){
+				%>
+				<tr>
+				<%if(sa.getTotalPhotoCount()==0){
+					
+					%>
+						<td>--</td>					
+					<%
+				}else{
+					%>
+					<td><img src="<%= sa.getPhotos().getPrimary().getUrls().get100() %>"></td>
+					
+					<% 
+					
+				}
+				%>
+				
+				<td><%= sa.getName().toString() %></td>
+				<td><%= sa.getType().toString() %></td>
+				<td><%=  sa.getStartDateLocal().toString() %></td>
+				<td><%= sa.getElapsedTime().toString() %></td>
+				<td><%= sa.getDescription().toString() %></td>
+				<td><%= sa.getDistance().toString() %></td>
+				<td><%= sa.getCalories().toString() %></td>
+				
+				</tr>
+				<%
+				}
+		
+			%>
+		
+			</table>
+		
+			
+</div>
+
+		<div class="max"><div class="max2">El tipo de actividad más realizada es:</div><div class="max3">${requestScope.res}</div></div>
+		
+		
+		<div class="cont" id="cont">	
+				<form id = "form2" name="form2" action="/stravaUpdateActivityController" method="GET">
+				
+									<select name="Name" required>
+									<%int r =0;
+				while(r<ls.size()){
+					
+					
+					 %>
+										<option value="<%= ls.get(r).getName().toString() %>" label="<%= ls.get(r).getName().toString() %>"/>
+										<% 
+										r++;}
+										
+										
+										%>
+										
+										</select><br/>
+								<input id="NewName" name="NewName" type="text" placeholder="Nuevo nombre" maxlength="40" required/><br/>
+								<select name="Type" required>
 								<option value="Ride">Ride</option>
 								<option value="Run">Run</option>
 								<option value="Swim">Swim</option>
@@ -68,7 +153,37 @@
 								<option value="Workout">Workout</option>
 								<option value="Yoga">Yoga</option>
 							</select><br/>            		
-							<input id="Date" name="Date" type="text" placeholder="Hora inicio (Format example: 13:32:11)" maxlength="8" required/><br/>
+            				<input id="Elapsed"  name="Elapsed" type="text" placeholder="Tiempo transcurrido en seg" maxlength="6" required/><br/>      
+          					<input id="Description"  name="Description" type="text" placeholder="Descripción" maxlength="100" required/><br/>
+            				<input id="Distance"  name="Distance"  type="text" placeholder="Distancia recorrida" maxlength="6" required/><br/>
+            				<input id="boton" class="btn-submit2" type="submit" value="EDITAR ACTIVIDAD" /><br/>
+				</form>
+			
+</div>
+		<% 
+										}
+										
+										%>
+		
+	
+
+<div class="contenedor">	
+
+<div class="overlay" id="overlay">
+			<div class="popup" id="popup">
+				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+				<h3>AÑADE</h3>
+				<h4>una actividad en tu perfil.</h4>
+				<form id = "formulario" name="formulario" action="/stravaPostActivityController" method="GET">
+					<div class="contenedor-inputs">
+            				<input id="Name" name="Name"type="text" placeholder="Nombre actividad" maxlength="40" required/><br/>    
+							<select name="Type" required>
+								<option value="Run">Run</option>
+								<option value="Hike">Hike</option>
+								<option value="Walk">Walk</option>
+								<option value="VirtualRun">Virtual Run</option>
+								<option value="Wheelchair">Wheelchair</option>
+							</select><br/>            		
             				<input id="Elapsed"  name="Elapsed" type="text" placeholder="Tiempo transcurrido en seg" maxlength="6" required/><br/>      
           					<input id="Description"  name="Description" type="text" placeholder="Descripción" maxlength="100" required/><br/>
             				<input id="Distance"  name="Distance"  type="text" placeholder="Distancia recorrida" maxlength="6" required/><br/>
@@ -79,5 +194,12 @@
 		</div>
 </div>
 <script src="js/popup.js"></script>
+
+
+
+
+
+
+
 </body>
 </html>

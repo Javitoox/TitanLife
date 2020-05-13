@@ -9,6 +9,14 @@ body{
     background-size:130%;
 }
 
+#youtubeMessage{
+	color:red;
+	font-family:'Titillium Web', sans-serif;
+	position:absolute;
+	top:30%;
+	right:8%;
+}
+
 .advert{
 	color:red;
 	font-family:'Titillium Web', sans-serif;

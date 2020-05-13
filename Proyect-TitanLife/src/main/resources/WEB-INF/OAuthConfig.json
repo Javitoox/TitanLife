@@ -4,7 +4,9 @@
         "clientId": "1026245294779-ppdcsj8pj20fmjqlofqrmvq3665k0sj7.apps.googleusercontent.com",
         "clientSecret": "iWeytRiq-mH3DLli1xPwWs2e",
         "authorizationFormUrl": "https://accounts.google.com/o/oauth2/auth",
-        "scopes": ["https://www.googleapis.com/auth/youtube.upload","https://www.googleapis.com/auth/youtube","https://www.googleapis.com/auth/youtube.force-ssl"]
+        "scopes": ["https://www.googleapis.com/auth/youtube.upload","https://www.googleapis.com/auth/youtube"
+        ,"https://www.googleapis.com/auth/youtube.force-ssl","https://www.googleapis.com/auth/youtube.readonly"
+        ,"https://www.googleapis.com/auth/youtubepartner"]
     }
     
 }

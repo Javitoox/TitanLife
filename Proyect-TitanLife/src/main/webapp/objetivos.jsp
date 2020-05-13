@@ -77,6 +77,7 @@
 	</div>	
 
 	<div>
+	<span id="youtubeMessage">${requestScope.mensajeYoutube}</span>
 		<form action="/parseoObjetivosController" method="GET">
 			<select multiple required class="obj" id="objDep" name="opDep">
 			<%

@@ -2,6 +2,7 @@
 package aiss.model.strava;
 
 import java.util.HashMap;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -13,24 +14,27 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "id",
-    "polyline",
+    "primary",
+    "name",
     "resource_state",
-    "summary_polyline"
+    "distance"
 })
 @JsonIgnoreProperties(ignoreUnknown=true)
 
-public class Map {
+public class Gear {
 
     @JsonProperty("id")
     private String id;
-    @JsonProperty("polyline")
-    private String polyline;
+    @JsonProperty("primary")
+    private Boolean primary;
+    @JsonProperty("name")
+    private String name;
     @JsonProperty("resource_state")
     private Integer resourceState;
-    @JsonProperty("summary_polyline")
-    private String summaryPolyline;
+    @JsonProperty("distance")
+    private Integer distance;
     @JsonIgnore
-    private java.util.Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("id")
     public String getId() {
@@ -42,14 +46,24 @@ public class Map {
         this.id = id;
     }
 
-    @JsonProperty("polyline")
-    public String getPolyline() {
-        return polyline;
+    @JsonProperty("primary")
+    public Boolean getPrimary() {
+        return primary;
     }
 
-    @JsonProperty("polyline")
-    public void setPolyline(String polyline) {
-        this.polyline = polyline;
+    @JsonProperty("primary")
+    public void setPrimary(Boolean primary) {
+        this.primary = primary;
+    }
+
+    @JsonProperty("name")
+    public String getName() {
+        return name;
+    }
+
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.name = name;
     }
 
     @JsonProperty("resource_state")
@@ -62,18 +76,18 @@ public class Map {
         this.resourceState = resourceState;
     }
 
-    @JsonProperty("summary_polyline")
-    public String getSummaryPolyline() {
-        return summaryPolyline;
+    @JsonProperty("distance")
+    public Integer getDistance() {
+        return distance;
     }
 
-    @JsonProperty("summary_polyline")
-    public void setSummaryPolyline(String summaryPolyline) {
-        this.summaryPolyline = summaryPolyline;
+    @JsonProperty("distance")
+    public void setDistance(Integer distance) {
+        this.distance = distance;
     }
 
     @JsonAnyGetter
-    public java.util.Map<String, Object> getAdditionalProperties() {
+    public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
     }
 

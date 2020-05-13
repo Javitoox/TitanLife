@@ -1,3 +1,4 @@
+
 package aiss.model.youtube;
 
 import java.util.HashMap;
@@ -12,50 +13,24 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "kind",
-    "etag",
-    "id"
+    "snippet"
 })
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class Item {
+public class PlayListNew {
 
-    @JsonProperty("kind")
-    private String kind;
-    @JsonProperty("etag")
-    private String etag;
-    @JsonProperty("id")
-    private Id id;
+    @JsonProperty("snippet")
+    private Snippet2 snippet;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("kind")
-    public String getKind() {
-        return kind;
+    @JsonProperty("snippet")
+    public Snippet2 getSnippet() {
+        return snippet;
     }
 
-    @JsonProperty("kind")
-    public void setKind(String kind) {
-        this.kind = kind;
-    }
-
-    @JsonProperty("etag")
-    public String getEtag() {
-        return etag;
-    }
-
-    @JsonProperty("etag")
-    public void setEtag(String etag) {
-        this.etag = etag;
-    }
-
-    @JsonProperty("id")
-    public Id getId() {
-        return id;
-    }
-
-    @JsonProperty("id")
-    public void setId(Id id) {
-        this.id = id;
+    @JsonProperty("snippet")
+    public void setSnippet(Snippet2 snippet) {
+        this.snippet = snippet;
     }
 
     @JsonAnyGetter

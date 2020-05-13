@@ -81,7 +81,7 @@
     <servlet-name>Oauth1Controller</servlet-name>
     <url-pattern>/oauth1Controller/FatSecret</url-pattern>
   </servlet-mapping>
-  <servlet>
+ <servlet>
     <description></description>
     <display-name>StravaActivityController</display-name>
     <servlet-name>StravaActivityController</servlet-name>
@@ -100,6 +100,16 @@
   <servlet-mapping>
     <servlet-name>StravaPostActivityController</servlet-name>
     <url-pattern>/stravaPostActivityController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StravaUpdateActivityController</display-name>
+    <servlet-name>StravaUpdateActivityController</servlet-name>
+    <servlet-class>aiss.controller.StravaUpdateActivityController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StravaUpdateActivityController</servlet-name>
+    <url-pattern>/stravaUpdateActivityController</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -150,5 +160,15 @@
   <servlet-mapping>
     <servlet-name>ObjetivosCorporalesController</servlet-name>
     <url-pattern>/objetivosCorporalesController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SetDeleteYoutubeController</display-name>
+    <servlet-name>SetDeleteYoutubeController</servlet-name>
+    <servlet-class>aiss.controller.SetDeleteYoutubeController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SetDeleteYoutubeController</servlet-name>
+    <url-pattern>/setDeleteYoutubeController</url-pattern>
   </servlet-mapping>
 </web-app>

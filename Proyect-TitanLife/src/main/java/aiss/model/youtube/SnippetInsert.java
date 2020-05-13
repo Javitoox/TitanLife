@@ -1,3 +1,4 @@
+
 package aiss.model.youtube;
 
 import java.util.HashMap;
@@ -12,50 +13,37 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "kind",
-    "etag",
-    "id"
+    "playlistId",
+    "resourceId"
 })
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class Item {
+public class SnippetInsert {
 
-    @JsonProperty("kind")
-    private String kind;
-    @JsonProperty("etag")
-    private String etag;
-    @JsonProperty("id")
-    private Id id;
+    @JsonProperty("playlistId")
+    private String playlistId;
+    @JsonProperty("resourceId")
+    private ResourceIdInsert resourceId;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("kind")
-    public String getKind() {
-        return kind;
+    @JsonProperty("playlistId")
+    public String getPlaylistId() {
+        return playlistId;
     }
 
-    @JsonProperty("kind")
-    public void setKind(String kind) {
-        this.kind = kind;
+    @JsonProperty("playlistId")
+    public void setPlaylistId(String playlistId) {
+        this.playlistId = playlistId;
     }
 
-    @JsonProperty("etag")
-    public String getEtag() {
-        return etag;
+    @JsonProperty("resourceId")
+    public ResourceIdInsert getResourceId() {
+        return resourceId;
     }
 
-    @JsonProperty("etag")
-    public void setEtag(String etag) {
-        this.etag = etag;
-    }
-
-    @JsonProperty("id")
-    public Id getId() {
-        return id;
-    }
-
-    @JsonProperty("id")
-    public void setId(Id id) {
-        this.id = id;
+    @JsonProperty("resourceId")
+    public void setResourceId(ResourceIdInsert resourceId) {
+        this.resourceId = resourceId;
     }
 
     @JsonAnyGetter

@@ -20,6 +20,9 @@ public class ParseoObjetivosController extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
+		if(u==null) {
+			request.getRequestDispatcher("/intro.jsp").forward(request, response);
+		}
 		UserRepository r=UserRepository.getInstance();
 		
 		// Control de la asignación de objetivos del usuario

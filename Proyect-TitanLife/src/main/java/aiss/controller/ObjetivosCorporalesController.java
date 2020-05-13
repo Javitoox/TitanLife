@@ -19,9 +19,12 @@ public class ObjetivosCorporalesController extends HttpServlet {
 	private static final Logger log = Logger.getLogger(ObjetivosCorporalesController.class.getName());
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
+		if(u==null) {
+			request.getRequestDispatcher("/intro.jsp").forward(request, response);
+		}
 		String pesoObj=request.getParameter("pesoObj");
 		String fechaObj=request.getParameter("fechaObj");
-		User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
 		if(u.getImc()==null || u.getImc().equals("")) {
 			log.info("IMC no generado, debe ser generado por el usuario "+u.getUsername());
 			request.setAttribute("validaciones", "Debe de generar su IMC primero");

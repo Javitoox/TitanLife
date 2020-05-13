@@ -6,7 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import aiis.model.resource.BMIResource;
 import aiss.model.BMI.BMIResult;
 import aiss.model.repository.UserRepository;
@@ -18,8 +17,10 @@ public class MisObjetivosController extends HttpServlet {
 	private static final Logger log = Logger.getLogger(MisObjetivosController.class.getName());
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession sesion=request.getSession(false);		
-		User u=UserRepository.getInstance().findByUsername((String)sesion.getAttribute("username"));
+		User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
+		if(u==null) {
+			request.getRequestDispatcher("/intro.jsp").forward(request, response);
+		}
 		
 		// Control de la generación del IMC
 		String imc=request.getParameter("IMC");

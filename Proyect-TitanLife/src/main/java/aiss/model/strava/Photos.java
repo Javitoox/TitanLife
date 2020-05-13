@@ -1,4 +1,5 @@
-package aiss.model.youtube;
+
+package aiss.model.strava;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,50 +13,51 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "kind",
-    "etag",
-    "id"
+    "primary",
+    "use_primary_photo",
+    "count"
 })
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class Item {
 
-    @JsonProperty("kind")
-    private String kind;
-    @JsonProperty("etag")
-    private String etag;
-    @JsonProperty("id")
-    private Id id;
+public class Photos {
+
+    @JsonProperty("primary")
+    private Primary primary;
+    @JsonProperty("use_primary_photo")
+    private Boolean usePrimaryPhoto;
+    @JsonProperty("count")
+    private Integer count;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("kind")
-    public String getKind() {
-        return kind;
+    @JsonProperty("primary")
+    public Primary getPrimary() {
+        return primary;
     }
 
-    @JsonProperty("kind")
-    public void setKind(String kind) {
-        this.kind = kind;
+    @JsonProperty("primary")
+    public void setPrimary(Primary primary) {
+        this.primary = primary;
     }
 
-    @JsonProperty("etag")
-    public String getEtag() {
-        return etag;
+    @JsonProperty("use_primary_photo")
+    public Boolean getUsePrimaryPhoto() {
+        return usePrimaryPhoto;
     }
 
-    @JsonProperty("etag")
-    public void setEtag(String etag) {
-        this.etag = etag;
+    @JsonProperty("use_primary_photo")
+    public void setUsePrimaryPhoto(Boolean usePrimaryPhoto) {
+        this.usePrimaryPhoto = usePrimaryPhoto;
     }
 
-    @JsonProperty("id")
-    public Id getId() {
-        return id;
+    @JsonProperty("count")
+    public Integer getCount() {
+        return count;
     }
 
-    @JsonProperty("id")
-    public void setId(Id id) {
-        this.id = id;
+    @JsonProperty("count")
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     @JsonAnyGetter

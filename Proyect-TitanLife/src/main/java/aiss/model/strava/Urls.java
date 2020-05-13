@@ -1,4 +1,5 @@
-package aiss.model.youtube;
+
+package aiss.model.strava;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,50 +13,38 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "kind",
-    "etag",
-    "id"
+    "100",
+    "600"
 })
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class Item {
 
-    @JsonProperty("kind")
-    private String kind;
-    @JsonProperty("etag")
-    private String etag;
-    @JsonProperty("id")
-    private Id id;
+public class Urls {
+
+    @JsonProperty("100")
+    private String _100;
+    @JsonProperty("600")
+    private String _600;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("kind")
-    public String getKind() {
-        return kind;
+    @JsonProperty("100")
+    public String get100() {
+        return _100;
     }
 
-    @JsonProperty("kind")
-    public void setKind(String kind) {
-        this.kind = kind;
+    @JsonProperty("100")
+    public void set100(String _100) {
+        this._100 = _100;
     }
 
-    @JsonProperty("etag")
-    public String getEtag() {
-        return etag;
+    @JsonProperty("600")
+    public String get600() {
+        return _600;
     }
 
-    @JsonProperty("etag")
-    public void setEtag(String etag) {
-        this.etag = etag;
-    }
-
-    @JsonProperty("id")
-    public Id getId() {
-        return id;
-    }
-
-    @JsonProperty("id")
-    public void setId(Id id) {
-        this.id = id;
+    @JsonProperty("600")
+    public void set600(String _600) {
+        this._600 = _600;
     }
 
     @JsonAnyGetter

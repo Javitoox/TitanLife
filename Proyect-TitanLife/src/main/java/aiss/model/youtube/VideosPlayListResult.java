@@ -1,6 +1,8 @@
+
 package aiss.model.youtube;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -14,17 +16,20 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
     "kind",
     "etag",
-    "id"
+    "pageInfo",
+    "items"
 })
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class Item {
+public class VideosPlayListResult {
 
     @JsonProperty("kind")
     private String kind;
     @JsonProperty("etag")
     private String etag;
-    @JsonProperty("id")
-    private Id id;
+    @JsonProperty("pageInfo")
+    private PageInfo pageInfo;
+    @JsonProperty("items")
+    private List<Item4> items = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -48,14 +53,24 @@ public class Item {
         this.etag = etag;
     }
 
-    @JsonProperty("id")
-    public Id getId() {
-        return id;
+    @JsonProperty("pageInfo")
+    public PageInfo getPageInfo() {
+        return pageInfo;
     }
 
-    @JsonProperty("id")
-    public void setId(Id id) {
-        this.id = id;
+    @JsonProperty("pageInfo")
+    public void setPageInfo(PageInfo pageInfo) {
+        this.pageInfo = pageInfo;
+    }
+
+    @JsonProperty("items")
+    public List<Item4> getItems() {
+        return items;
+    }
+
+    @JsonProperty("items")
+    public void setItems(List<Item4> items) {
+        this.items = items;
     }
 
     @JsonAnyGetter

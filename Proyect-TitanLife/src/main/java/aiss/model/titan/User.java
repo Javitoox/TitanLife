@@ -3,6 +3,9 @@ package aiss.model.titan;
 import java.io.Serializable;
 import java.util.List;
 
+import aiss.model.strava.StravaActivityC;
+import aiss.model.strava.StravaActivityG;
+
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -18,6 +21,7 @@ public class User implements Serializable{
     private String pesoObj;
     private String imcObj;
     private String fechaObj;
+    private List<StravaActivityC> actividades;
 
     //Cuando se registre un usuario, pondremos los campos se generarán más tarde a null hasta que sean seleccionados
     public User(Integer id,String username, String email, String password, String retype, String age,
@@ -32,6 +36,7 @@ public class User implements Serializable{
         this.pesoObj=null;
         this.imcObj=null;
         this.fechaObj=null;
+        this.actividades=null;
         DataBMI datos=new DataBMI();
         datos.setAge(age);
         Height altura=new Height();
@@ -172,6 +177,14 @@ public class User implements Serializable{
 
 	public void setFechaObj(String fechaObj) {
 		this.fechaObj = fechaObj;
+	}
+
+	public List<StravaActivityC> getActividades() {
+		return actividades;
+	}
+
+	public void setActividades(List<StravaActivityC> actividades) {
+		this.actividades = actividades;
 	}
 
 }

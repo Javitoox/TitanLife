@@ -48,8 +48,8 @@ public class PerfilController extends HttpServlet {
             	DataBMI datosBMI = user.getDatosBMI();
             	Weight weight2 = datosBMI.getWeight();
             	Height height2 = datosBMI.getHeight();
-            	height2.setUnit(height);
-               	weight2.setUnit(weight);
+            	height2.setValue(height);
+               	weight2.setValue(weight);
             	datosBMI.setHeight(height2);
             	datosBMI.setWeight(weight2);
             	datosBMI.setHip(hip);

@@ -1,3 +1,4 @@
+
 package aiss.model.youtube;
 
 import java.util.HashMap;
@@ -12,50 +13,50 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "kind",
-    "etag",
-    "id"
+    "url",
+    "width",
+    "height"
 })
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class Item {
+public class Medium {
 
-    @JsonProperty("kind")
-    private String kind;
-    @JsonProperty("etag")
-    private String etag;
-    @JsonProperty("id")
-    private Id id;
+    @JsonProperty("url")
+    private String url;
+    @JsonProperty("width")
+    private Integer width;
+    @JsonProperty("height")
+    private Integer height;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("kind")
-    public String getKind() {
-        return kind;
+    @JsonProperty("url")
+    public String getUrl() {
+        return url;
     }
 
-    @JsonProperty("kind")
-    public void setKind(String kind) {
-        this.kind = kind;
+    @JsonProperty("url")
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    @JsonProperty("etag")
-    public String getEtag() {
-        return etag;
+    @JsonProperty("width")
+    public Integer getWidth() {
+        return width;
     }
 
-    @JsonProperty("etag")
-    public void setEtag(String etag) {
-        this.etag = etag;
+    @JsonProperty("width")
+    public void setWidth(Integer width) {
+        this.width = width;
     }
 
-    @JsonProperty("id")
-    public Id getId() {
-        return id;
+    @JsonProperty("height")
+    public Integer getHeight() {
+        return height;
     }
 
-    @JsonProperty("id")
-    public void setId(Id id) {
-        this.id = id;
+    @JsonProperty("height")
+    public void setHeight(Integer height) {
+        this.height = height;
     }
 
     @JsonAnyGetter

@@ -14,17 +14,20 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
     "kind",
     "etag",
-    "id"
+    "id",
+    "snippet"
 })
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class Item {
+public class Item4 {
 
     @JsonProperty("kind")
     private String kind;
     @JsonProperty("etag")
     private String etag;
     @JsonProperty("id")
-    private Id id;
+    private String id;
+    @JsonProperty("snippet")
+    private Snippet3 snippet;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -49,13 +52,23 @@ public class Item {
     }
 
     @JsonProperty("id")
-    public Id getId() {
+    public String getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(Id id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    @JsonProperty("snippet")
+    public Snippet3 getSnippet() {
+        return snippet;
+    }
+
+    @JsonProperty("snippet")
+    public void setSnippet(Snippet3 snippet) {
+        this.snippet = snippet;
     }
 
     @JsonAnyGetter
