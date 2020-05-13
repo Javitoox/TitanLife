@@ -30,7 +30,7 @@ public class FatSecretCaloriesController extends HttpServlet {
 			request.setAttribute("foods", l);
 			request.getRequestDispatcher("/misComidas.jsp").forward(request, response);
 		}else{
-			log.info("Acces without a food search");
+			log.info("Acces without a food search ");
 			request.getRequestDispatcher("/misComidas.jsp").forward(request, response);
 		}
 	}
