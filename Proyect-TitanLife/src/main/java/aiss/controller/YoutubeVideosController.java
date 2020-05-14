@@ -31,41 +31,44 @@ public class YoutubeVideosController extends HttpServlet {
 		if(u.getObjetivos()!=null && u.getObjetivos().size()>0) {
 			if (accessToken != null && !"".equals(accessToken)) {
 				log.info("Youtube-token: "+accessToken);
+				String playlistTitanLifeId=(request.getParameter("playlistTitanLifeId")!=null && 
+						!request.getParameter("playlistTitanLifeId").equals(""))?request.getParameter("playlistTitanLifeId"):"";
 				YoutubeResource yr=new YoutubeResource(accessToken);
-				PlayListsResult pr=yr.getPlayLists();
-				Boolean existePlayList = false;
-				String playlistTitanLifeId="";
-				//Comprobación de existencia de la playlist de TitanLife y creación de la misma en caso de que no exista
-				if(pr!=null) {
-					log.info("PlayLists search succes, checking TitanLife playList... "+pr);
-					for(Item2 item: pr.getItems()) {
-						if(item.getSnippet().getTitle().equals("TitanLife")) {
-							existePlayList = true;
-							playlistTitanLifeId=item.getId();
-							log.info("Playlist id found");
-							break;
-						}
-					}
-					if(!existePlayList) {
-						Boolean result=yr.createPlayListTitanLife();
-						if(result) {
-							log.info("TitanLife playlist create");
-							for(Item2 item: pr.getItems()) {
-								if(item.getSnippet().getTitle().equals("TitanLife")) {
-									playlistTitanLifeId=item.getId();
-									log.info("Playlist id found for first time");
-									break;
-								}
+				if(playlistTitanLifeId.equals("")) {
+					PlayListsResult pr=yr.getPlayLists();
+					Boolean existePlayList = false;
+					//Comprobación de existencia de la playlist de TitanLife y creación de la misma en caso de que no exista
+					if(pr!=null) {
+						log.info("PlayLists search succes, checking TitanLife playList... "+pr);
+						for(Item2 item: pr.getItems()) {
+							if(item.getSnippet().getTitle().equals("TitanLife")) {
+								existePlayList = true;
+								playlistTitanLifeId=item.getId();
+								log.info("Playlist id found");
+								break;
 							}
 						}
-						else
-							request.getRequestDispatcher("/error.jsp").forward(request, response);
-					}else
-						log.info("TitanLife playlist exists with the user "+u.getUsername());
-						
-				}else {
-					log.warning("Playlists not found, redirecting error page");
-					request.getRequestDispatcher("/error.jsp").forward(request, response);
+						if(!existePlayList) {
+							Boolean result=yr.createPlayListTitanLife();
+							if(result) {
+								log.info("TitanLife playlist create");
+								for(Item2 item: pr.getItems()) {
+									if(item.getSnippet().getTitle().equals("TitanLife")) {
+										playlistTitanLifeId=item.getId();
+										log.info("Playlist id found for first time");
+										break;
+									}
+								}
+							}
+							else
+								request.getRequestDispatcher("/error.jsp").forward(request, response);
+						}else
+							log.info("TitanLife playlist exists with the user "+u.getUsername());
+							
+					}else {
+						log.warning("Playlists not found, redirecting error page");
+						request.getRequestDispatcher("/error.jsp").forward(request, response);
+					}
 				}
 				
 				//Búsqueda personalizada según los objetivos del usuario
@@ -78,16 +81,17 @@ public class YoutubeVideosController extends HttpServlet {
 					log.info("Video principal: "+videoPrincipal);
 					//Comprobamos si el usuario a elegido un video y lo mostramos en el formato de video
 					if(videoPrincipal!=null && !videoPrincipal.equals("")) {
-						VideosPlayListResult vp=yr.getVideosOfPlayList(playlistTitanLifeId);
-						log.info("Comprueba items: "+vp.getItems());
-						if(vp!=null && vp.getItems().size()>=0) {
-							log.info("Searching videos in playlist for the user "+u.getUsername());
-							String videoPrincipalEnPlaylist="0";
-							String controlVideo=(String)request.getAttribute("videoPrincipalEnPlaylist");
-							log.info("Control video: "+controlVideo);
-							if(controlVideo!=null && !controlVideo.equals(""))
-								videoPrincipalEnPlaylist=controlVideo;
-							else {
+						String videoPrincipalEnPlaylist="0";
+						String controlVideo=(String)request.getAttribute("videoPrincipalEnPlaylist");
+						log.info("Control video: "+controlVideo);
+						if(controlVideo!=null && !controlVideo.equals("")) {
+							videoPrincipalEnPlaylist=controlVideo;
+						}
+						else {
+							VideosPlayListResult vp=yr.getVideosOfPlayList(playlistTitanLifeId);
+							log.info("Comprueba items: "+vp.getItems());
+							if(vp!=null && vp.getItems().size()>=0) {
+								log.info("Searching videos in playlist for the user "+u.getUsername());
 								for(Item4 item:vp.getItems()) {
 									if(item.getSnippet().getResourceId().getVideoId().equals(videoPrincipal)) {
 										videoPrincipalEnPlaylist="1";
@@ -95,16 +99,16 @@ public class YoutubeVideosController extends HttpServlet {
 										break;
 									}
 								}
+							}else {
+								log.warning("Error in principal video");
+								request.getRequestDispatcher("/error.jsp").forward(request, response);
 							}
-							log.info("Principal Video in playlist: "+videoPrincipalEnPlaylist);
-							//Aquí sabemos ya si el video elegido está en la playlist o no
-							request.setAttribute("videoPrincipalEnPlaylist", videoPrincipalEnPlaylist);
-							request.setAttribute("playlistTitanLifeId", playlistTitanLifeId);
-							request.setAttribute("videoPrincipal", videoPrincipal);
-						}else {
-							log.warning("Error in principal video");
-							request.getRequestDispatcher("/error.jsp").forward(request, response);
 						}
+						log.info("Principal Video in playlist: "+videoPrincipalEnPlaylist);
+						//Aquí sabemos ya si el video elegido está en la playlist o no
+						request.setAttribute("videoPrincipalEnPlaylist", videoPrincipalEnPlaylist);
+						request.setAttribute("playlistTitanLifeId", playlistTitanLifeId);
+						request.setAttribute("videoPrincipal", videoPrincipal);
 					}
 					request.setAttribute("videos", yv.getItems());
 					log.info("Videos cargados a la vista");

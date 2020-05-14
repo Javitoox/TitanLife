@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import aiis.model.resource.YoutubeResource;
 import aiss.model.repository.UserRepository;
 import aiss.model.titan.User;
+import aiss.model.youtube.Item4;
+import aiss.model.youtube.VideosPlayListResult;
 
 public class SetDeleteYoutubeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -40,6 +42,23 @@ public class SetDeleteYoutubeController extends HttpServlet {
 				else
 					request.getRequestDispatcher("/error.jsp").forward(request, response);
 			}else if(boton!=null && boton.equals("Eliminar de la playlist TitanLife")) {
+				if(idVideoPlaylist==null || idVideoPlaylist.equals("")) {
+					//Ocurrirá en caso de añadir y eliminar sucesivamente
+					VideosPlayListResult vp=yr.getVideosOfPlayList(playlistTitanLifeId);
+					log.info("Comprueba items: "+vp.getItems());
+					if(vp!=null && vp.getItems().size()>=0) {
+						log.info("Searching videos in playlist for the user "+u.getUsername());
+						for(Item4 item:vp.getItems()) {
+							if(item.getSnippet().getResourceId().getVideoId().equals(videoPrincipal)) {
+								idVideoPlaylist=item.getId();
+								break;
+							}
+						}
+					}else {
+						log.warning("Error in principal video");
+						request.getRequestDispatcher("/error.jsp").forward(request, response);
+					}
+				}
 				Boolean result=yr.deletVideoInPlaylist(idVideoPlaylist);
 				if(result) {
 					log.info("Video deleted in the playlist: "+videoPrincipal);
