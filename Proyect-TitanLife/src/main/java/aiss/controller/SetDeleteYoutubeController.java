@@ -22,55 +22,59 @@ public class SetDeleteYoutubeController extends HttpServlet {
 		User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
 		if(u==null) {
 			request.getRequestDispatcher("/intro.jsp").forward(request, response);
-		}
+		}else {
 		
-		String videoPrincipal=request.getParameter("videoPrincipal");
-		String playlistTitanLifeId=request.getParameter("playlistTitanLifeId");
-		String idVideoPlaylist=request.getParameter("idVideoPlaylist");
-		String boton=request.getParameter("boton");
-		
-		String accessToken = (String) request.getSession().getAttribute("Youtube-token");
-		YoutubeResource yr=new YoutubeResource(accessToken);
-		
-		if (accessToken != null && !"".equals(accessToken)) {
-			if(boton!=null && boton.equals("Añadir a la playlist TitanLife")) {
-				Boolean result=yr.insertVideoInPlaylist(playlistTitanLifeId, videoPrincipal);
-				if(result) {
-					log.info("Video inserted in the playlist: "+videoPrincipal);
-					request.setAttribute("videoPrincipalEnPlaylist", "1");
-				}
-				else
-					request.getRequestDispatcher("/error.jsp").forward(request, response);
-			}else if(boton!=null && boton.equals("Eliminar de la playlist TitanLife")) {
-				if(idVideoPlaylist==null || idVideoPlaylist.equals("")) {
-					//Ocurrirá en caso de añadir y eliminar sucesivamente
-					VideosPlayListResult vp=yr.getVideosOfPlayList(playlistTitanLifeId);
-					log.info("Comprueba items: "+vp.getItems());
-					if(vp!=null && vp.getItems().size()>=0) {
-						log.info("Searching videos in playlist for the user "+u.getUsername());
-						for(Item4 item:vp.getItems()) {
-							if(item.getSnippet().getResourceId().getVideoId().equals(videoPrincipal)) {
-								idVideoPlaylist=item.getId();
-								break;
+			String videoPrincipal=request.getParameter("videoPrincipal");
+			String playlistTitanLifeId=request.getParameter("playlistTitanLifeId");
+			String idVideoPlaylist=request.getParameter("idVideoPlaylist");
+			String boton=request.getParameter("boton");
+			
+			String accessToken = (String) request.getSession().getAttribute("Youtube-token");
+			YoutubeResource yr=new YoutubeResource(accessToken);
+			
+			if (accessToken != null && !"".equals(accessToken)) {
+				if(boton!=null && boton.equals("Añadir a la playlist TitanLife")) {
+					Boolean result=yr.insertVideoInPlaylist(playlistTitanLifeId, videoPrincipal);
+					if(result) {
+						log.info("Video inserted in the playlist: "+videoPrincipal);
+						request.setAttribute("videoPrincipalEnPlaylist", "1");
+					}
+					else
+						request.getRequestDispatcher("/error.jsp").forward(request, response);
+				}else if(boton!=null && boton.equals("Eliminar de la playlist TitanLife")) {
+					if(idVideoPlaylist==null || idVideoPlaylist.equals("")) {
+						//Ocurrirá en caso de añadir y eliminar sucesivamente
+						log.info("Id playlist in delete: "+playlistTitanLifeId);
+						VideosPlayListResult vp=yr.getVideosOfPlayList(playlistTitanLifeId);
+						log.info("Comprueba items: "+vp.getItems());
+						if(vp!=null && vp.getItems().size()>=0) {
+							log.info("Searching videos in playlist for the user "+u.getUsername());
+							for(Item4 item:vp.getItems()) {
+								if(item.getSnippet().getResourceId().getVideoId().equals(videoPrincipal)) {
+									idVideoPlaylist=item.getId();
+									break;
+								}
 							}
 						}
+					}
+					if(idVideoPlaylist!=null && !idVideoPlaylist.equals("")) {
+						Boolean result=yr.deletVideoInPlaylist(idVideoPlaylist);
+						if(result) {
+							log.info("Video deleted in the playlist: "+videoPrincipal);
+							request.setAttribute("videoPrincipalEnPlaylist", "0");
+						}
+						else
+							request.getRequestDispatcher("/error.jsp").forward(request, response);
 					}else {
-						log.warning("Error in principal video");
+						log.warning("Error in delete principal video");
 						request.getRequestDispatcher("/error.jsp").forward(request, response);
 					}
-				}
-				Boolean result=yr.deletVideoInPlaylist(idVideoPlaylist);
-				if(result) {
-					log.info("Video deleted in the playlist: "+videoPrincipal);
-					request.setAttribute("videoPrincipalEnPlaylist", "0");
-				}
-				else
-					request.getRequestDispatcher("/error.jsp").forward(request, response);
+				    }
+				request.getRequestDispatcher("/youtubeVideosController").forward(request, response);
+			}else {
+	        	log.info("Trying to access Youtube without an access token, redirecting to OAuth servlet");
+	            request.getRequestDispatcher("/AuthController/Youtube").forward(request, response);
 			}
-			request.getRequestDispatcher("/youtubeVideosController").forward(request, response);
-		}else {
-        	log.info("Trying to access Youtube without an access token, redirecting to OAuth servlet");
-            request.getRequestDispatcher("/AuthController/Youtube").forward(request, response);
 		}
 	}
 

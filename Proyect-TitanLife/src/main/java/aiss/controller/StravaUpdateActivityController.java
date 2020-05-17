@@ -26,84 +26,88 @@ public class StravaUpdateActivityController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
-
-		String accessToken = (String) request.getSession().getAttribute("Strava-token");			
-		StravaResource yr=new StravaResource(accessToken);
-		String name = request.getParameter("Name");
-		String newname = request.getParameter("NewName");
-		String type = request.getParameter("Type");
-		String elapsed = request.getParameter("Elapsed");
-		String description = request.getParameter("Description");
-		String distance = request.getParameter("Distance");
-		Date d = StravaResource.fromISO8601UTC();
-		
-		String validaciones="";		
-		
-        String nameRegexp = "^[a-zA-Z0-9_-]{3,40}$";
-        String elapsedRegexp = "^[0-9]{1,40}$";
-        String descriptionRegexp = "^[a-zA-Z0-9_-]{3,40}$";
-        String distanceRegexp = "^[0-9]{1,40}$";
-    
-        if(!Pattern.matches(nameRegexp, name.replace(" ", ""))) {
-        	validaciones+="Formato incorrecto del nombre";        	
-        }
-        if(!Pattern.matches(elapsedRegexp, elapsed)) {
-        	validaciones+="Formato incorrecto de el tiempo transcurrido";
-        }
-        if(!Pattern.matches(descriptionRegexp, description.replace(" ", ""))) {
-        	validaciones+="Formato incorrecto de la descripción";
-        }
-        if(!Pattern.matches(distanceRegexp, distance)) {
-        	validaciones+="Formato incorrecto de la distancia";
-        }
-		if(validaciones!="") {
-			request.setAttribute("validaciones", validaciones);
-			request.getRequestDispatcher("/strava.jsp").forward(request, response);
-	
+		if(u==null) {
+			request.getRequestDispatcher("/intro.jsp").forward(request, response);
 		}else {
-			int i =0;
-			String id=null;
-			while(i<u.getActividades().size()) {
-				
-				if(name.equals(u.getActividades().get(i).getName())) {
-					id=String.valueOf(u.getActividades().get(i).getId());
-				}else {
+
+			String accessToken = (String) request.getSession().getAttribute("Strava-token");			
+			StravaResource yr=new StravaResource(accessToken);
+			String name = request.getParameter("Name");
+			String newname = request.getParameter("NewName");
+			String type = request.getParameter("Type");
+			String elapsed = request.getParameter("Elapsed");
+			String description = request.getParameter("Description");
+			String distance = request.getParameter("Distance");
+			Date d = StravaResource.fromISO8601UTC();
+			
+			String validaciones="";		
+			
+	        String nameRegexp = "^[a-zA-Z0-9_-]{3,40}$";
+	        String elapsedRegexp = "^[0-9]{1,40}$";
+	        String descriptionRegexp = "^[a-zA-Z0-9_-]{3,40}$";
+	        String distanceRegexp = "^[0-9]{1,40}$";
+	    
+	        if(!Pattern.matches(nameRegexp, name.replace(" ", ""))) {
+	        	validaciones+="Formato incorrecto del nombre";        	
+	        }
+	        if(!Pattern.matches(elapsedRegexp, elapsed)) {
+	        	validaciones+="Formato incorrecto de el tiempo transcurrido";
+	        }
+	        if(!Pattern.matches(descriptionRegexp, description.replace(" ", ""))) {
+	        	validaciones+="Formato incorrecto de la descripción";
+	        }
+	        if(!Pattern.matches(distanceRegexp, distance)) {
+	        	validaciones+="Formato incorrecto de la distancia";
+	        }
+			if(validaciones!="") {
+				request.setAttribute("validaciones", validaciones);
+				request.getRequestDispatcher("/strava.jsp").forward(request, response);
+		
+			}else {
+				int i =0;
+				String id=null;
+				while(i<u.getActividades().size()) {
+					
+					if(name.equals(u.getActividades().get(i).getName())) {
+						id=String.valueOf(u.getActividades().get(i).getId());
+					}else {
+						
+					}
+					
+					
+					i++;
 					
 				}
 				
+			
+			boolean yv=yr.uploadStravaActivityC(id,newname, type, d, Integer.valueOf(elapsed), description, Float.parseFloat(distance));
+			
+			if(yv==true) {
+				log.warning("Error obtaining strava route");
+	
 				
-				i++;
+				request.getRequestDispatcher("/error.jsp").forward(request, response);
+			}else {
+				StravaActivityG[] sag=yr.getStravaActivity();
+				List<StravaActivityC> san= new ArrayList<>();
+				for(StravaActivityG sa: sag) {
+					san.add(yr.getStravaActivityC(sa.getId().toString()));
+				}
+				for(StravaActivityC st :san) {
+					st.setStartDateLocal(yr.fromISOtoString(st.getStartDateLocal()));					
+				}
+				log.info("Strava route created succesfully");
 				
+				u.setActividades(san);
+	
+				String res=yr.max(u.getActividades());
+				log.info("Max"+res);
+				request.setAttribute("res", res);
+				request.getRequestDispatcher("/strava.jsp").forward(request, response);
+				}
 			}
-			
-		
-		boolean yv=yr.uploadStravaActivityC(id,newname, type, d, Integer.valueOf(elapsed), description, Float.parseFloat(distance));
-		
-		if(yv==true) {
-			log.warning("Error obtaining strava route");
-
-			
-			request.getRequestDispatcher("/error.jsp").forward(request, response);
-		}else {
-			StravaActivityG[] sag=yr.getStravaActivity();
-			List<StravaActivityC> san= new ArrayList<>();
-			for(StravaActivityG sa: sag) {
-				san.add(yr.getStravaActivityC(sa.getId().toString()));
-			}
-			for(StravaActivityC st :san) {
-				st.setStartDateLocal(yr.fromISOtoString(st.getStartDateLocal()));					
-			}
-			log.info("Strava route created succesfully");
-			
-			u.setActividades(san);
-
-			String res=yr.max(u.getActividades());
-			log.info("Max"+res);
-			request.setAttribute("res", res);
-			request.getRequestDispatcher("/strava.jsp").forward(request, response);
 		}
 	}
-}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

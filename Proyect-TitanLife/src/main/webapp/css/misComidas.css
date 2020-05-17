@@ -8,12 +8,30 @@ body{
     background: url(/images/fondo_ipad.jpg);
     background-size: 110%;
 }
+#foodCalories{
+	position:absolute;
+	top:36%;
+	right:7%;
+	color: rgb(0, 161, 8);
+	font-family:'Titillium Web', sans-serif;
+}
+#validaciones{
+	position:absolute;
+	top:36%;
+	right:13%;
+	color: red;
+	font-family:'Titillium Web', sans-serif;
+}
 #search{
 	position:absolute;
-	top:67%;
-	right:12%;
+	top:40%;
+	right:24%;
 }
-
+#cantidad{
+	position:absolute;
+	top:40%;
+	right:7%;
+}
 #logo{
     position:absolute;
     width: 180px;
@@ -29,9 +47,9 @@ color:red;
 #calendario{
 	position:absolute;
 	top:20%;
-	width:90%;
+	width:80%;
 	height:30%;
-	left:22%;
+	left:15%;
 }
 
 .month {
@@ -85,14 +103,23 @@ color:red;
 #consumidas{
     margin: 0;
     background-color: rgb(247, 243, 243);
+    color: #c1c100;
     text-align: center;
     width: 60%;
 }
-#restantes{
+#restantes1{
     margin: 0;
     background-color: rgb(247, 243, 243);
     padding: 30px 0;
     color: rgb(0, 161, 8);
+    text-align: center;
+    width: 60%;
+}
+#restantes2{
+    margin: 0;
+    background-color: rgb(247, 243, 243);
+    padding: 30px 0;
+    color: red;
     text-align: center;
     width: 60%;
 }
@@ -142,26 +169,34 @@ color:red;
 
 #comidas{
     position:absolute;
-    background-color: white;
-    width: 80%;
-    height: 150px;
+    background-color: #efa858;
+    width: 90%;
+    height: 100px;
     overflow: scroll;
     right: 2%;
     left: 9%;
-    font-size: 100%;
-    top: 72%;
+    font-size: 70%;
+    top: 80%;
 }
-
+#comidasUsuario{
+    position:absolute;
+    background-color: #efa858;
+    width: 25%;
+    height: 280px;
+    overflow: scroll;
+    right: 2%;
+    left: 35%;
+    font-size: 70%;
+    top: 26%;
+}
 form input[type="submit"]{
-	position: absolute;
     background-color: rgb(238, 113, 68); 
     color: #ffffff;
     border: 1px solid rgb(238, 113, 68);
     padding: 10px;
     text-transform: uppercase;
-    top: 88%;
     font-size: 100%;
-    left:64%;
+    position:absolute;
 }
 
 form input[type="submit"]:hover{
@@ -208,12 +243,12 @@ form input[type="submit"]:hover{
     }
     #calendario{
     top:25%;
-    left:10%;
-    width:50%;
+    left:5%;
+    width:40%;
 	}
     #comidas{
 	width:30%;
-	left:60%;
+	left:63%;
 	top:44%;
 	}
 	.container-1{
@@ -228,7 +263,11 @@ form input[type="submit"]:hover{
     }
     form input[type="submit"]{
     font-size: 70%;
-    top:70%;
-    left:81%;
+    top:60%;
+    left:73%;
+    }
+    #botonComidasUsuario{
+    left:45%;
+    top:72%;
     }
 }

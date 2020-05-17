@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.eclipse.jetty.util.log.Log;
-
 import aiss.model.repository.UserRepository;
 import aiss.model.titan.User;
 

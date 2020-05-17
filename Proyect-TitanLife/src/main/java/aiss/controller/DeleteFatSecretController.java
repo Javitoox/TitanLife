@@ -11,35 +11,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import aiss.model.repository.UserRepository;
-import aiss.model.titan.Objetivo;
 import aiss.model.titan.User;
 
-public class ParseoObjetivosController extends HttpServlet {
+/**
+ * Servlet implementation class DeleteFatSecretController
+ */
+public class DeleteFatSecretController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = Logger.getLogger(ParseoObjetivosController.class.getName());
+	private static final Logger log = Logger.getLogger(DeleteFatSecretController.class.getName());
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
 		if(u==null) {
 			request.getRequestDispatcher("/intro.jsp").forward(request, response);
 		}else {
-			UserRepository r=UserRepository.getInstance();
-			
-			// Control de la asignación de objetivos del usuario
-			String objetivos[]=request.getParameterValues("opDep");
-			if(objetivos!=null && objetivos.length>0) {
-				List<Objetivo> ob=new ArrayList<>();
-				for(String objetivo: objetivos) {
-					ob.add(r.findByObjetiveName(objetivo));
+			String comidasUsuario[]=request.getParameterValues("comidasUsuario");
+			log.info("Eliminaciones para el usuario "+u.getUsername()+": "+comidasUsuario);
+			if(comidasUsuario!=null && comidasUsuario.length>0) {
+				List<String> f=new ArrayList<>();
+				for(String food:comidasUsuario) {
+					String trozos[]=food.split("/");
+					String calorias=trozos[4];
+					log.info("Calorias a sumar: "+calorias);
+					u.setCaloriasDiarias(u.getCaloriasDiarias()+Integer.parseInt(calorias));
+					f.add(food);
 				}
-				u.setObjetivos(ob);
-				log.info("Asignados los objetivos correspondientes al usuario "+u.getUsername());
-				request.getRequestDispatcher("/objetivos.jsp").forward(request, response);
-			}else {
-				u.setObjetivos(null);
-				log.info("No se ha seleccionado ningún objetivo");
-				request.getRequestDispatcher("/objetivos.jsp").forward(request, response);
+				log.info("Comidas a eliminar: "+f);
+				u.getComidasDiarias().removeAll(f);
 			}
+			request.getRequestDispatcher("/fatSecretCaloriesController").forward(request, response);
 		}
 	}
 	

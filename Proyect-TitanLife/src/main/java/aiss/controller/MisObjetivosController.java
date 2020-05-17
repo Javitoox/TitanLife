@@ -20,19 +20,19 @@ public class MisObjetivosController extends HttpServlet {
 		User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
 		if(u==null) {
 			request.getRequestDispatcher("/intro.jsp").forward(request, response);
-		}
-		
-		// Control de la generación del IMC
-		String imc=request.getParameter("IMC");
-		if(imc!=null && !imc.isEmpty()) {
-			BMIResult bmires=BMIResource.getBMI(u.getDatosBMI());
-			String bmi= bmires.getBmi().getValue() + " | " + bmires.getBmi().getStatus();
-			u.setImc(bmi);
-			log.info("IMC generado");
-			request.getRequestDispatcher("/objetivos.jsp").forward(request, response);
 		}else {
-			log.info("Ninguna acción ha sido realizada");
-			request.getRequestDispatcher("/objetivos.jsp").forward(request, response);		
+			// Control de la generación del IMC
+			String imc=request.getParameter("IMC");
+			if(imc!=null && !imc.isEmpty()) {
+				BMIResult bmires=BMIResource.getBMI(u.getDatosBMI());
+				String bmi= bmires.getBmi().getValue() + " | " + bmires.getBmi().getStatus();
+				u.setImc(bmi);
+				log.info("IMC generado");
+				request.getRequestDispatcher("/objetivos.jsp").forward(request, response);
+			}else {
+				log.info("Ninguna acción ha sido realizada");
+				request.getRequestDispatcher("/objetivos.jsp").forward(request, response);		
+			}
 		}
 		
 	}

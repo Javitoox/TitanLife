@@ -20,6 +20,7 @@ import aiss.model.repository.UserRepository;
 import aiss.model.strava.StravaActivityC;
 import aiss.model.strava.StravaActivityG;
 import aiss.model.titan.User;
+import aiss.utility.CalculatorFatSecret;
 
 
 public class StravaPostActivityController extends HttpServlet {
@@ -29,73 +30,86 @@ public class StravaPostActivityController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
+		if(u==null) {
+			request.getRequestDispatcher("/intro.jsp").forward(request, response);
+		}else {
 
-		String accessToken = (String) request.getSession().getAttribute("Strava-token");			
-		StravaResource yr=new StravaResource(accessToken);
-		String name = request.getParameter("Name");
-		String type = request.getParameter("Type");
-		String elapsed = request.getParameter("Elapsed");
-		String description = request.getParameter("Description");
-		String distance = request.getParameter("Distance");
-		Date d = StravaResource.fromISO8601UTC();
+			String accessToken = (String) request.getSession().getAttribute("Strava-token");			
+			StravaResource yr=new StravaResource(accessToken);
+			String name = request.getParameter("Name");
+			String type = request.getParameter("Type");
+			String elapsed = request.getParameter("Elapsed");
+			String description = request.getParameter("Description");
+			String distance = request.getParameter("Distance");
+			Date d = StravaResource.fromISO8601UTC();
+			
+			String validaciones="";		
+			
+	        String nameRegexp = "^[a-zA-Z0-9_-]{3,40}$";
+	        String elapsedRegexp = "^[0-9]{1,40}$";
+	        String descriptionRegexp = "^[a-zA-Z0-9_-]{3,40}$";
+	        String distanceRegexp = "^[0-9]{1,40}$";
+	    
+	        if(!Pattern.matches(nameRegexp, name.replace(" ", ""))) {
+	        	validaciones+="Formato incorrecto del nombre";        	
+	        }
+	        if(!Pattern.matches(elapsedRegexp, elapsed)) {
+	        	validaciones+="Formato incorrecto de el tiempo transcurrido";
+	        }
+	        if(!Pattern.matches(descriptionRegexp, description.replace(" ", ""))) {
+	        	validaciones+="Formato incorrecto de la descripción";
+	        }
+	        if(!Pattern.matches(distanceRegexp, distance)) {
+	        	validaciones+="Formato incorrecto de la distancia";
+	        }
+			if(validaciones!="") {
+				request.setAttribute("validaciones", validaciones);
+				request.getRequestDispatcher("/strava.jsp").forward(request, response);
 		
-		String validaciones="";		
-		
-        String nameRegexp = "^[a-zA-Z0-9_-]{3,40}$";
-        String elapsedRegexp = "^[0-9]{1,40}$";
-        String descriptionRegexp = "^[a-zA-Z0-9_-]{3,40}$";
-        String distanceRegexp = "^[0-9]{1,40}$";
-    
-        if(!Pattern.matches(nameRegexp, name.replace(" ", ""))) {
-        	validaciones+="Formato incorrecto del nombre";        	
-        }
-        if(!Pattern.matches(elapsedRegexp, elapsed)) {
-        	validaciones+="Formato incorrecto de el tiempo transcurrido";
-        }
-        if(!Pattern.matches(descriptionRegexp, description.replace(" ", ""))) {
-        	validaciones+="Formato incorrecto de la descripción";
-        }
-        if(!Pattern.matches(distanceRegexp, distance)) {
-        	validaciones+="Formato incorrecto de la distancia";
-        }
-		if(validaciones!="") {
-			request.setAttribute("validaciones", validaciones);
-			request.getRequestDispatcher("/strava.jsp").forward(request, response);
+			}else {
 	
-		}else {
-
-		boolean yv=yr.postStravaRoute(name, type, d, Integer.valueOf(elapsed), description, Float.parseFloat(distance),accessToken);
-		
-		if(yv==true) {
-			log.info("Strava route created succesfully");
-			StravaActivityG[] sag=yr.getStravaActivity();
+			boolean yv=yr.postStravaRoute(name, type, d, Integer.valueOf(elapsed), description, Float.parseFloat(distance),accessToken);
 			
-			List<StravaActivityC> san= new ArrayList<>();
-
-			for(Integer i =0;i<sag.length;i++) {	
-				if(i.equals(0)) {
-					log.info("El sag"+sag[i].getName());
+			if(yv==true) {
+				log.info("Strava route created succesfully");
+				StravaActivityG[] sag=yr.getStravaActivity();
+				
+				List<StravaActivityC> san= new ArrayList<>();
+	
+				for(Integer i =0;i<sag.length;i++) {	
+					if(i.equals(0)) {
+						log.info("El sag"+sag[i].getName());
+					}
+	
+					san.add(yr.getStravaActivityC(sag[i].getId().toString()));
 				}
-
-				san.add(yr.getStravaActivityC(sag[i].getId().toString()));
+				
+				if(u.getBaseCaloriasDiarias()==null) {
+					Integer c=CalculatorFatSecret.userBaseCalories(u)+san.get(0).getCalories().intValue();
+					u.setBaseCaloriasDiarias(c);
+					u.setCaloriasDiarias(c);
+				}else {
+				    u.setCaloriasDiarias(u.getCaloriasDiarias()+san.get(0).getCalories().intValue());
+				}
+				log.info("Calories actualized with strava activiy: "+san.get(0).getName());
+				
+				for(StravaActivityC st :san) {
+					st.setStartDateLocal(yr.fromISOtoString(st.getStartDateLocal()));					
+				}
+	
+				
+				u.setActividades(san);
+				String res=yr.max(u.getActividades());
+				log.info("Max"+res);
+				request.setAttribute("res", res);
+				request.getRequestDispatcher("/strava.jsp").forward(request, response);
+			}else {
+				log.warning("Error obtaining strava route");
+				request.getRequestDispatcher("/error.jsp").forward(request, response);
+				}
 			}
-			
-			for(StravaActivityC st :san) {
-				st.setStartDateLocal(yr.fromISOtoString(st.getStartDateLocal()));					
-			}
-
-			
-			u.setActividades(san);
-			String res=yr.max(u.getActividades());
-			log.info("Max"+res);
-			request.setAttribute("res", res);
-			request.getRequestDispatcher("/strava.jsp").forward(request, response);
-		}else {
-			log.warning("Error obtaining strava route");
-			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
-	}
-}
+    }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

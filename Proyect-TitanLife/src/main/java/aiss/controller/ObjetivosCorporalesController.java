@@ -22,31 +22,32 @@ public class ObjetivosCorporalesController extends HttpServlet {
 		User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
 		if(u==null) {
 			request.getRequestDispatcher("/intro.jsp").forward(request, response);
-		}
-		String pesoObj=request.getParameter("pesoObj");
-		String fechaObj=request.getParameter("fechaObj");
-		if(u.getImc()==null || u.getImc().equals("")) {
-			log.info("IMC no generado, debe ser generado por el usuario "+u.getUsername());
-			request.setAttribute("validaciones", "Debe de generar su IMC primero");
-			request.getRequestDispatcher("/objetivos.jsp").forward(request, response);
 		}else {
-			String validaciones=Validacion.validacionObjCorp(pesoObj, fechaObj);
-			if(!validaciones.equals("")) {
-				log.info("Formato incorrecto de los campos en objetivos corporales");
-				request.setAttribute("validaciones", validaciones);
+			String pesoObj=request.getParameter("pesoObj");
+			String fechaObj=request.getParameter("fechaObj");
+			if(u.getImc()==null || u.getImc().equals("")) {
+				log.info("IMC no generado, debe ser generado por el usuario "+u.getUsername());
+				request.setAttribute("validaciones", "Debe de generar su IMC primero");
 				request.getRequestDispatcher("/objetivos.jsp").forward(request, response);
-			}else { 
-				u.setPesoObj(pesoObj);
-				u.setFechaObj(fechaObj);
-				log.info("Peso y fecha objetivos cargados para el usuario "+u.getUsername());
-				String pesoOriginal=u.getDatosBMI().getWeight().getValue();
-				u.getDatosBMI().getWeight().setValue(pesoObj);
-				BMIResult bmires=BMIResource.getBMI(u.getDatosBMI());
-				String bmi= bmires.getBmi().getValue() + " | " + bmires.getBmi().getStatus();
-				u.setImcObj(bmi);
-				u.getDatosBMI().getWeight().setValue(pesoOriginal);
-				log.info("Cálculo del imc objetivo realizado");
-				request.getRequestDispatcher("/objetivos.jsp").forward(request, response);
+			}else {
+				String validaciones=Validacion.validacionObjCorp(pesoObj, fechaObj);
+				if(!validaciones.equals("")) {
+					log.info("Formato incorrecto de los campos en objetivos corporales");
+					request.setAttribute("validaciones", validaciones);
+					request.getRequestDispatcher("/objetivos.jsp").forward(request, response);
+				}else { 
+					u.setPesoObj(pesoObj);
+					u.setFechaObj(fechaObj);
+					log.info("Peso y fecha objetivos cargados para el usuario "+u.getUsername());
+					String pesoOriginal=u.getDatosBMI().getWeight().getValue();
+					u.getDatosBMI().getWeight().setValue(pesoObj);
+					BMIResult bmires=BMIResource.getBMI(u.getDatosBMI());
+					String bmi= bmires.getBmi().getValue() + " | " + bmires.getBmi().getStatus();
+					u.setImcObj(bmi);
+					u.getDatosBMI().getWeight().setValue(pesoOriginal);
+					log.info("Cálculo del imc objetivo realizado");
+					request.getRequestDispatcher("/objetivos.jsp").forward(request, response);
+				}
 			}
 		}
 	}
