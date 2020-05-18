@@ -17,6 +17,7 @@ import aiss.model.strava.StravaActivityC;
 import aiss.model.strava.StravaActivityG;
 import aiss.model.strava.StravaToken;
 import aiss.model.titan.User;
+import aiss.utility.StravaUtility;
 
 
 public class StravaActivityController extends HttpServlet {
@@ -24,7 +25,7 @@ public class StravaActivityController extends HttpServlet {
 	private static final Logger log = Logger.getLogger(StravaActivityController.class.getName());
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String code = request.getParameter("code");	
+		String code = (String) request.getSession().getAttribute("code");
 		User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
 		if(u==null) {
 			request.getRequestDispatcher("/intro.jsp").forward(request, response);
@@ -47,12 +48,12 @@ public class StravaActivityController extends HttpServlet {
 						san.add(yr.getStravaActivityC(sag[i].getId().toString()));
 					}
 					for(StravaActivityC st :san) {
-						st.setStartDateLocal(yr.fromISOtoString(st.getStartDateLocal()));					
+						st.setStartDateLocal(StravaUtility.fromISOtoString(st.getStartDateLocal()));					
 					}
 	
 	
 					u.setActividades(san);
-					String res=yr.max(u.getActividades());
+					String res=StravaUtility.max(u.getActividades());
 					log.info("Max"+res);
 	
 					request.setAttribute("res", res);

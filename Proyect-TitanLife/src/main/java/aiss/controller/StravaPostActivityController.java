@@ -16,11 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import aiis.model.resource.StravaResource;
 import aiss.model.repository.UserRepository;
-
+import aiss.model.strava.StravaActivity;
 import aiss.model.strava.StravaActivityC;
 import aiss.model.strava.StravaActivityG;
+import aiss.model.strava.StravaToken;
 import aiss.model.titan.User;
 import aiss.utility.CalculatorFatSecret;
+import aiss.utility.StravaUtility;
 
 
 public class StravaPostActivityController extends HttpServlet {
@@ -29,19 +31,25 @@ public class StravaPostActivityController extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String code = (String) request.getSession().getAttribute("code");
+
 		User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
 		if(u==null) {
 			request.getRequestDispatcher("/intro.jsp").forward(request, response);
 		}else {
+			if (code != null && !"".equals(code)) {
 
-			String accessToken = (String) request.getSession().getAttribute("Strava-token");			
+			String accessToken = (String) request.getSession().getAttribute("Strava-token");
+
+			if (accessToken != null && !"".equals(accessToken)) {
+
 			StravaResource yr=new StravaResource(accessToken);
 			String name = request.getParameter("Name");
 			String type = request.getParameter("Type");
 			String elapsed = request.getParameter("Elapsed");
 			String description = request.getParameter("Description");
 			String distance = request.getParameter("Distance");
-			Date d = StravaResource.fromISO8601UTC();
+			Date d = StravaUtility.fromISO8601UTC();
 			
 			String validaciones="";		
 			
@@ -68,9 +76,9 @@ public class StravaPostActivityController extends HttpServlet {
 		
 			}else {
 	
-			boolean yv=yr.postStravaRoute(name, type, d, Integer.valueOf(elapsed), description, Float.parseFloat(distance),accessToken);
+			StravaActivity yv=yr.postStravaRoute(name, type, d, Integer.valueOf(elapsed), description, Float.parseFloat(distance),accessToken);
 			
-			if(yv==true) {
+			if(yv!=null) {
 				log.info("Strava route created succesfully");
 				StravaActivityG[] sag=yr.getStravaActivity();
 				
@@ -94,12 +102,12 @@ public class StravaPostActivityController extends HttpServlet {
 				log.info("Calories actualized with strava activiy: "+san.get(0).getName());
 				
 				for(StravaActivityC st :san) {
-					st.setStartDateLocal(yr.fromISOtoString(st.getStartDateLocal()));					
+					st.setStartDateLocal(StravaUtility.fromISOtoString(st.getStartDateLocal()));					
 				}
 	
 				
 				u.setActividades(san);
-				String res=yr.max(u.getActividades());
+				String res=StravaUtility.max(u.getActividades());
 				log.info("Max"+res);
 				request.setAttribute("res", res);
 				request.getRequestDispatcher("/strava.jsp").forward(request, response);
@@ -108,8 +116,24 @@ public class StravaPostActivityController extends HttpServlet {
 				request.getRequestDispatcher("/error.jsp").forward(request, response);
 				}
 			}
+			}else {
+	        	log.info("Trying to access Youtube without an access token, redirecting to OAuth servlet");
+	        	StravaToken st= StravaResource.primer(code);
+	        	String acesstoken = st.getAccessToken();
+	        	request.getSession().setAttribute("Strava-token", acesstoken);
+	        	log.info("Accestoken: "+acesstoken); 
+	        	request.getRequestDispatcher("/stravaActivityController").forward(request, response);
+	        
+			}
+			}else {
+	        	log.info("Acces without code");
+	    		response.sendRedirect("http://www.strava.com/oauth/authorize?client_id=46775&response_type=code&redirect_uri=http://localhost:8090/stravaActivityController&approval_prompt=force&scope=activity:read,activity:write");
+	        	code=request.getParameter("code");
+	        	request.getSession().setAttribute("code", code);
+			}
 		}
-    }
+}
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

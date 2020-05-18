@@ -59,8 +59,23 @@
             <input id="Sex"  name="Sex" type="text" placeholder="Sex (m/f)" maxlength="1" value="<%= u.getDatosBMI().getSex() %>"required/><br/>
                               
              <label id="t">Objetivos:</label>
+             
+             <% if(u.getObjetivos()==null){
+            	%>                
+           
+            	<input id="opDep" name="opDep" type="text" placeholder="" maxlength="1000" value="" required/><br/>
+            	
+            	<% 
+            }else{
+            	%>
+            	<input id="opDep" name="opDep" type="text" placeholder="" maxlength="1000" value="<%= u.getObjetivos() %>" required/><br/>
+            	
+            	
+            	<% 
+            	}
             
-                        <input id="opDep" name="opDep" type="text" placeholder="" maxlength="1000" value="<%= u.getObjetivos() %>" required/><br/>
+            %>       
+            
            <input type="submit" value="Confirmar cambios" /><br />
        </form>
        </div>
