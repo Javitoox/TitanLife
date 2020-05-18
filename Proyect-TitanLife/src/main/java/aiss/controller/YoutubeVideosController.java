@@ -38,34 +38,21 @@ public class YoutubeVideosController extends HttpServlet {
 							!request.getParameter("playlistTitanLifeId").equals(""))?request.getParameter("playlistTitanLifeId"):"";
 					YoutubeResource yr=new YoutubeResource(accessToken);
 					if(playlistTitanLifeId.equals("") || playlistTitanLifeId==null) {
-						PlayListsResult pr=yr.getPlayLists();
-						Boolean existePlayList = false; 
-						//Comprobación de existencia de la playlist de TitanLife y creación de la misma en caso de que no exista
+						PlayListsResult pr=yr.getPlayLists(); 
+						//Comprobación de existencia de la playlist de TitanLife y creación de la misma
 						if(pr!=null) {
 							log.info("PlayLists search succes, checking TitanLife playList... "+pr);
-							for(Item2 item: pr.getItems()) {
-								if(item.getSnippet().getTitle().equals("TitanLife")) {
-									existePlayList = true;
-									playlistTitanLifeId=item.getId();
-									log.info("Playlist id found");
-									break;
-								}
-							}
-							if(!existePlayList) {
-								Boolean result=yr.createPlayListTitanLife();
-								if(result) {
-									log.info("TitanLife playlist create");
-									for(Item2 item: pr.getItems()) {
-										if(item.getSnippet().getTitle().equals("TitanLife")) {
-											playlistTitanLifeId=item.getId();
-											log.info("Playlist id found for first time");
-											break;
-										}
+							Boolean result=yr.createPlayListTitanLife();
+							if(result) {
+								log.info("TitanLife playlist create");
+								for(Item2 item: pr.getItems()) {
+									if(item.getSnippet().getTitle().equals("TitanLife")) {
+										playlistTitanLifeId=item.getId();
+										log.info("Playlist id found for first time");
+										break;
 									}
 								}
-							}else
-								log.info("TitanLife playlist exists with the user "+u.getUsername());
-								
+							}
 						}else
 							log.warning("Playlists not found, redirecting error page");
 					}

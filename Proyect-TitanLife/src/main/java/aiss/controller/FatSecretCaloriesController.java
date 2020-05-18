@@ -33,7 +33,7 @@ public class FatSecretCaloriesController extends HttpServlet {
 		}else {
 			Integer caloriesUser=CalculatorFatSecret.userBaseCalories(u);
 			// Reseteamos por completo las calorías si todavía no se ha entrado a la vista de Mis Comidas, si hemos pasado de día o 
-			// si la lista de comidas está vacía después de haberla inicado, por algún error
+			// si la lista de comidas está vacía después de haberla indicado, por algún error
 			if(u.getBaseCaloriasDiarias()==null || !u.getInstanteCalorias().equals(LocalDate.now())) {
 				u.setBaseCaloriasDiarias(caloriesUser);
 				u.setCaloriasDiarias(caloriesUser);

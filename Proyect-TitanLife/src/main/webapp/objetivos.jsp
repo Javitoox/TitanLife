@@ -38,9 +38,9 @@
 	<div >
 		<form action="/objetivosCorporalesController" method="GET">
 		    <% if(u.getPesoObj()==null || u.getPesoObj().equals("")){ %>
-			<input name="pesoObj" placeholder="Peso (Formato ej(kg): 74.00))" class="obj" id="objPeso" type="text" required>
+			<input name="pesoObj" placeholder="Peso (Formato ej(kg): 74.00)" class="obj" id="objPeso" type="text" required>
 			<%}else{ %>
-			<input name="pesoObj" placeholder="Peso (Formato ej(kg): 74.00))" class="obj" id="objPeso" type="text" value="<%= u.getPesoObj() %>" required>
+			<input name="pesoObj" placeholder="Peso (Formato ej(kg): 74.00)" class="obj" id="objPeso" type="text" value="<%= u.getPesoObj() %>" required>
 			<%} %>
 			<input name="fechaObj" placeholder="Fecha para su objetivo" class="obj" id="objPeso2" type="date" value="<%= u.getFechaObj() %>" required>
 			<% if(u.getImc()==null || u.getImc().equals("")){ %>
