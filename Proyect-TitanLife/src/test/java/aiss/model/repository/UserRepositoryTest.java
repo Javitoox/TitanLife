@@ -200,7 +200,7 @@ private UserRepository repository;
 	@Test
 	public void testDeleteUser() {
 		int numberUsers=repository.getUsers().size();
-		repository.deleteContact(0);
+		repository.deleteUser(0);
 		int newNumberUsers=repository.getUsers().size();
 		
 		User u=repository.getUser(0);

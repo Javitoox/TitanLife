@@ -105,7 +105,7 @@ public class UserRepository {
         return u;
     }
 
-    public void deleteContact(Integer id) {
+    public void deleteUser(Integer id) {
         User u=users.get(id);
         users.remove(id);
         log.log(Level.INFO, "El usuario " + u.getUsername() + " fue eliminado");
