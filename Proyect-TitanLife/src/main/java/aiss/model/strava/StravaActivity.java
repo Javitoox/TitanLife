@@ -1,4 +1,3 @@
-
 package aiss.model.strava;
 
 import java.util.HashMap;
@@ -58,7 +57,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class StravaActivity {
 
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
     @JsonProperty("resource_state")
     private Integer resourceState;
     @JsonProperty("external_id")
@@ -139,12 +138,12 @@ public class StravaActivity {
     private java.util.Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("id")
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

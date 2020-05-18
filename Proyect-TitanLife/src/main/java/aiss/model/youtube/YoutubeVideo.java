@@ -109,4 +109,11 @@ public class YoutubeVideo {
         this.additionalProperties.put(name, value);
     }
 
+	@Override
+	public String toString() {
+		return "YoutubeVideo [items=" + items + "]";
+	}
+    
+    
+
 }

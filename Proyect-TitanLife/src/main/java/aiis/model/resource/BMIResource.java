@@ -1,15 +1,12 @@
 package aiis.model.resource;
 
 import java.util.logging.Logger;
-import org.restlet.data.Header;
-import org.restlet.engine.header.HeaderConstants;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
-import org.restlet.util.Series;
 import aiss.model.BMI.BMIResult;
 import aiss.model.titan.DataBMI;
+import aiss.utility.AddHeader;
 
-@SuppressWarnings("unchecked")
 
 public class BMIResource {
 	
@@ -20,8 +17,8 @@ public class BMIResource {
 public static BMIResult getBMI(DataBMI dataBMI) {
 	   
 	   ClientResource cr = new ClientResource(uri);  
-	   addHeader(cr,"x-rapidapi-host", "bmi.p.rapidapi.com");
-	   addHeader(cr,"x-rapidapi-key",KEY);
+	   AddHeader.addHeader(cr,"x-rapidapi-host", "bmi.p.rapidapi.com");
+	   AddHeader.addHeader(cr,"x-rapidapi-key",KEY);
 
 
 	   
@@ -39,15 +36,6 @@ public static BMIResult getBMI(DataBMI dataBMI) {
     	return result;
 }
 
-public static void addHeader(ClientResource cr, String headerName, String headerValue) {
-  Series<Header> headers = (Series<Header>) cr.getRequest().getAttributes()
-      .get(HeaderConstants.ATTRIBUTE_HEADERS);
 
-  if (headers == null) {
-    headers = new Series<Header>(Header.class);
-   cr.getRequest().getAttributes().put(HeaderConstants.ATTRIBUTE_HEADERS, headers);
-  }
-	headers.add(headerName, headerValue);
-}
 
 }

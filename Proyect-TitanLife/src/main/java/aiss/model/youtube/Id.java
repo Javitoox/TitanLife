@@ -56,4 +56,9 @@ public class Id {
         this.additionalProperties.put(name, value);
     }
 
+	@Override
+	public String toString() {
+		return "Id [videoId=" + videoId + "]";
+	}
+    
 }
