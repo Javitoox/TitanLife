@@ -42,7 +42,7 @@ private UserRepository repository;
 	public void testGetUsers() {
 		Map<Integer,User> users=repository.getUsers();
 		assertNotNull("The list of users is null",users);
-		assertTrue("The list of users is empty",users.size()>0);
+		assertTrue("The list of users is empty ",users.size()>0);
 	}
 	
 	@Test
