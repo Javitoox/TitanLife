@@ -184,10 +184,14 @@ public class User implements Serializable{
 	public void setComidasDiarias(List<String> comidasDiarias) {
 		this.comidasDiarias = comidasDiarias;
 	}
-	
+
 	@Override
 	public String toString() {
-		return username;
+		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password + ", retype="
+				+ retype + ", datosBMI=" + datosBMI + ", objetivos=" + objetivos + ", imc=" + imc + ", pesoObj="
+				+ pesoObj + ", imcObj=" + imcObj + ", fechaObj=" + fechaObj + ", actividades=" + actividades
+				+ ", caloriasDiarias=" + caloriasDiarias + ", baseCaloriasDiarias=" + baseCaloriasDiarias
+				+ ", instanteCalorias=" + instanteCalorias + ", comidasDiarias=" + comidasDiarias + "]";
 	}
 
 	@Override

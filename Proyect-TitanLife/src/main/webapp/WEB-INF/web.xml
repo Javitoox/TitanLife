@@ -191,4 +191,24 @@
     <servlet-name>DeleteFatSecretController</servlet-name>
     <url-pattern>/deleteFatSecretController</url-pattern>
   </servlet-mapping>
+ 
+	<context-param>
+		<param-name>resteasy.servlet.mapping.prefix</param-name>
+		<param-value>/api/v1</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>Resteasy</servlet-name>
+		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>aiss.api.TitanLifeApplication</param-value>
+		</init-param>
+	</servlet>		
+
+	<servlet-mapping>
+		<servlet-name>Resteasy</servlet-name>
+		<url-pattern>/api/v1/*</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

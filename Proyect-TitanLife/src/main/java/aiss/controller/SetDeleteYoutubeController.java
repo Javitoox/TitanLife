@@ -49,7 +49,9 @@ public class SetDeleteYoutubeController extends HttpServlet {
 						log.info("Comprueba items: "+vp.getItems());
 						if(vp!=null && vp.getItems().size()>=0) {
 							log.info("Searching videos in playlist for the user "+u.getUsername());
+							log.info("Video principal in delete: "+videoPrincipal);
 							for(Item4 item:vp.getItems()) {
+								log.info("Id video: "+item.getSnippet().getResourceId().getVideoId());
 								if(item.getSnippet().getResourceId().getVideoId().equals(videoPrincipal)) {
 									idVideoPlaylist=item.getId();
 									break;
