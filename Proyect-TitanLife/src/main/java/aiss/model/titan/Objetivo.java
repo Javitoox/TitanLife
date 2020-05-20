@@ -8,6 +8,10 @@ public class Objetivo implements Serializable , Comparable<Objetivo>{
 	private String nombre;
 	private TipoDesgasteCalorico tipo;
 	
+	public Objetivo() {
+		
+	}
+	
 	public Objetivo (String nombre, TipoDesgasteCalorico tipo) {
 		this.nombre=nombre;
 		this.tipo=tipo;

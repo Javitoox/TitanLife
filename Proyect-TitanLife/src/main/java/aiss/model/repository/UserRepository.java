@@ -1,6 +1,7 @@
 package aiss.model.repository;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import aiss.model.titan.Comida;
 import aiss.model.titan.Objetivo;
 import aiss.model.titan.TipoDesgasteCalorico;
 import aiss.model.titan.User;
@@ -16,8 +18,9 @@ public class UserRepository {
     private static final Logger log = Logger.getLogger(UserRepository.class.getName());
 
     private Map<Integer,User> users;
+    private Map<Integer,Comida> comidas;
     private static UserRepository instance=null;
-    private Integer index=0; //Identificador único de usuarios
+    private Integer index=0; //Identificador único
     private List<Objetivo> objetivosAplicacion=new ArrayList<>();
 
     public static UserRepository getInstance() {
@@ -32,6 +35,68 @@ public class UserRepository {
 
     public void init() {
         users = new HashMap<Integer,User>();
+        comidas = new HashMap<Integer,Comida>();
+        //Añadimos al repositorio las comidas que tendrá por defecto nuestra aplicación
+        Comida c1=new Comida();
+        c1.setNombre("Pollo asado");
+        c1.setCaloriasPor100("140");
+        c1.setDescripcion("Tradicional plato cargado de proteínas");
+        addComida(c1);
+        
+        Comida c2=new Comida();
+        c2.setNombre("Trucha");
+        c2.setCaloriasPor100("50");
+        c2.setDescripcion("Pescado bajo en calorías");
+        addComida(c2);
+        
+        Comida c3=new Comida();
+        c3.setNombre("Huevo");
+        c3.setCaloriasPor100("155");
+        c3.setDescripcion("Huevo de codorniz");
+        addComida(c3);
+        
+        Comida c4=new Comida();
+        c4.setNombre("Fideos cocidos");
+        c4.setCaloriasPor100("142");
+        c4.setDescripcion("Clásico de pasta");
+        addComida(c4);
+        
+        Comida c5=new Comida();
+        c5.setNombre("Pan de pita");
+        c5.setCaloriasPor100("290");
+        c5.setDescripcion("Pan altamente rico en hidratos");
+        addComida(c5);
+        
+        Comida c6=new Comida();
+        c6.setNombre("Pan integral");
+        c6.setCaloriasPor100("244");
+        c6.setDescripcion("Pan altamente rico en fibra");
+        addComida(c6);
+        
+        Comida c7=new Comida();
+        c7.setNombre("Hamburguesa con queso");
+        c7.setCaloriasPor100("250");
+        c7.setDescripcion("Comida rápida no excesivamente calórica");
+        addComida(c7);
+        
+        Comida c8=new Comida();
+        c8.setNombre("Hamburguesa con queso");
+        c8.setCaloriasPor100("250");
+        c8.setDescripcion("Comida rápida no excesivamente calórica");
+        addComida(c8);
+        
+        Comida c9=new Comida();
+        c9.setNombre("Pechuga de pavo");
+        c9.setCaloriasPor100("111");
+        c9.setDescripcion("Carne altamente rica en creatina");
+        addComida(c9);
+        
+        Comida c10=new Comida();
+        c10.setNombre("Boniato");
+        c10.setCaloriasPor100("77");
+        c10.setDescripcion("Verdura muy utilizada por deportistas");
+        addComida(c10);
+        
         //Añadimos al repositorio los objetivos que tendrá nuestra aplicación
         objetivosAplicacion.add(new Objetivo("Atletismo principiante",TipoDesgasteCalorico.ALTO));
         objetivosAplicacion.add(new Objetivo("Atletismo medio",TipoDesgasteCalorico.ALTO));
@@ -74,9 +139,10 @@ public class UserRepository {
         objetivosAplicacion.add(new Objetivo("Senderismo general",TipoDesgasteCalorico.MEDIO));
         objetivosAplicacion.add(new Objetivo("Senderismo alta intensidad",TipoDesgasteCalorico.ALTO));
         Collections.sort(objetivosAplicacion);
-        log.info("Cargados los objetivos de la aplicación");
+        log.info("Cargados los datos de la aplicación");
     }
 
+    // Users operations
     public Map<Integer,User> getUsers() {
         Map<Integer,User> us= users;
         log.log(Level.INFO, "Los usuarios fueron obtenidos: "+us);
@@ -128,6 +194,7 @@ public class UserRepository {
 		return result;
 	}
     
+    // Objetives operations
     public Objetivo findByObjetiveName(String objetiveName){
     	Objetivo result=null;
 		for(Objetivo o:objetivosAplicacion){
@@ -138,6 +205,32 @@ public class UserRepository {
 			}
 		}
 		return result;
+	}
+    
+    // Foods operations
+    public void addComida(Comida c) {
+    	comidas.put(index, c);
+    	c.setId(index);
+    	index++;
+    }
+    
+    public Collection<Comida> getComidas() {
+		return comidas.values();
+    }
+    
+    public Comida getComida(Integer comidaId) {
+		return comidas.get(comidaId);
+	}
+    
+    public void updateComida(Comida s) {
+		Comida comida = comidas.get(s.getId());
+		comida.setCaloriasPor100(s.getCaloriasPor100());
+		comida.setDescripcion(s.getDescripcion());
+		comida.setNombre(s.getNombre());
+	}
+    
+    public void deleteComida(Integer comidaId) {
+		comidas.remove(comidaId);
 	}
 
 }

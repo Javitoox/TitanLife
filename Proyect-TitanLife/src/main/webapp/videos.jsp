@@ -15,7 +15,6 @@
 <link rel="apple-touch-icon" href="images/logo.png">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;700&display=swap" rel="stylesheet">
-
 </head>
 <body>
 

@@ -53,9 +53,18 @@ public class YoutubeVideosController extends HttpServlet {
 							}
 							if(!existePlayList) {
 								Boolean result=yr.createPlayListTitanLife();
+								try {
+									Thread.sleep(4000);//Añadido para garantizar la búsqueda por temas de retardo en las llamadas a 
+									//la api
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								PlayListsResult pr2=yr.getPlayLists();
 								if(result) {
 									log.info("TitanLife playlist create");
-									for(Item2 item: pr.getItems()) {
+									for(Item2 item: pr2.getItems()) {
+										log.info("pl: "+item.getSnippet().getTitle());
 										if(item.getSnippet().getTitle().equals("TitanLife")) {
 											playlistTitanLifeId=item.getId();
 											log.info("Playlist id found for first time");
@@ -87,15 +96,9 @@ public class YoutubeVideosController extends HttpServlet {
 								log.info("Control video: "+controlVideo);
 								if(controlVideo!=null && !controlVideo.equals("")) {
 									videoPrincipalEnPlaylist=controlVideo;
-									try {
-										Thread.sleep(5000);//Añadido para garantizar la búsqueda por temas de retardo en las llamadas a 
-										//la api
-									} catch (InterruptedException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
 								}
 								else {
+									log.info("Id playlist: "+playlistTitanLifeId);
 									VideosPlayListResult vp=yr.getVideosOfPlayList(playlistTitanLifeId);
 									log.info("Comprueba items: "+vp.getItems());
 									if(vp!=null && vp.getItems().size()>=0) {

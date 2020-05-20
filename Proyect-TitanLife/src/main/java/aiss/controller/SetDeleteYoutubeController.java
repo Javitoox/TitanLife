@@ -65,11 +65,13 @@ public class SetDeleteYoutubeController extends HttpServlet {
 							log.info("Video deleted in the playlist: "+videoPrincipal);
 							request.setAttribute("videoPrincipalEnPlaylist", "0");
 						}
-						else
-							request.getRequestDispatcher("/error.jsp").forward(request, response);
+						else {
+							log.info("Video not deleted in the playlist: "+videoPrincipal);
+							request.setAttribute("videoPrincipalEnPlaylist", "1");
+						}
 					}else {
-						log.warning("Error in delete principal video");
-						request.getRequestDispatcher("/error.jsp").forward(request, response);
+						log.info("Video not deleted in the playlist: "+videoPrincipal);
+						request.setAttribute("videoPrincipalEnPlaylist", "1");
 					}
 				    }
 				request.getRequestDispatcher("/youtubeVideosController").forward(request, response);

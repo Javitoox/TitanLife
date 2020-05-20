@@ -131,7 +131,12 @@ public class Validacion {
         	validaciones += "|Formato incorrecto del peso";
         }
 		LocalDate hoy=LocalDate.now();
-		LocalDate nuevo=LocalDate.parse(fecha);
+		LocalDate nuevo=LocalDate.now().plusDays(1);
+		try {
+			 nuevo=LocalDate.parse(fecha);
+		}catch(Exception e) {
+			validaciones+="|La fecha debe seguir el formato y-m-d";
+		}
 		if(!hoy.isBefore(nuevo)) {
         	validaciones += "|La fecha debe ser posterior al día de hoy";
         }
