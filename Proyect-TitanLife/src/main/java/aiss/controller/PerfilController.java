@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import aiss.model.repository.UserRepository;
+import aiss.model.repository.TitanLifeRepository;
 import aiss.model.titan.DataBMI;
 import aiss.model.titan.Height;
 import aiss.model.titan.User;
@@ -22,7 +22,7 @@ public class PerfilController extends HttpServlet {
 
 	    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    	
-	    	User user=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
+	    	User user=TitanLifeRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
 			if(user==null) {
 				request.getRequestDispatcher("/intro.jsp").forward(request, response);
 			}else {

@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.ws.rs.core.Application;
 
+import aiss.api.resources.ComidasResource;
 import aiss.api.resources.ObjetivosDeportivosResource;
 import aiss.api.resources.UserResource;
 
@@ -16,6 +17,7 @@ public class TitanLifeApplication extends Application {
 	public TitanLifeApplication() {
 		singletons.add(UserResource.getInstance());
 		singletons.add(ObjetivosDeportivosResource.getInstance());
+		singletons.add(ComidasResource.getInstance());
 	}
 
 	@Override

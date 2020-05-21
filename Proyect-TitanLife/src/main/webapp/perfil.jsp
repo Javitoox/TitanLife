@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="aiss.model.repository.UserRepository"%>
+<%@ page import="aiss.model.repository.TitanLifeRepository"%>
 <%@ page import="aiss.model.titan.User"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -28,7 +28,9 @@
 <div>${requestScope.validaciones}</div>		
 
 <div id="cuadro">
-<%User u=UserRepository.getInstance().findByUsername((String)session.getAttribute("username")); %>
+<%
+	User u=TitanLifeRepository.getInstance().findByUsername((String)session.getAttribute("username"));
+%>
 
        <form id = "formulario" action="/perfilController" method="GET">
        		<label id="t">Username:</label>

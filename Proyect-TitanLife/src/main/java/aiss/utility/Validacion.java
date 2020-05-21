@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import aiss.model.repository.UserRepository;
+import aiss.model.repository.Repository;
+import aiss.model.repository.TitanLifeRepository;
 import aiss.model.titan.User;
 
 public class Validacion {
@@ -27,7 +28,7 @@ public class Validacion {
 		String validaciones="";
         String sexRegexp= "^[mf]{1}$";
         
-        UserRepository repository=UserRepository.getInstance();
+        Repository repository=TitanLifeRepository.getInstance();
         
         List<String> usernames=new ArrayList<>();
         List<String> emails=new ArrayList<>();
@@ -79,7 +80,7 @@ public class Validacion {
 			,String weight,String hip,String waist,String sex) {
 		
 		String validaciones="";
-        UserRepository repository=UserRepository.getInstance();
+        Repository repository=TitanLifeRepository.getInstance();
         
         List<String> usernames=new ArrayList<>();
         List<String> emails=new ArrayList<>();

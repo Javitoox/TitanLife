@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import aiis.model.resource.BMIResource;
 import aiss.model.BMI.BMIResult;
-import aiss.model.repository.UserRepository;
+import aiss.model.repository.TitanLifeRepository;
 import aiss.model.titan.User;
 import aiss.utility.Validacion;
 
@@ -19,7 +19,7 @@ public class ObjetivosCorporalesController extends HttpServlet {
 	private static final Logger log = Logger.getLogger(ObjetivosCorporalesController.class.getName());
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
+		User u=TitanLifeRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
 		if(u==null) {
 			request.getRequestDispatcher("/intro.jsp").forward(request, response);
 		}else {

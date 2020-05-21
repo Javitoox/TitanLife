@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import aiis.model.resource.StravaResource;
-import aiss.model.repository.UserRepository;
+import aiss.model.repository.TitanLifeRepository;
 import aiss.model.strava.StravaActivity;
 import aiss.model.strava.StravaActivityC;
 import aiss.model.strava.StravaActivityG;
@@ -30,7 +30,7 @@ public class StravaUpdateActivityController extends HttpServlet {
 		// TODO Auto-generated method stub
 		String code = (String) request.getSession().getAttribute("code");
 
-		User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
+		User u=TitanLifeRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
 		if(u==null) {
 			request.getRequestDispatcher("/intro.jsp").forward(request, response);
 		}else {

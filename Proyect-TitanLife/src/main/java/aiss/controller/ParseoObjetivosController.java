@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import aiss.model.repository.UserRepository;
+import aiss.model.repository.Repository;
+import aiss.model.repository.TitanLifeRepository;
 import aiss.model.titan.Objetivo;
 import aiss.model.titan.User;
 
@@ -19,11 +20,11 @@ public class ParseoObjetivosController extends HttpServlet {
 	private static final Logger log = Logger.getLogger(ParseoObjetivosController.class.getName());
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
+		User u=TitanLifeRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
 		if(u==null) {
 			request.getRequestDispatcher("/intro.jsp").forward(request, response);
 		}else {
-			UserRepository r=UserRepository.getInstance();
+			Repository r=TitanLifeRepository.getInstance();
 			
 			// Control de la asignación de objetivos del usuario
 			String objetivos[]=request.getParameterValues("opDep");

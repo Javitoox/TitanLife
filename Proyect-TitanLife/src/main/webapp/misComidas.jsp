@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="aiss.model.repository.UserRepository"%>
+<%@ page import="aiss.model.repository.TitanLifeRepository"%>
 <%@ page import="aiss.model.titan.User"%>
 <%@ page import="aiss.utility.CalculatorFatSecret"%>
 <%@ page import="com.fatsecret.platform.model.Food"%>
@@ -21,7 +21,9 @@
 </head>
 <body>
      <%@ include file="includes/menu.jsp"%>
-     <%User u=UserRepository.getInstance().findByUsername((String)session.getAttribute("username")); %>
+     <%
+     	User u=TitanLifeRepository.getInstance().findByUsername((String)session.getAttribute("username"));
+     %>
      <h1 id="texto">Mis Comidas</h1>
     <img id="logo" src="images/logo.png" alt="Logo">
     <div id="calendario">

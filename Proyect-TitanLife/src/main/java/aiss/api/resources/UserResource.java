@@ -22,7 +22,8 @@ import org.jboss.resteasy.spi.NotFoundException;
 
 import aiis.model.resource.BMIResource;
 import aiss.model.BMI.BMIResult;
-import aiss.model.repository.UserRepository;
+import aiss.model.repository.Repository;
+import aiss.model.repository.TitanLifeRepository;
 import aiss.model.titan.DataBMI;
 import aiss.model.titan.Height;
 import aiss.model.titan.User;
@@ -36,10 +37,10 @@ public class UserResource {
 	
 	// Singleton
 	private static UserResource _instance=null;
-	UserRepository repository;
+	Repository repository;
 	
 	private UserResource() {
-		repository=UserRepository.getInstance();
+		repository=TitanLifeRepository.getInstance();
 
 	}
 	

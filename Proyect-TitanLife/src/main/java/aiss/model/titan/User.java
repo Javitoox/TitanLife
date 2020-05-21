@@ -2,6 +2,7 @@ package aiss.model.titan;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import aiss.model.strava.StravaActivityC;
@@ -26,6 +27,7 @@ public class User implements Serializable{
     private Integer baseCaloriasDiarias;
     private LocalDate instanteCalorias;
     private List<String> comidasDiarias;
+    private List<Integer> comidasAdd;
 
     //Cuando se registre un usuario, pondremos los campos se generarán más tarde a null hasta que sean seleccionados
     public User(Integer id,String username, String email, String password, String retype, String age,
@@ -45,6 +47,7 @@ public class User implements Serializable{
         this.baseCaloriasDiarias=null;
         this.instanteCalorias=null;
         this.comidasDiarias=null;
+        this.comidasAdd=new ArrayList<>();
         DataBMI datos=new DataBMI();
         datos.setAge(age);
         Height altura=new Height();
@@ -183,6 +186,14 @@ public class User implements Serializable{
 
 	public void setComidasDiarias(List<String> comidasDiarias) {
 		this.comidasDiarias = comidasDiarias;
+	}
+	
+	public List<Integer> getComidasAdd() {
+		return comidasAdd;
+	}
+
+	public void setComidasAdd(List<Integer> comidasAdd) {
+		this.comidasAdd = comidasAdd;
 	}
 
 	@Override

@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import aiss.model.repository.UserRepository;
+import aiss.model.repository.Repository;
+import aiss.model.repository.TitanLifeRepository;
 import aiss.model.titan.User;
 
 public class InicioSesionController extends HttpServlet{
@@ -25,7 +26,7 @@ public class InicioSesionController extends HttpServlet{
 	  }else {
 		  String username=request.getParameter("username");
 		  String password=request.getParameter("password");
-		  UserRepository repository=UserRepository.getInstance();
+		  Repository repository=TitanLifeRepository.getInstance();
 		  User u=repository.findByUsername(username);
 		  if(u!=null && u.getPassword().equals(password)) {
 			  HttpSession sesion=request.getSession(true);

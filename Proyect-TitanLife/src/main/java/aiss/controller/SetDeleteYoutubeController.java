@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import aiis.model.resource.YoutubeResource;
-import aiss.model.repository.UserRepository;
+import aiss.model.repository.TitanLifeRepository;
 import aiss.model.titan.User;
 import aiss.model.youtube.Item4;
 import aiss.model.youtube.VideosPlayListResult;
@@ -19,7 +19,7 @@ public class SetDeleteYoutubeController extends HttpServlet {
 	private static final Logger log = Logger.getLogger(SetDeleteYoutubeController.class.getName());
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
+		User u=TitanLifeRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
 		if(u==null) {
 			request.getRequestDispatcher("/intro.jsp").forward(request, response);
 		}else {

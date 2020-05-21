@@ -18,7 +18,7 @@ import com.fatsecret.platform.model.CompactFood;
 import com.fatsecret.platform.model.Food;
 
 import aiis.model.resource.FatSecretResource;
-import aiss.model.repository.UserRepository;
+import aiss.model.repository.TitanLifeRepository;
 import aiss.model.titan.User;
 import aiss.utility.CalculatorFatSecret;
 
@@ -27,20 +27,19 @@ public class FatSecretCaloriesController extends HttpServlet {
 	private static final Logger log = Logger.getLogger(FatSecretCaloriesController.class.getName());
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		final User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
+		final User u=TitanLifeRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
 		if(u==null) {
 			request.getRequestDispatcher("/intro.jsp").forward(request, response);
 		}else {
 			Integer caloriesUser=CalculatorFatSecret.userBaseCalories(u);
-			// Reseteamos por completo las calorías si todavía no se ha entrado a la vista de Mis Comidas, si hemos pasado de día o 
-			// si la lista de comidas está vacía después de haberla indicado, por algún error
+			// Reseteamos por completo las calorías si todavía no se ha entrado a la vista de Mis Comidas, si hemos pasado de día
 			if(u.getBaseCaloriasDiarias()==null || !u.getInstanteCalorias().equals(LocalDate.now())) {
 				u.setBaseCaloriasDiarias(caloriesUser);
 				u.setCaloriasDiarias(caloriesUser);
 				u.setInstanteCalorias(LocalDate.now());
 				u.setComidasDiarias(new ArrayList<String>());
 				log.info("Reset data calories for user: "+u.getUsername());
-			// Hacemos los calculos necesarios por si han cambiado las calorías del usuario por motivos ajenas a las comidas
+			// Hacemos los calculos necesarios por si han cambiado las calorías del usuario por motivos ajenos a las comidas
 			}else {
 				Integer restadas=u.getBaseCaloriasDiarias()-u.getCaloriasDiarias();
 				u.setBaseCaloriasDiarias(caloriesUser);

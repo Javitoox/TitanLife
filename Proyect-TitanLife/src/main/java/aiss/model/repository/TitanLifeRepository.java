@@ -14,19 +14,20 @@ import aiss.model.titan.Objetivo;
 import aiss.model.titan.TipoDesgasteCalorico;
 import aiss.model.titan.User;
 
-public class UserRepository {
-    private static final Logger log = Logger.getLogger(UserRepository.class.getName());
+public class TitanLifeRepository implements Repository {
+    private static final Logger log = Logger.getLogger(TitanLifeRepository.class.getName());
 
     private Map<Integer,User> users;
     private Map<Integer,Comida> comidas;
-    private static UserRepository instance=null;
-    private Integer index=0; //Identificador único
+    private static Repository instance=null;
+    private Integer index=0; //Identificador único para usuarios
+    private Integer index2=0; //Identiidicar único para comidas
     private List<Objetivo> objetivosAplicacion=new ArrayList<>();
 
-    public static UserRepository getInstance() {
+    public static Repository getInstance() {
 
         if (instance==null) {
-            instance = new UserRepository();
+            instance = new TitanLifeRepository();
             instance.init();
         }
 
@@ -209,9 +210,9 @@ public class UserRepository {
     
     // Foods operations
     public void addComida(Comida c) {
-    	comidas.put(index, c);
-    	c.setId(index);
-    	index++;
+    	comidas.put(index2, c);
+    	c.setId(index2);
+    	index2--; //Ponemos índices negativos para que no solapen nuestras comidas con las de FatSecret
     }
     
     public Collection<Comida> getComidas() {

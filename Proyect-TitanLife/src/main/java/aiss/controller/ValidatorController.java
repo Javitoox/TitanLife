@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import aiss.model.repository.UserRepository;
+import aiss.model.repository.Repository;
+import aiss.model.repository.TitanLifeRepository;
 import aiss.utility.Validacion;
 
 public class ValidatorController  extends HttpServlet{
@@ -34,7 +35,7 @@ public class ValidatorController  extends HttpServlet{
             String waist=request.getParameter("waist");
             String sex=request.getParameter("sex");
             
-            UserRepository repository=UserRepository.getInstance();
+            Repository repository=TitanLifeRepository.getInstance();
             String validaciones = Validacion.validacion(username, email, password, retype, age, height, weight, hip, waist, sex);
            
             if(validaciones=="") {

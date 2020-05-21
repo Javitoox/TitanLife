@@ -16,7 +16,7 @@ import com.fatsecret.platform.model.CompactFood;
 import com.fatsecret.platform.model.Food;
 
 import aiis.model.resource.FatSecretResource;
-import aiss.model.repository.UserRepository;
+import aiss.model.repository.TitanLifeRepository;
 import aiss.model.titan.User;
 
 /**
@@ -27,7 +27,7 @@ public class FoodsFatSecretController extends HttpServlet {
 	private static final Logger log = Logger.getLogger(FoodsFatSecretController.class.getName());
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User u=UserRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
+		User u=TitanLifeRepository.getInstance().findByUsername((String)request.getSession().getAttribute("username"));
 		if(u==null) {
 			request.getRequestDispatcher("/intro.jsp").forward(request, response);
 		}else {

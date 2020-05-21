@@ -25,11 +25,11 @@ import aiss.model.titan.Weight;
 
 public class UserRepositoryTest {
 
-private UserRepository repository;
+private Repository repository;
 	
 	@Before
 	public void setUp() throws Exception {
-		repository=UserRepository.getInstance();
+		repository=TitanLifeRepository.getInstance();
 		repository.addUser("almafe2510", "almafe2510@gmail.com", "aLMAFe2510", "aLMAFe2510", "20", "170.00", "59.00",
 				"80.00","80.00","m");
 		repository.addUser("maribelrb", "maribelrb@gmail.com", "mARIBElRB", "mARIBElRB",  "19", "160.00", "49.00",

@@ -3,7 +3,7 @@
     <%@ page import="aiss.model.strava.StravaActivityC"%>
     <%@ page import="aiss.model.titan.User"%>
     <%@ page import="java.util.List"%>
-    <%@ page import="aiss.model.repository.UserRepository"%>
+    <%@ page import="aiss.model.repository.TitanLifeRepository"%>
     <%@ page import="aiis.model.resource.StravaResource"%>
     
 <!DOCTYPE html>
@@ -28,13 +28,14 @@
 	
 <button id="btn-abrir-popup" class="btn-abrir-popup">Add Activity</button>
 
-    <%User u=UserRepository.getInstance().findByUsername((String)session.getAttribute("username"));
-	String accessToken = (String) request.getSession().getAttribute("Strava-token");
-	StravaResource yr=new StravaResource(accessToken);
+    <%
+    	User u=TitanLifeRepository.getInstance().findByUsername((String)session.getAttribute("username"));
+        	String accessToken = (String) request.getSession().getAttribute("Strava-token");
+        	StravaResource yr=new StravaResource(accessToken);
 
-    List<StravaActivityC> ls=u.getActividades();
-	if(ls.isEmpty()==true){
-		%>
+            List<StravaActivityC> ls=u.getActividades();
+        	if(ls.isEmpty()==true){
+    %>
 		
 		
 		<% 
