@@ -13,7 +13,7 @@ import aiss.model.youtube.YoutubeVideo;
 
 public class YoutubeResourceTest {
 	
-	static String access_token="ya29.a0AfH6SMCy9IXfEyz3lEMGU2XWGF1CEK8OhMqIZCcLz51WiTTG_cFWld2UYLO4n2CC2UJuqurVmKWdYMuJwuHgPs0ESm-fO53QSjRSd5rT6w18xlixDQERDQ86uz5stPTp4w0WXlBqrftOu8CZ9qr9_l2Rh-6wc1bzlOE";
+	static String access_token="ya29.a0AfH6SMDqYlcCkiU-WN9hWK6I2mIOJnA00iz-pFy0MJaQk-FHM0xA-DvrEmPSUkEffbGPdGAENwNJ5pRNDzbIL9wRPf74Wbr5T8ur2tWzU5O4zzc5RdfR54-4PaQUU3W6tA-1IcnGLqZalfARNpaRfF2szLWFa43SHEzc";
 	
 	static YoutubeVideo yv1 =new YoutubeVideo();
 	static PlayListsResult pl1 =new PlayListsResult();
@@ -23,17 +23,13 @@ public class YoutubeResourceTest {
 	@BeforeClass
 	public static void setup() throws Exception {
 		
-		// Test song 1
-	
-		 yr.insertVideoInPlaylist("PLZwDIUWnwYjmyZFdgAllp0n9DI4goJoRo", "2w9CraKrHA0");
+		yr.insertVideoInPlaylist("PLZwDIUWnwYjmyZFdgAllp0n9DI4goJoRo", "2w9CraKrHA0");
 		
-		// Test song 2
-//		sa2 = StravaResource.postStravaRoute("Test", "Run", StravaResource.fromISO8601UTC(), Integer.valueOf("3600"), "Test", Float.valueOf("22222"));
-	
 	}
 	
 	@Test
 	public void testdeleteVideoInPlaylist() {
+		
 		
 		boolean res  = yr.deleteVideoInPlaylist("2w9CraKrHA0");
 		
@@ -43,8 +39,8 @@ public class YoutubeResourceTest {
 
 		
 	}
-////	
-//	@Test
+	
+	@Test
 	public void testgetVideosOfPlayList() {
 		
 		vplr1  = yr.getVideosOfPlayList("PLZwDIUWnwYjmyZFdgAllp0n9DI4goJoRo");
@@ -54,8 +50,8 @@ public class YoutubeResourceTest {
 		System.out.println(vplr1.getEtag().toString());
 
 		}
-////	
-//	
+	
+	
 	@Test
 	public void testinsertVideoInPlaylist() {		
 

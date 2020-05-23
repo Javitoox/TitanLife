@@ -15,8 +15,8 @@ import aiss.utility.StravaUtility;
 
 public class StravaResourceTest {
 	
-	static String access_token="34cad93c9356c3e79c35ad527ddbc62ec2c10a25";
-	static String code="cf2ae598d8da26f2c31264a90613495f7dfb86ac";
+	static String access_token="b2c11dc789a6757c25f787322e581a286433f8ec";
+	static String code="cf71410da22d52b2dd4f348ba20728612c78b6d3";
 	static StravaActivity sa1,sa2,sa3 =new StravaActivity();
 	static StravaActivityG[] sg1;
 	static StravaActivityC sc1 = new StravaActivityC();

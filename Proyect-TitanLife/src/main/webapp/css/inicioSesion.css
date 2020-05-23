@@ -4,164 +4,129 @@
 	box-sizing: border-box;
 }
 
+[class*="col-"] {
+	float: left;
+	width: 100%;
+}
 body{
     background: url(https://i.pinimg.com/564x/4e/1a/fb/4e1afb936e2b9032fce5f88674e55730.jpg) ;
     background-size:100%;
 }
 
-#logo{
-    position: absolute;
-    right:0;
-    top:0;
-    width:40%;
-    height:20%;
+
+
+@media only screen and (min-width: 600px) {
+	.col-tab-1 {width: 10%;}
+	.col-tab-2 {width: 20%;}
+	.col-tab-3 {width: 30%;}
+	.col-tab-4 {width: 40%;}
+	.col-tab-5 {width: 50%;}
+	.col-tab-6 {width: 60%;}
+	.col-tab-7 {width: 70%;}
+	.col-tab-8 {width: 80%;}
+	.col-tab-9 {width: 90%;}
+	.col-tab-10{width:100%;}	
+	body{
+	background: url(/images/ipadsport.jpg) ;
+	background-size:100%;
+	}
 }
 
-#loginAccount{
-    position: absolute;
-    left: 30%;
-    top: 30%;
+
+@media only screen and (min-width: 768px) {
+	.col-1 {width: 10%;}
+	.col-2 {width: 20%;}
+	.col-3 {width: 30%;}
+	.col-4 {width: 40%;}
+	.col-5 {width: 50%;}
+	.col-6 {width: 60%;}
+	.col-7 {width: 70%;}
+	.col-8 {width: 80%;}
+	.col-9 {width: 90%;}
+	.col-10{width: 100%;}	
+	body{
+	background: url(/images/sports.jpg) ;
+	background-size:100%;
+	}
+}
+
+
+#logo{
+    position: relative;
+    right: 0;
+    top: 0;
+    height: 300px;
+    margin: 176px 0px 0px 34px;
+}
+
+.loginAccount{
+    position: relative;
+    left: 0%;
+    top: 0%;
     color:white;
     font-style:italic;
+        opacity: 100%;
+    
 }
 
 .campo{
-	position: absolute;
+    position: relative;
     width: 50%;
     padding: 12px 20px;
-    top:40%;
-    left:23%;
+    top: 40%;
+    left: 23%;
     border-radius: 34px 34px 34px 34px;
     -moz-border-radius: 34px 34px 34px 34px;
     -webkit-border-radius: 34px 34px 34px 34px;
     border: 2px solid #303030;
+    opacity: 100%;
+    margin-bottom: 4%;
+    
+}
+h4{
+	position: relative;
+    text-align: center;
+    width:97%;
 }
 #campo2{
     top:50%;
+        opacity: 100%;
+    
 }
 #logIn {
-	position: absolute;
+	position: relative;
     width: 50%;
     border-radius: 9px;
-    top:60%;
-    left:23%;
-    height:35px;
+    top: 60%;
+    left: 23%;
+    height: 35px;
     background: #f14d4d;
     color: white;
     font-family: 'Source Sans Pro', sans-serif;
     text-align: center;
+    margin-bottom: 3%;
+    
 }
 
-#forgetPass{
-    position: absolute;
-    left: 18%;
-    top: 80%;
-    font-size: 66%;
-    color:white;
-}
+
 
 #registrate{
-    position: absolute;
+    position: relative;
     left: 60%;
     top: 80%;
     font-size: 60%;
     color:white;
 }
 
-#cuadro{
-	position: absolute;
-    border: 1px solid rgb(0, 4, 7);
-    opacity: 38%;
+.cuadro{
+	position: relative;
+    border: 1px solid #303030;
+    opacity: 78%;
     width: 68%;
-    background-color: black;
+    background-color: #303030;
     border-radius: 2px;
     height: 60%;
-    top:30%;
-    left:15%;
-}
-
-#checkbox{
-	position: absolute;
-    width: 20%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    top:75%;
-    left:10%;
-    border: 2px solid #303030;
-}
-#recuerda{
-    position: absolute;
-    left: 27%;
-    top: 74%;
-    font-size: 103%;
-    color:white;
-}
-
-@media only screen and (min-width: 760px) {
-	body{
-	background: url(/images/ipadsport.jpg) ;
-	background-size:100%;
-	}
-	#forgetPass{
-    font-size: 100%;
-    }
-    #registrate{
-    font-size:100%;
-    }
-    #loginAccount{
-    left:39%;
-    }
-    #logo{
-    height:30%;
-    }
-}
-
-@media only screen and (min-width: 900px) {
-	body{
-	background: url(/images/sports.jpg) ;
-	background-size:100%;
-	}
-	#cuadro{
-	width: 28%;
-	top:20%;
-	}
-	.campo{
-	width: 20%;
-	left:18%;
-	top:30%;
-	}
-	#campo2{
-	top:40%;
-	}
-	#loginAccount{
-    left:23%;
-    top:22%;
-    }
-    #logIn{
-    width: 20%;
-    left:18%;
-    top:50%;
-    }
-    #checkbox{
-    top:60%;
-    }
-    #recuerda{
-    top:58%;
-    left:24%;
-    }
-    #forgetPass{
-    top:70%;
-    left:16%;
-    }
-    #registrate{
-    top:70%;
-    left:35%;
-    }
-    #logo{
-    right:12%;
-    width:40%;
-    height:80%;
-    top:7%;
-    }
-	
+    top: 30%;
+    left: 15%;
+    margin: 225px 0px 0px 0px;
 }

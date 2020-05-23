@@ -1,12 +1,57 @@
 @charset "UTF-8";
-*{
-	box-sizing:border-box;
-}
-body{
-	background: url(https://img3.goodfon.com/wallpaper/nbig/b/98/sunset-running-jogging-fitness.jpg) ;
-	background-size:100%;
+* {
+	box-sizing: border-box;
 }
 
+[class*="col-"] {
+	float: left;
+    width: 100%;
+    
+}
+body{
+	
+    background: url(https://i.pinimg.com/564x/96/cd/bf/96cdbfc7d0f74145bf18049ff02a3b9e.jpg) ;
+    background-size:100%;
+
+}
+@media only screen and (min-width: 768px) {
+	.col-tab-1 {width: 10%;}
+	.col-tab-2 {width: 20%;}
+	.col-tab-3 {width: 30%;}
+	.col-tab-4 {width: 40%;}
+	.col-tab-5 {width: 50%;}
+	.col-tab-6 {width: 60%;}
+	.col-tab-7 {width: 70%;}
+	.col-tab-8 {width: 80%;}
+	.col-tab-9 {width: 90%;}
+    .col-tab-10{width:100%;}
+    body{
+	background: url(https://img3.goodfon.com/wallpaper/nbig/b/98/sunset-running-jogging-fitness.jpg) ;
+	background-size:100%;
+   
+
+}
+  
+}
+
+@media only screen and (min-width: 1366px) {
+	.col-1 {width: 10%;}
+	.col-2 {width: 20%;}
+	.col-3 {width: 30%;}
+	.col-4 {width: 40%;}
+	.col-5 {width: 50%;}
+	.col-6 {width: 60%;}
+	.col-7 {width: 70%;}
+	.col-8 {width: 80%;}
+	.col-9 {width: 90%;}
+    .col-10{width: 100%;}
+    body{
+	background: url(https://img3.goodfon.com/wallpaper/nbig/b/98/sunset-running-jogging-fitness.jpg) ;
+	background-size:100%;
+
+}
+   
+}
 .contenedor {
 	width: 90%;
 	max-width: 1000px;
@@ -52,24 +97,24 @@ body{
 }
 
 .cont {
-	width: 31%;
-    height: 69.55%;
-    left: 66%;
-    top: 24%;
-    margin: 20px auto;
-    position: absolute;
+	width: 75%;
+    height: 287.55px;
+    right: 13%;
+    top: 6%;
+    margin: 7px 0px 0px 86px;
+    position: relative;
     background: white;
     opacity: 93%;
 }
 .cont form{
 	
-padding: 67px 0px 35px 54px;
+padding: 15px 0px 35px 54px;
 }
 
 .cont form input[type=text]{
 	width: 86%;
     margin-bottom: 10px;
-    height: 36px;
+    height: 25px;
     font-size: 13px;
     line-height: 52px;
     text-align: center;
@@ -78,8 +123,8 @@ padding: 67px 0px 35px 54px;
 }
 .cont form input[type=submit]{
     width: 86%;
-    margin-bottom: 10px;
-    height: 49px;
+    margin-bottom: 0px;
+    height: 51px;
     font-size: 16px;
     line-height: 52px;
     text-align: center;
@@ -96,7 +141,8 @@ padding: 67px 0px 35px 54px;
 .cont form select{
 	width: 86%;
     margin-bottom: 10px;
-    height: 36px;
+    margin-top: 0px;
+    height: 26px;
     font-size: 13px;
     line-height: 52px;
     text-align: center;
@@ -107,14 +153,13 @@ padding: 67px 0px 35px 54px;
 	background: orange;
 }
 .scroll {
- 	display: flex;
-    position: absolute;
-    width: 61%;
-    height: 40.75%;
+ 	display: block;
+    position: relative;
+    width: 89%;
+    height: 293px;
     overflow: scroll;
     top: 27%;
     left: 2%;
-    
 }
 #agenda {
     border-collapse: collapse;
@@ -290,11 +335,11 @@ padding: 67px 0px 35px 54px;
 }
 
 #logoSVS{
-    position:absolute;
- 	 width: 15%;
-    height: 30%;
-    right: 1%;
-    top:0;
+    position: relative;
+    width: 50%;
+    height: 38%;
+    left: 52%;
+    top: 0;
    }
 .scrollSVS {
   position:absolute;	
@@ -316,11 +361,12 @@ padding: 67px 0px 35px 54px;
 }
 .InitialTextSV{
    font-family: 'Titillium Web', sans-serif;
-   font-size:180%;
-   color:red;
+    font-size: 180%;
+    color: red;
+    margin: 0 0 0 0;
 }
 .ScrollText{
-	position: absolute;
+	position: relative;
     font-family: 'Titillium Web', sans-serif;
     font-size: 150%;
     color: red;
@@ -328,75 +374,37 @@ padding: 67px 0px 35px 54px;
     top: 16%;
 }
 .ScrollTextCreadas{
-	position: absolute;
+	position: relative;
     font-family: 'Titillium Web', sans-serif;
     font-size: 150%;
     color: red;
-    left: 66%;
+    left: 0%;
     top: 16%;
+    opacity: 0%;
 }
 
 .btn-abrir-popup{
 	font-family: 'Titillium Web', sans-serif;
-	position:absolute;	
-	left: 20%;
-    top:17.8%;
+    position: relative;
+    left: 10%;
+    top: 23.8%;
     text-decoration: none;
     padding: 5px;
     font-weight: 510;
     font-size: 18px;
     color: rgb(0,0,0);
-    background-color:  rgb(255,0,0);
+    background-color: rgb(255,0,0);
     border-radius: 80px;
     border: 2px solid rgb(255,0,0);
-	
+    margin: 0px 0 12px 0px;	
 }
-
-
- @media only screen and (max-width: 800px) {
- body{
-	background-size:300%;
-}
- #logoSVS{
- 	width: 15%;
-    height: 12%;
-  }
-  
-.scrollSVS {
-  width: 85%;
-
-}
-.scrollSVCreadas {
-  display:none;
-  
-} 
-.ScrollTextCreadas{
-  display:none;
-
-}
-.boton_personalizado{
-	left: 79%;
-
-}
-
-}
- @media only screen and (max-width: 400px) {
- body{
-	background-size:500%;
-  }
- 
- #logoSVS{
- 	width: 25%;
-    height: 16%;
-}
-.scrollSVS  {
-    width: 70%;	
-    height: 30%;
-    left:15.2%;
-    top: 28%;
-}
-
-.boton_personalizado_enlace{
-    top:60%;
-}
+.menu{
+	position: relative;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 150%;
+    color: red;
+    left: 2%;
+    top: 16%;
+    width: 354px;
+    margin: 37px 0px 0px 0px;
 }

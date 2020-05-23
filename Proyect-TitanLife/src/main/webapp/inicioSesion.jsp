@@ -12,24 +12,27 @@
 </head>
 <body>
 	
-	<img id="logo" src="images/logo.png" alt="Logo TitanLife">
 
 	<div>${requestScope.validaciones}</div>
 	
-    <div id="cuadro"></div>
-    <p id="loginAccount">Login to Your Account</p>
+	
+	
+    <div class="col-5 col-tab-5"><div class="cuadro">
+    <div class="loginAccount"><h4>Login to Your Account</h4></div>
     
         <form id="formulario" action="/inicioSesionController" method="GET">
             
             <input class="campo" type="text" name = "username" placeholder="Username" value="${requestScope.username}" required/><br/>
             <input class="campo" type="password" id="campo2"  name = "password" placeholder="Password" value="${requestScope.password}" required/><br/>
             <input id="logIn" type="submit"/><br/>
-            <input id = "checkbox" type="checkbox">
-            <p id="recuerda"><strong>Recordar contraseña</strong> </p>
-            <a id= "forgetPass" href="dondeSeaQueSeCambieLaContraseña">¿Has olvidado la contraseña?</a>
             <a id="registrate" href="/validatorController">Regístrate</a>
             
         </form>
+        </div>
+    </div>
+    	<div class="col-5 col-tab-5"><img id="logo" src="images/logo.png" alt="Logo TitanLife"></div>
+    
+    
     
 </body>
 </html>

@@ -20,14 +20,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<div class="col-8 col-tab-8">
 <%@ include file="includes/menu.jsp" %>
-<img id="logoSVS" src="images/logo.png" alt="Descripción de la imagen">
-<h1 class="InitialTextSV">Mi Strava</h1>
-<h1 class="ScrollText">Mis Actividades</h1>	
-<h1 class="ScrollTextCreadas">Editar Actividades</h1>
+<h1 class="InitialTextSV">Mi Strava</h1></div>
+<div class="col-2 col-tab-2"><img id="logoSVS" src="images/logo.png" alt="Descripción de la imagen">
+</div>
+<div class="col-4 col-tab-4">
+
+<h1 class="ScrollText">Mis Actividades</h1>	</div>
+<div class="col-3 col-tab-3">
+
+<h1 class="ScrollTextCreadas">Editar Actividades</h1></div>
+	<div class="col-3 col-tab-3">
 	
 <button id="btn-abrir-popup" class="btn-abrir-popup">Add Activity</button>
-
+</div>
     <%
     	User u=TitanLifeRepository.getInstance().findByUsername((String)session.getAttribute("username"));
         	String accessToken = (String) request.getSession().getAttribute("Strava-token");
@@ -44,6 +51,7 @@
 
 		%>
 	
+<div class="col-6 col-tab-6">
 
 <div class="scroll">
 <table id="agenda">
@@ -97,8 +105,9 @@
 		
 			
 </div>
+</div>
 
-		<div class="max"><div class="max2">El tipo de actividad más realizada es:</div><div class="max3">${requestScope.res}</div></div>
+		<div class="col-4 col-tab-4">
 		
 		
 		<div class="cont" id="cont">	
@@ -161,13 +170,23 @@
 				</form>
 			
 </div>
+
+										
+										
+										
+						</div>
+						<div class="col-10 col-tab-10">
+
+<h1 class="menu">Actividad mas realizada:  ${requestScope.res}</h1>
 		<% 
 										}
 										
-										%>
+										%></div>
+										
+										
 		
 	
-
+<div class="col-10 col-tab-10">
 <div class="contenedor">	
 
 <div class="overlay" id="overlay">
@@ -193,6 +212,7 @@
 				</form>
 			</div>
 		</div>
+</div>
 </div>
 <script src="js/popup.js"></script>
 
