@@ -12,11 +12,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@900&display=swap" rel="stylesheet">
 </head>
 <body>
-	<h1>TITAN LIFE</h1>
+	<center><div class="col-10 col-tab-10"><h1>TITAN LIFE</h1></div></center>
 	
 	<div>${requestScope.validaciones}</div>
-	
-	<div id="cuadro">
+	<center><div class="col-10 col-tab-10">
+	<div class="cuadro">
         <form id = "formulario" name="formulario" action="/validatorController" method="GET">
             <input id="Username" name="username"type="text" placeholder="Username" maxlength="40" value="${requestScope.username}" required/><br/>    
             <input id="Email" name="email" type="email" placeholder="E-mail" maxlength="40" value="${requestScope.email}" required/><br/> 
@@ -31,5 +31,7 @@
             <input id="boton" type="submit" value="SIGN ME UP" /><br/>
         </form>
     </div> 
+    </div>
+    </center>
 </body>
 </html>

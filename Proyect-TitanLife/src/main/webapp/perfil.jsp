@@ -17,22 +17,19 @@
 <body>
 <%@ include file="includes/menu.jsp" %>
 
-<img id="love" src="https://i.pinimg.com/originals/58/b8/01/58b801823c2ee845a6fa3e749dbe3d83.png" alt="Descripción de la imagen">
+<img class="col-2 col-tab-2 logo" src="images/logo.png" alt="Descripción de la imagen">
 
-<img id="logo" src="images/logo.png" alt="Descripción de la imagen">
-
+<h1 class="menu">Mi Perfil</h1>
 <h2 class="texto4" id="text">Datos de usuario</h2>
 
-<h1 class="texto4">Mi Perfil</h1>
 
 <div>${requestScope.validaciones}</div>		
 
-<div id="cuadro">
+<div class="col-10 col-tab-10">
 <%
 	User u=TitanLifeRepository.getInstance().findByUsername((String)session.getAttribute("username"));
 %>
-
-       <form id = "formulario" action="/perfilController" method="GET">
+       <form class = "formulario" action="/perfilController" method="GET">
        		<label id="t">Username:</label>
             <input id="Username" name="Username"type="text" placeholder="Username" maxlength="40" value="<%= u.getUsername() %>" required/><br/>
             <label id="t">Email:</label>
@@ -65,11 +62,12 @@
              <% if(u.getObjetivos()==null){
             	%>                
            
-            	<input id="opDep" name="opDep" type="text" placeholder="" maxlength="1000" value="" required/><br/>
             	
             	<% 
             }else{
             	%>
+            	<input id="opDep" name="opDep" type="text" placeholder="" maxlength="1000" value="" required/><br/>
+            	
             	<input id="opDep" name="opDep" type="text" placeholder="" maxlength="1000" value="<%= u.getObjetivos() %>" required/><br/>
             	
             	
@@ -80,7 +78,7 @@
             
            <input type="submit" value="Confirmar cambios" /><br />
        </form>
-       </div>
+</div>
 
 </body>
 </html>

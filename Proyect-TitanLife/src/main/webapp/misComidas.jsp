@@ -26,7 +26,7 @@
      %>
      <h1 id="texto">Mis Comidas</h1>
     <img id="logo" src="images/logo.png" alt="Logo">
-    <div id="calendario">
+    <div class="col-3 col-tab-5 calendario">
     <div class="month">
         <ul>
             <li class="prev">&#10094;</li>
@@ -61,7 +61,7 @@
     %>
     </div>
     
-    <div>
+    <div class="col-3 col-tab-5">
     <form action="/deleteFatSecretController" method="GET">
 			<select multiple id="comidasUsuario" name="comidasUsuario">
 			<%
@@ -75,13 +75,13 @@
 				}
 			%>
 			</select>
-			<input id="botonComidasUsuario" type="submit" value="Eliminar" />
+			<center><input id="botonComidasUsuario" type="submit" value="Eliminar" /></center>
 	</form>
     </div>
 
     <span id="foodCalories"></span>
     <span id="validaciones">${validaciones}</span>
-    <form id = "formulario" action="/foodsFatSecretController">
+    <form class = "col-2 col-tab-10 formulario" action="/foodsFatSecretController">
         <input id="search" type="text" name="search" placeholder="Búsqueda" maxlength="40" onclick="setSearch()">
         <input id="cantidad" type="text" name="cantidad" placeholder="Cantidad a añadir en gr" onkeyup="getCalories()">
         <input id="caloriasOcultas" name="caloriasOcultas" type="hidden">
@@ -96,7 +96,7 @@
 	        }
 	        %>
 		</select>
-        <input id="botonComidas" name="botonComidas" type="submit" value="Buscar/Añadir" disabled>
+        <center><input id="botonComidas" name="botonComidas" type="submit" value="Buscar/Añadir" disabled></center>
     </form>
 
 </body>

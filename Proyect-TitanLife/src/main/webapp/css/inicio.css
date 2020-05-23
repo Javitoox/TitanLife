@@ -6,22 +6,72 @@
 	box-sizing: border-box;
 }
 
+[class*="col-"] {
+	float: left;
+	width: 50%;
+}
 body{
     background: url(https://i.pinimg.com/564x/4e/1a/fb/4e1afb936e2b9032fce5f88674e55730.jpg) ;
     background-size:100%;
 }
 
-#logo{
-	position:absolute;
-	width:90%;
-	height:40%;
-	top:15%;
-	right:0.5%;
+
+
+@media only screen and (min-width: 600px) {
+	.col-tab-1 {width: 10%;}
+	.col-tab-2 {width: 20%;}
+	.col-tab-3 {width: 30%;}
+	.col-tab-4 {width: 40%;}
+	.col-tab-5 {width: 50%;}
+	.col-tab-6 {width: 60%;}
+	.col-tab-7 {width: 70%;}
+	.col-tab-8 {width: 80%;}
+	.col-tab-9 {width: 90%;}
+	.col-tab-10{width:100%;}	
+	body{
+	background: url(/images/ipadsport.jpg) ;
+	background-size:100%;
+	}
+}
+
+
+@media only screen and (min-width: 768px) {
+	.col-1 {width: 10%;}
+	.col-2 {width: 20%;}
+	.col-3 {width: 30%;}
+	.col-4 {width: 40%;}
+	.col-5 {width: 50%;}
+	.col-6 {width: 60%;}
+	.col-7 {width: 70%;}
+	.col-8 {width: 80%;}
+	.col-9 {width: 90%;}
+	.col-10{width: 100%;}	
+	body{
+	background: url(/images/sports.jpg) ;
+	background-size:100%;
+	}
+}
+.centrador{
+text-align:center;	
+	position:relative;
+	
+}
+
+.logo{
+	position: absolute;
+    height: auto;
+    margin: auto;
+    top: 0%;
+    bottom: 21%;
+    left: 0%;
+    right: 0%;
+
 }
 
 #enlace1{
 	 position:absolute;
 	 right:2%;
+	 
 }
 
 #enlace2{
@@ -40,73 +90,14 @@ body{
 }
 
 #sentence{
-	position:absolute;
-    top:60%;
-    left:5%;
-	font-family: 'Alegreya', serif;
-	font-size: 200%;
-	color:black;
-	-webkit-text-stroke: 1.75px #E33737;
+	position: absolute;
+    text-align: center;
+    top: 60%;
+    left: 0%;
+    right: 0%;
+    font-family: 'Alegreya', serif;
+    font-size: 200%;
+    color: black;
+    -webkit-text-stroke: 1.75px #E33737;
     text-shadow: 9px 9px 9px black;
-}
-
-@media only screen and (min-width: 760px) {
-	body{
-	background: url(/images/ipadsport.jpg) ;
-	background-size:100%;
-	}
-	
-	#sentence{
-	left:17%;
-	font-size: 250%;
-	}
-	
-	#logo{
-	width:60%;
-	height:40%;
-	top:15%;
-	right:20%;
-	}
-	
-}
-	
-@media only screen and (min-width: 900px) {
-	body{
-	background: url(/images/sports.jpg) ;
-	background-size:100%;
-	}
-	
-	#logo{
-	width:30%;
-	height:60%;
-	top:4%;
-	right:36%;
-	}
-	
-	#sentence{
-	left:30%;
-    }
-    
-    #enlace1{
-	 right:4%;
-     }
-     
-	#enlace2{
-	 right:8%;
-	}
-	
-	#enlace3{
-	 right:12%;
-	}
-
-	#enlace4{
-	 right:16%;
-	}
-	
-}
-
-@media only screen and (min-width: 1900px) {
-	#sentence{
-	left:35%;
-	}
 }

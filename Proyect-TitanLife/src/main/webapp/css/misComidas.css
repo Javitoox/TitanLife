@@ -1,19 +1,211 @@
 @charset "UTF-8";
 
-*{
-    box-sizing: border-box;
+* {
+	box-sizing: border-box;
 }
 
+[class*="col-"] {
+	float: left;
+    width: 100%;
+}
+#logo{
+    position:absolute;
+    width: 135px;
+    right:0;
+    top:0;
+}
+#comidasUsuario{
+    margin-top: 70px;
+    width: 375px;
+    height: 260px;
+}
+.calendario{
+    margin-top: 100px;
+}
+.formulario{
+    width: 440px;
+}
+.formulario > input[type="text"]{
+    margin-top: 70px;
+    text-align: center;
+}
+form input[type="submit"]{
+    margin-top: 10px;
+}
+#comidas{
+    margin-top: 20px;
+}
 body{
     background: url(/images/fondo_ipad.jpg);
     background-size: 110%;
 }
 #foodCalories{
-	position:absolute;
-	top:36%;
-	right:7%;
+	color: rgb(255, 255, 255);
+	left: 58%;
+    top: 69px;
+}
+
+@media only screen and (min-width: 768px) {
+	.col-tab-1 {width: 10%;}
+	.col-tab-2 {width: 20%;}
+    .col-tab-3 {width: 30%;}
+	.col-tab-4 {width: 40%;}
+	.col-tab-5 {width: 50%;}
+	.col-tab-6 {width: 60%;}
+	.col-tab-7 {width: 70%;}
+	.col-tab-8 {width: 80%;}
+	.col-tab-9 {width: 90%;}
+    .col-tab-10{width:100%;}	 
+    #logo{width: 140px;}   
+    #comidasUsuario{
+        margin-top: 100px;
+        width: 290px;
+        height: 344px;
+        margin-left: 20px;
+    }  
+    .formulario{
+        margin-top: 20px;
+        width: 113%;
+    }   
+    .formulario > input[type="text"]{
+        margin-top: 20px;
+        
+    }
+    form input[type="submit"]{
+        margin-top: 10px;
+    }
+    #comidas{
+        margin-top: 20px;     
+    }
+    #foodCalories{
+	left: 39%;
+    top: 41px;
+}
+}
+@media only screen and (min-width: 1366px) {
+	.col-1 {width: 10%;}
+	.col-2 {width: 20%;}
+    .col-3 {width: 30%;}
+    .col-3mitad {width: 33%;}
+	.col-4 {width: 40%;}
+	.col-5 {width: 50%;}
+	.col-6 {width: 60%;}
+	.col-7 {width: 70%;}
+	.col-8 {width: 80%;}
+	.col-9 {width: 90%;}
+    .col-10{width: 100%;}  
+    body{
+    background: url(/images/Fitness-alimentacion-1920.jpg);
+    background-size: 100%;
+    } 
+    #comidasUsuario{
+        margin-top: 80px;
+        width: 300px;
+        height: 357;
+    }
+    .calendario{
+        margin-top: 80px;
+        margin-left: 60px;
+    }
+    .formulario{
+        margin-top: 80px;
+        width: 450px;
+    }
+    #foodCalories{
 	color: rgb(0, 161, 8);
-	font-family:'Titillium Web', sans-serif;
+	left: 21%;
+    top: 80px;
+	}
+}
+.calendario{
+    position: relative;
+}
+
+.month {
+    padding: 20px 25px;
+    background: #1abc9c;
+    text-align: center;
+}
+.month ul {
+    margin: 0;
+    padding: 0;
+} 
+.month ul li {
+    position: relative;
+    color: white;
+    font-size: 100%;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+.month .prev {
+    float: left;
+} 
+.month .next {
+    float: right;
+}
+.weekdays {
+    margin: 0;
+    padding: 6px 0;
+    background-color: #ddd;  
+}
+.weekdays li {
+    display: inline-block;
+    width: 13%;
+    color: #666;
+    text-align: center;
+}
+.mealsKcal{
+    margin: 0;
+    padding:50px;
+    background-color: rgb(247, 243, 243);
+    font-size: small;
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+}
+#consumidas{
+    margin: 0;
+    background-color: rgb(247, 243, 243);
+    color: #c1c100;
+    text-align: center; 
+}
+#restantes1{
+    margin: 0;
+    background-color: rgb(247, 243, 243);
+    padding: 30px 0;
+    color: rgb(0, 161, 8);
+    text-align: center;   
+}
+#restantes2{
+    margin: 0;
+    background-color: rgb(247, 243, 243);
+    padding: 30px 0;
+    color: red;
+    text-align: center;   
+}
+#comidasUsuario{
+    position:relative;
+    background-color: #f8c080;
+    overflow: scroll;
+}
+#comidas{
+    position:relative;
+    background-color: #f8c080;
+    width: 80%;
+    height: 180px;
+    overflow: scroll;
+    font-size: 70%;
+}
+
+form input[type="submit"]{
+    background-color: rgb(238, 113, 68); 
+    color: #ffffff;
+    border: 1px solid rgb(238, 113, 68);
+    padding: 10px;
+    text-transform: uppercase;
+    position:relative;
+}
+form input[type="submit"]:hover{
+    background-color: rgb(255, 203, 155);
+    color: black;
 }
 #validaciones{
 	position:absolute;
@@ -22,252 +214,11 @@ body{
 	color: red;
 	font-family:'Titillium Web', sans-serif;
 }
-#search{
-	position:absolute;
-	top:40%;
-	right:24%;
-}
-#cantidad{
-	position:absolute;
-	top:40%;
-	right:7%;
-}
-#logo{
-    position:absolute;
-    width: 180px;
-    right:0;
-    top:0;
-}
-
 #texto{
 font-family:'Titillium Web', sans-serif;
 color:red;
 }
-
-#calendario{
-	position:absolute;
-	top:20%;
-	width:80%;
-	height:30%;
-	left:15%;
-}
-
-.month {
-    padding: 20px 25px;
-    width: 60%;
-    background: #1abc9c;
-    text-align: center;
-  }
-  
-.month ul {
-    margin: 0;
-    padding: 0;
-  }
-  
-.month ul li {
-    color: white;
-    font-size: 100%;
-    text-transform: uppercase;
-    letter-spacing: 7px;
-  }
-  
-.month .prev {
-    float: left;
-  }
-  
-.month .next {
-    float: right;
-  }
-  
-.weekdays {
-    margin: 0;
-    padding: 6px 0;
-    background-color: #ddd;
-    width: 60%;
-  }
-  
-.weekdays li {
-    display: inline-block;
-    width: 13%;
-    color: #666;
-    text-align: center;
-  }
-.mealsKcal{
-    margin: 0;
-    padding:5px 20px;
-    background-color: rgb(247, 243, 243);
-    font-size: small;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    width: 60%;
-  }
-#consumidas{
-    margin: 0;
-    background-color: rgb(247, 243, 243);
-    color: #c1c100;
-    text-align: center;
-    width: 60%;
-}
-#restantes1{
-    margin: 0;
-    background-color: rgb(247, 243, 243);
-    padding: 30px 0;
-    color: rgb(0, 161, 8);
-    text-align: center;
-    width: 60%;
-}
-#restantes2{
-    margin: 0;
-    background-color: rgb(247, 243, 243);
-    padding: 30px 0;
-    color: red;
-    text-align: center;
-    width: 60%;
-}
-
-.table, th, td{
-    background-color: rgb(228, 220, 220);
-    border: 1px solid black;
-    border-collapse: collapse;
-    width: 35%;
-    font-size: x-large;
-}
-
-.container-1{
-    position: absolute;
-    top:67%;
-    left:70%;
-}
-
-.container-1 input#search{
-    width: 55%;
-    height: 35%;
-    background: #afafaf;
-    border: none;
-    font-size: 140%;
-    color: #c2d1e0;
-    text-align:center;
-    border-radius: 5px;
-}
-
-.container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active{
-    outline:none;
-    background: #ffffff;
-}
-
-#titulo{
-	position: absolute;
-    font-size: 100%;
-    left:10%;
-    background-color: rgb(238, 113, 68);
-    color: white;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-align: center;
-    width: 50%;
-    top: 65.5%;
-    letter-spacing: 1px;
-}
-
-#comidas{
-    position:absolute;
-    background-color: #efa858;
-    width: 90%;
-    height: 100px;
-    overflow: scroll;
-    right: 2%;
-    left: 9%;
-    font-size: 70%;
-    top: 80%;
-}
-#comidasUsuario{
-    position:absolute;
-    background-color: #efa858;
-    width: 25%;
-    height: 280px;
-    overflow: scroll;
-    right: 2%;
-    left: 35%;
-    font-size: 70%;
-    top: 26%;
-}
-form input[type="submit"]{
-    background-color: rgb(238, 113, 68); 
-    color: #ffffff;
-    border: 1px solid rgb(238, 113, 68);
-    padding: 10px;
-    text-transform: uppercase;
-    font-size: 100%;
-    position:absolute;
-}
-
-form input[type="submit"]:hover{
-    background-color: rgb(255, 203, 155);
-    color: black;
-}
-
-@media only screen and (max-width: 759px) {
-	body{
-    background: url(https://i.pinimg.com/564x/b3/76/35/b37635cc644ba10310f8452c1488a3f8.jpg);
-    background-size: 130%;
-    }
-	#logo{
-    width: 140px;
-    }
-    .container-1{
-    top:77%;
-    }
-	#calendario{
-	top:20%;
-	}
-	#comidas{
-	top:82%;
-    height: 80px;
-	}
-    #titulo{
-    top: 75%;
-    font-size:70%;
-    width:40%;
-    }
-    form input[type="submit"]{
-    font-size: 60%;
-    top: 93%;
-    }
-}
-
-@media only screen and (min-width: 900px) {
-	body{
-    background: url(/images/Fitness-alimentacion-1920.jpg);
-    background-size: 100%;
-	}
-    #logo{
-    width: 205px;
-    }
-    #calendario{
-    top:25%;
-    left:5%;
-    width:40%;
-	}
-    #comidas{
-	width:30%;
-	left:63%;
-	top:44%;
-	}
-	.container-1{
-    top:37%;
-    left:81%;
-    }
-    #titulo{
-    top:32%;
-    font-size:85%;
-    width:15%;
-    left:60%;
-    }
-    form input[type="submit"]{
-    font-size: 70%;
-    top:60%;
-    left:73%;
-    }
-    #botonComidasUsuario{
-    left:45%;
-    top:72%;
-    }
+#foodCalories{
+	position:relative;
+	font-family:'Titillium Web', sans-serif;
 }
