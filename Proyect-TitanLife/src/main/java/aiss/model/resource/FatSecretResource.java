@@ -1,4 +1,4 @@
-package aiis.model.resource;
+package aiss.model.resource;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;

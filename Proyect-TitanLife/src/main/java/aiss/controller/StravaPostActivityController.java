@@ -13,9 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import aiis.model.resource.StravaResource;
 import aiss.model.repository.TitanLifeRepository;
+import aiss.model.resource.StravaResource;
 import aiss.model.strava.StravaActivity;
 import aiss.model.strava.StravaActivityC;
 import aiss.model.strava.StravaActivityG;

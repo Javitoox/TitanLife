@@ -6,9 +6,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import aiis.model.resource.BMIResource;
+
 import aiss.model.BMI.BMIResult;
 import aiss.model.repository.TitanLifeRepository;
+import aiss.model.resource.BMIResource;
 import aiss.model.titan.User;
 
 

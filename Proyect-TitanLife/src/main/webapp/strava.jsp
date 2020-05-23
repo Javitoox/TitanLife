@@ -4,7 +4,7 @@
     <%@ page import="aiss.model.titan.User"%>
     <%@ page import="java.util.List"%>
     <%@ page import="aiss.model.repository.TitanLifeRepository"%>
-    <%@ page import="aiis.model.resource.StravaResource"%>
+    <%@ page import="aiss.model.resource.StravaResource"%>
     
 <!DOCTYPE html>
 <html>

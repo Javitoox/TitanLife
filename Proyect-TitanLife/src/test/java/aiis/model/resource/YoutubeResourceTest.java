@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-
+import aiss.model.resource.YoutubeResource;
 import aiss.model.youtube.PlayListsResult;
 import aiss.model.youtube.VideosPlayListResult;
 import aiss.model.youtube.YoutubeVideo;
@@ -35,7 +35,7 @@ public class YoutubeResourceTest {
 	@Test
 	public void testdeleteVideoInPlaylist() {
 		
-		boolean res  = yr.deletVideoInPlaylist("2w9CraKrHA0");
+		boolean res  = yr.deleteVideoInPlaylist("2w9CraKrHA0");
 		
 		assertTrue("Error when deleting the video in the playlist", res);
 		

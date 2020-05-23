@@ -1,4 +1,4 @@
-package aiis.model.resource;
+package aiss.model.resource;
 
 
 
@@ -54,7 +54,7 @@ public class StravaResource {
 		    	 st= cr.post("", StravaToken.class);
 	    	}
 	    	catch(ResourceException re) {
-	    		log.warning("Error when search Youtube videos: " + cr.getResponse().getStatus());
+	    		log.warning("Error strava token: " + cr.getResponse().getStatus());
 		    	 st= cr.post("", StravaToken.class);
 
 	            log.warning(url);
@@ -77,7 +77,7 @@ public class StravaResource {
 	    		 String status = cr.getStatus().toString();
 	             if(status.contains("200"))
 	            	 yv= cr.get(StravaActivityG[].class);
-	    		log.warning("Error when search Youtube videos: " + cr.getResponse().getStatus());
+	    		log.warning("Error getting activities: " + cr.getResponse().getStatus());
 	            log.warning(url);
 	    	}
 	    	return yv;
@@ -97,7 +97,7 @@ public class StravaResource {
 	    		 String status = cr.getStatus().toString();
 	             if(status.contains("200"))
 	            	 yv= cr.get(StravaActivityC.class);
-	    		log.warning("Error when search Youtube videos: " + cr.getResponse().getStatus());
+	    		log.warning("Error getting activity: " + cr.getResponse().getStatus());
 	            log.warning(url);
 	    	}
 	    	return yv;
@@ -121,7 +121,7 @@ public class StravaResource {
 	             if(status.contains("200"))
 	 	    		cr.put("",StravaActivityC.class);
 	             	res=cr.put("",StravaActivityC.class);
-	    		log.warning("Error when search Youtube videos: " + cr.getResponse().getStatus());
+	    		log.warning("Error uploading activity: " + cr.getResponse().getStatus());
 	            log.warning(url);
 	    	}
 	    	return res;

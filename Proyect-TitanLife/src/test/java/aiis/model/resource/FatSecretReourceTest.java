@@ -7,6 +7,8 @@ import java.util.List;
 import org.junit.Test;
 import com.fatsecret.platform.model.Food;
 
+import aiss.model.resource.FatSecretResource;
+
 import com.fatsecret.platform.model.CompactFood;
 
 

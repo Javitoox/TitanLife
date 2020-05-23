@@ -12,9 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import aiis.model.resource.StravaResource;
 import aiss.model.repository.TitanLifeRepository;
+import aiss.model.resource.StravaResource;
 import aiss.model.strava.StravaActivity;
 import aiss.model.strava.StravaActivityC;
 import aiss.model.strava.StravaActivityG;
@@ -80,13 +79,9 @@ public class StravaUpdateActivityController extends HttpServlet {
 					
 					if(name.equals(u.getActividades().get(i).getName())) {
 						id=String.valueOf(u.getActividades().get(i).getId());
-					}else {
-						
 					}
-					
-					
 					i++;
-					
+				
 				}
 				
 			

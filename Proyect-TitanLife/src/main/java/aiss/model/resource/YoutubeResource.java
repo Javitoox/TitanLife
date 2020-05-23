@@ -1,4 +1,4 @@
-package aiis.model.resource;
+package aiss.model.resource;
 
 import java.util.logging.Logger;
 
@@ -133,7 +133,7 @@ public class YoutubeResource {
         }
     }
     
-    public Boolean deletVideoInPlaylist(String id) {
+    public Boolean deleteVideoInPlaylist(String id) {
     	String url=uriPlayListItems+"?id="+id;
     	ClientResource cr = new ClientResource(url);
     	ChallengeResponse chr = new ChallengeResponse(ChallengeScheme.HTTP_OAUTH_BEARER);

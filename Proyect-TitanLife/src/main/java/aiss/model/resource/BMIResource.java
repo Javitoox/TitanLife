@@ -1,4 +1,4 @@
-package aiis.model.resource;
+package aiss.model.resource;
 
 import java.util.logging.Logger;
 import org.restlet.resource.ClientResource;

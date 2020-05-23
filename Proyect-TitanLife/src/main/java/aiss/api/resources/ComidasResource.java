@@ -25,10 +25,10 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 import org.jboss.resteasy.spi.BadRequestException;
 import org.jboss.resteasy.spi.NotFoundException;
 
-import aiss.api.resource.comparators.ComparatorComidaCalorias;
-import aiss.api.resource.comparators.ComparatorComidaCaloriasReverse;
-import aiss.api.resource.comparators.ComparatorNombreComida;
-import aiss.api.resource.comparators.ComparatorNombreComidaReverse;
+import aiss.api.comparators.ComparatorComidaCalorias;
+import aiss.api.comparators.ComparatorComidaCaloriasReverse;
+import aiss.api.comparators.ComparatorNombreComida;
+import aiss.api.comparators.ComparatorNombreComidaReverse;
 import aiss.model.repository.Repository;
 import aiss.model.repository.TitanLifeRepository;
 import aiss.model.titan.Comida;

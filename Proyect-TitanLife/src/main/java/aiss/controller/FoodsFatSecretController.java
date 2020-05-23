@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.fatsecret.platform.model.CompactFood;
 import com.fatsecret.platform.model.Food;
 
-import aiis.model.resource.FatSecretResource;
 import aiss.model.repository.TitanLifeRepository;
+import aiss.model.resource.FatSecretResource;
 import aiss.model.titan.User;
 
 /**

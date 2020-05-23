@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import aiis.model.resource.YoutubeResource;
 import aiss.model.repository.TitanLifeRepository;
+import aiss.model.resource.YoutubeResource;
 import aiss.model.titan.User;
 import aiss.model.youtube.Item4;
 import aiss.model.youtube.VideosPlayListResult;
@@ -60,7 +60,7 @@ public class SetDeleteYoutubeController extends HttpServlet {
 						}
 					}
 					if(idVideoPlaylist!=null && !idVideoPlaylist.equals("")) {
-						Boolean result=yr.deletVideoInPlaylist(idVideoPlaylist);
+						Boolean result=yr.deleteVideoInPlaylist(idVideoPlaylist);
 						if(result) {
 							log.info("Video deleted in the playlist: "+videoPrincipal);
 							request.setAttribute("videoPrincipalEnPlaylist", "0");

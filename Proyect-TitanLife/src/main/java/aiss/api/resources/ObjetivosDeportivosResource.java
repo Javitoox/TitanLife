@@ -21,9 +21,9 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 import org.jboss.resteasy.spi.BadRequestException;
 import org.jboss.resteasy.spi.NotFoundException;
 
-import aiss.api.resource.comparators.ComparatorObjetivoReverse;
-import aiss.api.resource.comparators.ComparatorWear;
-import aiss.api.resource.comparators.ComparatorWearReverse;
+import aiss.api.comparators.ComparatorObjetivoReverse;
+import aiss.api.comparators.ComparatorWear;
+import aiss.api.comparators.ComparatorWearReverse;
 import aiss.model.repository.Repository;
 import aiss.model.repository.TitanLifeRepository;
 import aiss.model.titan.Objetivo;

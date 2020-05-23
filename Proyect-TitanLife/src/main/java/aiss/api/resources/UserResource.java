@@ -20,10 +20,10 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 import org.jboss.resteasy.spi.BadRequestException;
 import org.jboss.resteasy.spi.NotFoundException;
 
-import aiis.model.resource.BMIResource;
 import aiss.model.BMI.BMIResult;
 import aiss.model.repository.Repository;
 import aiss.model.repository.TitanLifeRepository;
+import aiss.model.resource.BMIResource;
 import aiss.model.titan.DataBMI;
 import aiss.model.titan.Height;
 import aiss.model.titan.User;

@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import aiis.model.resource.YoutubeResource;
 import aiss.model.repository.TitanLifeRepository;
+import aiss.model.resource.YoutubeResource;
 import aiss.model.titan.Objetivo;
 import aiss.model.titan.User;
 import aiss.model.youtube.Item2;
