@@ -91,7 +91,7 @@ public class YoutubeResourceTest {
 		
 		boolean res  = yr.createPlayListTitanLife();
 		
-		assertTrue("Error when creating the playlist", res);
+		assertTrue("Error when creating the playlist ", res);
 		
 		System.out.println(res);
 		
