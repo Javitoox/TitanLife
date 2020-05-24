@@ -101,3 +101,15 @@ text-align:center;
     -webkit-text-stroke: 1.75px #E33737;
     text-shadow: 9px 9px 9px black;
 }
+.swagger{   
+	font-family: 'Titillium Web', sans-serif;
+	top:89%;
+	left:2%;
+    position: absolute;
+    font-weight: bolder;
+    font-size: 20px;
+    background: white;
+    opacity: 87%;
+    padding: 5px 1px 3px 2px;
+    border-radius: 3px;
+}

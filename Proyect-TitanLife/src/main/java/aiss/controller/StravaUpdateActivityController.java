@@ -132,7 +132,7 @@ public class StravaUpdateActivityController extends HttpServlet {
 		}
 		}else {
         	log.info("Acces without code");
-    		response.sendRedirect("http://www.strava.com/oauth/authorize?client_id=46775&response_type=code&redirect_uri=http://localhost:8090/stravaActivityController&approval_prompt=force&scope=activity:read,activity:write");
+    		response.sendRedirect("http://www.strava.com/oauth/authorize?client_id=46775&response_type=code&redirect_uri=https://titanlife.appspot.com/stravaActivityController&approval_prompt=force&scope=activity:read,activity:write");
         	code=request.getParameter("code");
         	request.getSession().setAttribute("code", code);
 		}

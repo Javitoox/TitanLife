@@ -1,26 +1,26 @@
-package aiss.model.resource;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import aiss.model.strava.StravaActivity;
-import aiss.model.strava.StravaActivityC;
-import aiss.model.strava.StravaActivityG;
-import aiss.model.strava.StravaToken;
-import aiss.utility.StravaUtility;
-
-public class StravaResourceTest {
+//package aiss.model.resource;
+//
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertNotNull;
+//
+//import org.junit.BeforeClass;
+//import org.junit.Test;
+//
+//import aiss.model.strava.StravaActivity;
+//import aiss.model.strava.StravaActivityC;
+//import aiss.model.strava.StravaActivityG;
+//import aiss.model.strava.StravaToken;
+//import aiss.utility.StravaUtility;
+//
+//public class StravaResourceTest {
 	
-	static String access_token="be170c239c536ff48aaa026f5238eb27ef3cacbb";
-	static String code="4c92e736c78cc9a40f387fdde9e85b0bab3a1fab";
-	static StravaActivity sa1,sa2,sa3 =new StravaActivity();
-	static StravaActivityG[] sg1;
-	static StravaActivityC sc1 = new StravaActivityC();
-	static StravaToken st1;
-	static StravaResource sr = new StravaResource(access_token);
+//	static String access_token="be170c239c536ff48aaa026f5238eb27ef3cacbb";
+//	static String code="4c92e736c78cc9a40f387fdde9e85b0bab3a1fab";
+//	static StravaActivity sa1,sa2,sa3 =new StravaActivity();
+//	static StravaActivityG[] sg1;
+//	static StravaActivityC sc1 = new StravaActivityC();
+//	static StravaToken st1;
+//	static StravaResource sr = new StravaResource(access_token);
 
 
 	
@@ -119,4 +119,4 @@ public class StravaResourceTest {
 //	System.out.println("StravaActivityG "  +i+ " : " + sag[i].getName() + " (ID=" + sag[i].getId().toString() + ")");
 //			}
 //}
-}
+//}

@@ -49,9 +49,10 @@
 </a>
 </div>
 </div>
-<center><img align="middle" class="col-3 col-tab-10 logo" src="images/logo.png" alt="Descripción de la imagen"><center>
 
+<center><img align="middle" class="col-3 col-tab-10 logo" src="images/logo.png" alt="Descripción de la imagen"><center>
 <div class="col-10 col-tab-10"><h2 id="sentence"> No tengas un sueño,ten un plan.</h2></div>
+<div class="swagger"><a href="https://titanlife.appspot.com/docs/index.html" style="color:#FF0000;">SWAGGER URL</a></div>
 
 </body>
 </html>

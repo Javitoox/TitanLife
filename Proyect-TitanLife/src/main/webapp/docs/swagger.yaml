@@ -1,0 +1,628 @@
+swagger: '2.0'
+info:
+  description: This is a simple API
+  version: 1.0.0
+  title: TitanLife
+  # put the contact info for your development or API team
+  contact:
+    email: javikuka7@gmail.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+schemes: 
+- https
+host: titanlife.appspot.com
+basePath: /api/v1
+
+# tags are used for organizing operations
+tags:
+- name: users
+  description: Users
+- name: objetivosDeportivos
+  description: Objetivos Deportivos
+- name: comidas
+  description: Comidas
+
+paths:
+  /user/{username}/{password}:
+    get:
+      tags:
+      - users
+      summary: Get users
+      operationId: getDataUser
+      description: Get all users
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: username
+        description: Username of the user
+        required: true
+        type: string
+      - in: path
+        name: password
+        description: Password of the user
+        required: true
+        type: string
+      responses:
+        200:
+          description: User exists
+          schema:
+            $ref: '#/definitions/User'
+        404:
+          description: Not Found
+  /user/{id}:
+    put:
+      tags:
+      - users
+      summary: Update a user
+      operationId: updateUser
+      description: Update a user
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: user
+        description: User to update
+        schema:
+          $ref: '#/definitions/UserUpdate'
+      - in: path
+        name: id
+        description: User id
+        required: true
+        type: string
+      - in: query
+        name: imc
+        description: User imc
+        type: string
+        required: false
+      - in: query
+        name: pesoObj
+        description: User peso objetivo
+        type: string
+        required: false
+      - in: query
+        name: fechaObj
+        description: User fecha objetivo
+        type: string
+        required: false
+      responses:
+        204:
+          description: User updated
+        400:
+          description: Bad request
+        404:
+          description: User not found
+    delete:
+      tags:
+      - users
+      summary: Delete a user
+      operationId: deleteUser
+      description: Delete user
+      parameters:
+      - in: path
+        name: id
+        description: Id of the user
+        required: true
+        type: string
+      responses:
+        204:
+          description: User deleted
+        404:
+          description: User not found
+  /user:
+    post:
+      tags:
+      - users
+      summary: Create a user
+      operationId: createUser
+      description: Create a User
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: user
+        description: User to create
+        schema:
+          $ref: '#/definitions/User'
+      responses:
+        201:
+          description: List created
+          schema:
+            $ref: '#/definitions/User'
+        400:
+          description: Bad request
+  /comidas:
+    get:
+      tags:
+      - comidas
+      summary: Get comidas
+      operationId: getComidas
+      description: Get all foods
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: order
+        description: Order results
+        required: false
+        type: string
+        enum:
+        - alfabetic
+        - -alfabetic
+        - calories
+        - -calories
+      - in: query
+        name: q
+        description: Query to filter
+        type: string
+        required: false
+      responses:
+        200:
+          description: User exists
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Comida'
+        400:
+          description: Bad Request
+  /comidas/{idComida}:
+    get:
+      tags:
+      - comidas
+      summary: Get comida
+      operationId: getComida
+      description: Get one food
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: idComida
+        description: Id of the food
+        required: true
+        type: string
+      responses:
+        200:
+          description: User exists
+          schema:
+            $ref: '#/definitions/Comida'
+        404:
+          description: Not Found
+  /comidas/{username}/{password}:
+    post:
+      tags:
+      - comidas
+      summary: Create a food
+      operationId: createComida
+      description: Create a food
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: comida
+        description: Food to create
+        required: true
+        schema:
+          $ref: '#/definitions/Comida'
+      - in: path
+        name: username
+        description: Username of the user
+        required: true
+        type: string
+      - in: path
+        name: password
+        description: Password of the user
+        required: true
+        type: string
+      responses:
+        201:
+          description: Food created
+          schema:
+            $ref: '#/definitions/Comida'
+        400:
+          description: Bad request
+        404:
+          description: Not Found
+    put:
+      tags:
+      - comidas
+      summary: Update a food
+      operationId: updateComida
+      description: Update a food
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: comida
+        description: Food to create
+        required: true
+        schema:
+          $ref: '#/definitions/Comida'
+      - in: path
+        name: username
+        description: Username of the user
+        required: true
+        type: string
+      - in: path
+        name: password
+        description: Password of the user
+        required: true
+        type: string
+      responses:
+        204:
+          description: Food updated
+        400:
+          description: Bad request
+        404:
+          description: User or Food not found
+    get:
+      tags:
+      - comidas
+      summary: Get comidas
+      operationId: getComidasCreadas
+      description: Get comidas
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: username
+        description: Username of the user
+        required: true
+        type: string
+      - in: path
+        name: password
+        description: Password of the user
+        required: true
+        type: string
+      - in: query
+        name: order
+        description: Order results
+        required: false
+        type: string
+        enum:
+        - alfabetic
+        - -alfabetic
+        - calories
+        - -calories
+      - in: query
+        name: q
+        description: Query to filter
+        type: string
+        required: false
+      responses:
+        200:
+          description: User exists
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Comida'
+        400:
+          description: Bad Request
+        404:
+          description: Not Found
+  /comidas/{idComida}/{username}/{password}:
+    delete:
+      tags:
+      - comidas
+      summary: Delete a food
+      operationId: deleteComida
+      description: Delete food
+      parameters:
+      - in: path
+        name: idComida
+        description: Id of the food
+        required: true
+        type: string
+      - in: path
+        name: username
+        description: Username of the user
+        required: true
+        type: string
+      - in: path
+        name: password
+        description: Password of the user
+        required: true
+        type: string
+      responses:
+        204:
+          description: Food deleted
+        404:
+          description: User or food not found
+  /comidas/user/{id}/{idComida}/{type}:
+    put:
+      tags:
+      - comidas
+      summary: Set/Unset food
+      operationId: updateComidasUsuario
+      description: Set/Unset food
+      parameters:
+      - in: path
+        name: id
+        description: Id of the user
+        required: true
+        type: string
+      - in: path
+        name: idComida
+        description: Id of the food
+        required: true
+        type: string
+      - in: path
+        name: type
+        enum:
+        - delete
+        - add
+        description: Type of the put
+        required: true
+        type: string
+      - in: query
+        name: gramos
+        description: gr food
+        type: string
+        required: false
+      responses:
+        204:
+          description: Food updated
+        400:
+          description: Bad request
+        404:
+          description: User or Food not found
+  /objetivosDeportivos:
+    get:
+      tags:
+      - objetivosDeportivos
+      summary: Get objetivos deportivos
+      operationId: getAll
+      description: Get objetivos deportivos
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: order
+        description: Order results
+        required: false
+        type: string
+        enum:
+        - -alfabetic
+        - wear
+        - -wear
+      - in: query
+        name: q
+        description: Query to filter
+        type: string
+        required: false
+      responses:
+        200:
+          description: Objetives exists
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Objetivo'
+        400:
+          description: Bad Request
+  /objetivosDeportivos/{id}:
+    get:
+      tags:
+      - objetivosDeportivos
+      summary: Get objetivos
+      operationId: getObjetivesFor
+      description: Get objetivos
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: Id of the user
+        required: true
+        type: string
+      - in: query
+        name: order
+        description: Order results
+        required: false
+        type: string
+        enum:
+        - -alfabetic
+        - wear
+        - -wear
+      - in: query
+        name: q
+        description: Query to filter
+        type: string
+        required: false
+      responses:
+        200:
+          description: Objetives exists
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Objetivo'
+        400:
+          description: Bad Request
+    put:
+      tags:
+      - objetivosDeportivos
+      summary: Set/Unset objetive
+      operationId: updateObjetives
+      description: Set/Unset objetive
+      parameters:
+      - in: path
+        name: id
+        description: Id of the user
+        required: true
+        type: string
+      - in: body
+        name: objetivos
+        description: Objetives to update
+        required: true
+        schema:
+            type: array
+            items:
+              $ref: '#/definitions/Objetivo'
+      - in: query
+        name: type
+        description: Type of put
+        type: string
+        enum:
+        - unset
+        - set
+        required: false
+      responses:
+        201:
+          description: Food created
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Objetivo'
+        400:
+          description: Bad request
+        404:
+          description: Not found
+definitions:
+  User:
+    type: object
+    required:
+    - id
+    properties:
+      id:
+        type: string
+      username:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+      retype:
+        type: string
+      datosBMI:
+        type: array
+        items:
+          type: string
+      objetivos:
+        type: array
+        items:
+          $ref: '#/definitions/Objetivo'
+      imc:
+        type: string
+      pesoObj:
+        type: string
+      imcObj:
+        type: string
+      fechaObj:
+        type: string
+      actividades:
+        type: array
+        items:
+          type: string
+      caloriasDiarias:
+        type: string
+      baseCaloriasDiarias:
+        type: string
+      instanteCalorias:
+        type: string
+      comidasDiarias:
+        type: array
+        items:
+          type: string
+      comidasAdd:
+        type: array
+        items:
+          type: string
+    example:
+      username: Manolo
+      email: manolo@gmail.com
+      password: Manolo123
+      retype: Manolo123
+      age: "20"
+      height: "170.00"
+      weight: "70.00"
+      hip: "80.00"
+      waist: "70.00"
+      sex: m
+  UserUpdate:
+    type: object
+    required:
+    - id
+    properties:
+      id:
+        type: string
+      username:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+      datosBMI:
+        type: array
+        items:
+          type: string
+      objetivos:
+        type: array
+        items:
+          $ref: '#/definitions/Objetivo'
+      imc:
+        type: string
+      pesoObj:
+        type: string
+      imcObj:
+        type: string
+      fechaObj:
+        type: string
+      actividades:
+        type: array
+        items:
+          type: string
+      caloriasDiarias:
+        type: string
+      baseCaloriasDiarias:
+        type: string
+      instanteCalorias:
+        type: string
+      comidasDiarias:
+        type: array
+        items:
+          type: string
+      comidasAdd:
+        type: array
+        items:
+          type: string
+    example:
+      username: Manolo
+      email: manolo@gmail.com
+      password: Manolo123
+      age: "20"
+      height: "170.00"
+      weight: "70.00"
+      hip: "80.00"
+      waist: "70.00"
+      sex: m
+  Objetivo:
+    type: object
+    properties:
+      nombre:
+        type: string
+      tipo:
+        type: string
+    example:
+      nombre: Atletismo medio
+      tipo: ALTO
+  Comida:
+    type: object
+    properties:
+      id:
+        type: string
+      nombre:
+        type: string
+      caloriasPor100:
+        type: string
+      descripcion:
+        type: string
+    example:
+      id: "0"
+      nombre: Pollo empanado
+      caloriasPor100: "130"
+      descripcion: Carne altamente calórica

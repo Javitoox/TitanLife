@@ -19,12 +19,12 @@ body{
 }
 
 .validationError {
-    position: absolute;
+    position: relative;
     font-family: 'Titillium Web', sans-serif;
     font-size: 150%;
     color: red;
-    top: 150%;
-    left: 10%;
+    top: 159%;
+    left: 3%;
     width: 354px;
     margin: 37px 0px 0px 0px;
 }
@@ -51,13 +51,13 @@ body{
 	}
 
 
-    .validationError {
-    position: absolute;
+	.validationError {
+    position: relative;
     font-family: 'Titillium Web', sans-serif;
     font-size: 150%;
     color: red;
-    top: 150%;
-    left: 10%;
+    top: 48%;
+    left: 2.5%;
     width: 354px;
     margin: 37px 0px 0px 0px;
 }
