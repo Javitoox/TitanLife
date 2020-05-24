@@ -27,7 +27,7 @@ body{
 	.col-tab-5 {width: 50%;}
 	.col-tab-6 {width: 60%;}
 	.col-tab-7 {width: 70%;}
-	.col-tab-8 {width: 80%;}
+	.col-tab-8 {width: 85%;}
 	.col-tab-9 {width: 90%;}
     .col-tab-10{width:100%;}
     body{
@@ -38,17 +38,20 @@ body{
         width: 18%;
         left: 82%; 
     }
+    .validaciones{
+    color: darkred; 
+    }
 }
 
 @media only screen and (min-width: 1366px) {
 	.col-1 {width: 10%;}
-	.col-2 {width: 20%;}
+	.col-2 {width: 7.5%;}
 	.col-3 {width: 30%;}
 	.col-4 {width: 40%;}
 	.col-5 {width: 50%;}
 	.col-6 {width: 60%;}
 	.col-7 {width: 70%;}
-	.col-8 {width: 80%;}
+	.col-8 {width: 85%;}
 	.col-9 {width: 90%;}
     .col-10{width: 100%;}
     body{
@@ -108,3 +111,15 @@ input[type=submit] {
 .logo{
     position:absolute; 
 }
+.validaciones{   
+	font-family: 'Titillium Web', sans-serif;
+    top: 17px;
+    text-align: center;
+    position: relative;
+    font-weight: bolder;
+    font-size: 12px;
+    opacity: 70%;
+    background: #DDDCDB;
+    padding: 7px 4px 4px 2px;
+    border-radius: 3px;
+    }

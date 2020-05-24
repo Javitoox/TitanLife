@@ -1,6 +1,7 @@
 package aiss.controller;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -36,9 +37,9 @@ public class PerfilController extends HttpServlet {
 	            String waist=request.getParameter("Waist");
 	            String sex=request.getParameter("Sex");
 	            
-	            String validaciones = Validacion.validacion2(user,username, email, password, age, height, weight, hip, waist, sex);
+	            Map<String, String> validaciones = Validacion.validacion2NA(user,username, email, password, age, height, weight, hip, waist, sex);
 	            
-	            if(!validaciones.equals("")) {            	
+	            if(!validaciones.isEmpty()) {            	
 	            	log.info("La actualizacion del usario " + username + " no se pudo realizar.");
 	            	request.setAttribute("validaciones", validaciones);
 	            }else {            	
@@ -71,4 +72,4 @@ public class PerfilController extends HttpServlet {
 	        doGet(request, response);
 	       
 	    }
-	}	
+	}

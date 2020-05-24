@@ -26,7 +26,6 @@
 <div class="col-2 col-tab-2"><img id="logoSVS" src="images/logo.png" alt="Descripción de la imagen">
 </div>
 <div class="col-4 col-tab-4">
-
 <h1 class="ScrollText">Mis Actividades</h1>	</div>
 <div class="col-3 col-tab-3">
 
@@ -176,15 +175,17 @@
 										
 						</div>
 						<div class="col-10 col-tab-10">
-
+						
 <h1 class="menu">Actividad mas realizada:  ${requestScope.res}</h1>
+<h1 class="col-3 validationError">${requestScope.validaciones} </h1>		
+
 		<% 
 										}
 										
 										%></div>
 										
 										
-		
+										
 	
 <div class="col-10 col-tab-10">
 <div class="contenedor">	
@@ -215,6 +216,7 @@
 </div>
 </div>
 <script src="js/popup.js"></script>
+
 
 
 

@@ -9,10 +9,24 @@
     
 }
 body{
-	
-    background: url(https://i.pinimg.com/564x/96/cd/bf/96cdbfc7d0f74145bf18049ff02a3b9e.jpg) ;
-    background-size:100%;
+	 
+     background: url(https://besthqwallpapers.com/Uploads/29-2-2020/123049/4k-white-brickwall-close-up-white-bricks-bricks-textures.jpg) no-repeat center center fixed;
+     background-size: cover;
+     -moz-background-size: cover;
+     -webkit-background-size: cover;
+     -o-background-size: cover;
 
+}
+
+.validationError {
+    position: absolute;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 150%;
+    color: red;
+    top: 150%;
+    left: 10%;
+    width: 354px;
+    margin: 37px 0px 0px 0px;
 }
 @media only screen and (min-width: 768px) {
 	.col-tab-1 {width: 10%;}
@@ -25,16 +39,33 @@ body{
 	.col-tab-8 {width: 80%;}
 	.col-tab-9 {width: 90%;}
     .col-tab-10{width:100%;}
-    body{
-	background: url(https://img3.goodfon.com/wallpaper/nbig/b/98/sunset-running-jogging-fitness.jpg) ;
-	background-size:100%;
-   
 
+	body{
+	 
+     background: url(https://besthqwallpapers.com/Uploads/29-2-2020/123049/4k-white-brickwall-close-up-white-bricks-bricks-textures.jpg) no-repeat center center fixed;
+     background-size: cover;
+     -moz-background-size: cover;
+     -webkit-background-size: cover;
+     -o-background-size: cover;
+
+	}
+
+
+    .validationError {
+    position: absolute;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 150%;
+    color: red;
+    top: 150%;
+    left: 10%;
+    width: 354px;
+    margin: 37px 0px 0px 0px;
 }
+   
   
 }
 
-@media only screen and (min-width: 1366px) {
+@media only screen and (min-width: 1370px) {
 	.col-1 {width: 10%;}
 	.col-2 {width: 20%;}
 	.col-3 {width: 30%;}
@@ -45,10 +76,27 @@ body{
 	.col-8 {width: 80%;}
 	.col-9 {width: 90%;}
     .col-10{width: 100%;}
-    body{
-	background: url(https://img3.goodfon.com/wallpaper/nbig/b/98/sunset-running-jogging-fitness.jpg) ;
-	background-size:100%;
 
+
+	body{
+	 
+     background: url(https://besthqwallpapers.com/Uploads/29-2-2020/123049/4k-white-brickwall-close-up-white-bricks-bricks-textures.jpg) no-repeat center center fixed;
+     background-size: cover;
+     -moz-background-size: cover;
+     -webkit-background-size: cover;
+     -o-background-size: cover;
+
+	}
+
+ .validationError{
+    position: absolute;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 150%;
+    color: red;
+    top: 1%;
+    left: 40%;
+    width: 354px;
+    margin: 37px 0px 0px 0px;
 }
    
 }

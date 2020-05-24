@@ -1,6 +1,7 @@
 package aiss.controller;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -36,9 +37,9 @@ public class ValidatorController  extends HttpServlet{
             String sex=request.getParameter("sex");
             
             Repository repository=TitanLifeRepository.getInstance();
-            String validaciones = Validacion.validacion(username, email, password, retype, age, height, weight, hip, waist, sex);
+            Map<String, String> validaciones = Validacion.validacionNA(username, email, password, retype, age, height, weight, hip, waist, sex);
            
-            if(validaciones=="") {
+            if(validaciones.isEmpty()) {
             	log.info("Validación de usuario "+username+" correcta");
             	repository.addUser(username,email,password,retype,age,height,weight,hip,waist,sex);            
             	HttpSession sesion=request.getSession(true);

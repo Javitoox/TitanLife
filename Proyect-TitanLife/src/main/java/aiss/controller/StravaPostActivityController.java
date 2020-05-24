@@ -59,19 +59,22 @@ public class StravaPostActivityController extends HttpServlet {
 	        String distanceRegexp = "^[0-9]{1,40}$";
 	    
 	        if(!Pattern.matches(nameRegexp, name.replace(" ", ""))) {
-	        	validaciones+="Formato incorrecto del nombre";        	
+	        	validaciones+="Formato incorrecto del nombre ";        	
 	        }
 	        if(!Pattern.matches(elapsedRegexp, elapsed)) {
-	        	validaciones+="Formato incorrecto de el tiempo transcurrido";
+	        	validaciones+="Formato incorrecto de el tiempo transcurrido ";
 	        }
 	        if(!Pattern.matches(descriptionRegexp, description.replace(" ", ""))) {
-	        	validaciones+="Formato incorrecto de la descripción";
+	        	validaciones+="Formato incorrecto de la descripción ";
 	        }
 	        if(!Pattern.matches(distanceRegexp, distance)) {
-	        	validaciones+="Formato incorrecto de la distancia";
+	        	validaciones+="Formato incorrecto de la distancia ";
 	        }
+			log.info("New validation: "+validaciones);
+
 			if(validaciones!="") {
 				request.setAttribute("validaciones", validaciones);
+				log.info("Exist validation: "+validaciones);
 				request.getRequestDispatcher("/strava.jsp").forward(request, response);
 		
 			}else {
@@ -128,7 +131,7 @@ public class StravaPostActivityController extends HttpServlet {
 			}
 			}else {
 	        	log.info("Acces without code");
-	    		response.sendRedirect("http://www.strava.com/oauth/authorize?client_id=46775&response_type=code&redirect_uri=https://titanlife.appspot.com/stravaActivityController&approval_prompt=force&scope=activity:read,activity:write");
+	    		response.sendRedirect("http://www.strava.com/oauth/authorize?client_id=46775&response_type=code&redirect_uri=http://localhost:8090/stravaActivityController&approval_prompt=force&scope=activity:read,activity:write");
 	        	code=request.getParameter("code");
 	        	request.getSession().setAttribute("code", code);
 			}
