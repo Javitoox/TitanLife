@@ -12,7 +12,7 @@ import aiss.model.resource.FatSecretResource;
 import com.fatsecret.platform.model.CompactFood;
 
 
-public class FatSecretReourceTest {
+public class FatSecretResourceTest {
 	static Food F1;
 	static List<CompactFood> LCF1;
 	static FatSecretResource fsr = new FatSecretResource();

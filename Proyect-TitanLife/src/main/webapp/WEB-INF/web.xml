@@ -191,7 +191,7 @@
     <servlet-name>DeleteFatSecretController</servlet-name>
     <url-pattern>/deleteFatSecretController</url-pattern>
   </servlet-mapping>
- 
+  
 	<context-param>
 		<param-name>resteasy.servlet.mapping.prefix</param-name>
 		<param-value>/api/v1</param-value>
@@ -204,7 +204,7 @@
 			<param-name>javax.ws.rs.Application</param-name>
 			<param-value>aiss.api.TitanLifeApplication</param-value>
 		</init-param>
-	</servlet>		
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>Resteasy</servlet-name>
