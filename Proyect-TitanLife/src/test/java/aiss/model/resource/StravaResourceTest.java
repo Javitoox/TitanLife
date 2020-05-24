@@ -6,7 +6,6 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import aiss.model.resource.StravaResource;
 import aiss.model.strava.StravaActivity;
 import aiss.model.strava.StravaActivityC;
 import aiss.model.strava.StravaActivityG;
@@ -15,8 +14,8 @@ import aiss.utility.StravaUtility;
 
 public class StravaResourceTest {
 	
-	static String access_token="b2c11dc789a6757c25f787322e581a286433f8ec";
-	static String code="cf71410da22d52b2dd4f348ba20728612c78b6d3";
+	static String access_token="be170c239c536ff48aaa026f5238eb27ef3cacbb";
+	static String code="4c92e736c78cc9a40f387fdde9e85b0bab3a1fab";
 	static StravaActivity sa1,sa2,sa3 =new StravaActivity();
 	static StravaActivityG[] sg1;
 	static StravaActivityC sc1 = new StravaActivityC();
@@ -24,12 +23,13 @@ public class StravaResourceTest {
 	static StravaResource sr = new StravaResource(access_token);
 
 
-//	
+	
 //	@BeforeClass
 //	public static void setup() throws Exception {
 //		
 ////		// Test activity 1
-//		sa1 = sr.postStravaRoute("Test1", "Run", StravaUtility.fromISO8601UTC(), Integer.valueOf("3600"), "Test", Float.valueOf("22222"),access_token);
+//		sa1 = sr.postStravaRoute("Test1", "Run", StravaUtility.fromISO8601UTC(), Integer.valueOf("3600"), "Test", 
+//				Float.valueOf("22222"),access_token);
 //		System.out.println(sa1.getName().toString());
 //
 //	}
@@ -42,7 +42,8 @@ public class StravaResourceTest {
 //		String description = "Test";
 //		String distance="22222";
 //		
-//		sa3 = sr.postStravaRoute(name, type, StravaUtility.fromISO8601UTC(), Integer.valueOf(elapsed_time), description, Float.valueOf(distance),access_token);
+//		sa3 = sr.postStravaRoute(name, type, StravaUtility.fromISO8601UTC(), Integer.valueOf(elapsed_time), description, 
+//				Float.valueOf(distance),access_token);
 //		
 //		assertNotNull("The activity has been post correctly", sa3);
 //		System.out.println(sa3.getName());

@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import aiss.model.strava.StravaActivityC;
+import aiss.model.titan.Comida;
 import aiss.model.titan.DataBMI;
 import aiss.model.titan.Height;
 import aiss.model.titan.Objetivo;
@@ -69,6 +71,7 @@ private Repository repository;
 		String oldHeight=dataBMI.getHeight().getValue().toString();
 		String oldWeight=u.getDatosBMI().getWeight().getValue().toString();
 		
+		List<Integer> rs= new ArrayList<>();
 		List<StravaActivityC> la= new ArrayList<>();
 		u.setActividades(la);
 		List<StravaActivityC> oldActividades= u.getActividades();
@@ -89,6 +92,7 @@ private Repository repository;
 		u.setInstanteCalorias(LocalDate.now());
 		List<String> comidasDiarias= new ArrayList<>();
 		u.setComidasDiarias(comidasDiarias);
+		u.setComidasAdd(rs);
 		
 		String oldPesoObj=u.getPesoObj();
 		String oldFechaObj = u.getFechaObj();
@@ -101,9 +105,12 @@ private Repository repository;
 		Integer oldCaloriasDiarias = u.getCaloriasDiarias();
 		List<String> oldComidasDiarias = u.getComidasDiarias();
 		LocalDate oldInstanteCalorias = u.getInstanteCalorias();
+		List<Integer> oldComidasAdd = u.getComidasAdd();
 		
 		
 		
+		List<Integer> rss= new ArrayList<>();
+		rss.add(1);
 		List<StravaActivityC> las= new ArrayList<>();
 		StravaActivityC s = new StravaActivityC();
 		las.add(s);
@@ -158,6 +165,7 @@ private Repository repository;
 		comidasDiariass.add("Huevos fritos");
 		u.setComidasDiarias(comidasDiariass);
 		u.setInstanteCalorias(LocalDate.now().plusDays(1));
+		u.setComidasAdd(rss);
 		
 		
 		repository.updateUser(u);			
@@ -181,10 +189,12 @@ private Repository repository;
 		assertFalse("The objectiveWeight has not been updated correctly",oldPesoObj.equals(u.getPesoObj()));
 		assertFalse("The list of objectives has not been updated correctly",oldObjetivos.equals(u.getObjetivos()));
 		
-		assertFalse("The username has not been updated correctly",oldBaseCaloriasDiarias.equals(u.getBaseCaloriasDiarias()));
-		assertFalse("The email has not been updated correctly",oldCaloriasDiarias.equals(u.getCaloriasDiarias()));
-		assertFalse("The password has not been updated correctly",oldComidasDiarias.size()==(u.getComidasDiarias().size()));
-		assertFalse("The retype has not been updated correctly",oldInstanteCalorias.equals(u.getInstanteCalorias()));
+		assertFalse("The BaseCaloriasDiarias has not been updated correctly",oldBaseCaloriasDiarias.equals(u.getBaseCaloriasDiarias()));
+		assertFalse("CaloriasDiarias has not been updated correctly",oldCaloriasDiarias.equals(u.getCaloriasDiarias()));
+		assertFalse("Calorias Diarias has not been updated correctly",oldComidasDiarias.size()==(u.getComidasDiarias().size()));
+		assertFalse("InstanteCalorias has not been updated correctly",oldInstanteCalorias.equals(u.getInstanteCalorias()));
+		assertFalse("ComidasAdd has not been updated correctly",oldComidasAdd.size()==(u.getComidasAdd().size()));
+
 	}
 
 	@Test
@@ -228,6 +238,64 @@ private Repository repository;
 	public void encontrarObjetivo() {
 		assertTrue("Objective not found",repository.findByObjetiveName("Atletismo principiante")!=null);
 	}
+	
+	@Test
+	public void testGetComidas() {
+		Collection<Comida> comidas=repository.getComidas();
+		assertNotNull("The list of meals is null",comidas);
+		assertTrue("The list of meals is empty ",comidas.size()>0);
+	}
+	
+	@Test
+	public void testGetComida() {
+		Comida u = repository.getComida(0);
+		assertNotNull("The meal is null",u);
+	}
+	@Test
+	public void testGetComidaNull() {
+		Comida u = repository.getComida(100);
+		assertNull("The meal is not null",u);
+    }
+	@Test
+	public void testAddComida() {
+        int oldcomidas = repository.getComidas().size();
+
+		Comida c1=new Comida();
+        c1.setNombre("Torrijas");
+        c1.setCaloriasPor100("340");
+        c1.setDescripcion("Tradicional plato cargado de azúcar");
+        repository.addComida(c1);
+        int comidas = repository.getComidas().size();
+		assertTrue("The contact has not been added correctly", oldcomidas+1==comidas);
+	}
+	@Test
+	public void testUpdateComida() {
+		Comida c = repository.getComida(-2);
+		String oldNombre = c.getNombre();
+		String oldCalorias = c.getCaloriasPor100();
+		String oldDescripciones = c.getDescripcion();
+
+        c.setNombre("Tortilla papas");
+        c.setCaloriasPor100("341");
+        c.setDescripcion("Tradicional plato andaluz");
+        repository.updateComida(c);
+        assertFalse("The noame has not been updated correctly",oldNombre.equals(c.getNombre()));
+		assertFalse("The calories has not been updated correctly",oldCalorias.equals(c.getCaloriasPor100()));
+		assertFalse("The description has not been updated correctly",oldDescripciones.equals(c.getDescripcion()));
+		}
+	@Test
+	public void testDeleteComida() {
+		int oldSize = repository.getComidas().size();
+		repository.deleteComida(-4);
+		int newSize = repository.getComidas().size();
+		Comida c = repository.getComida(-4);
+
+		
+		assertNull("The meal has not been deleted", c);
+		assertTrue("The meal has not been delected correctly", newSize==oldSize-1);
+
+		
+	}
+	
+	
 }
-
-

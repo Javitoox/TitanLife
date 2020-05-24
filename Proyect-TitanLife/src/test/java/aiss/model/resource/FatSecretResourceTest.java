@@ -5,16 +5,14 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 
 import org.junit.Test;
-import com.fatsecret.platform.model.Food;
-
-import aiss.model.resource.FatSecretResource;
 
 import com.fatsecret.platform.model.CompactFood;
+import com.fatsecret.platform.model.Food;
 
 
-public class FatSecretReourceTest {
-	static Food F1;
-	static List<CompactFood> LCF1;
+public class FatSecretResourceTest {
+	static Food F1,F2;
+	static List<CompactFood> LCF1,LFC2;
 	static FatSecretResource fsr = new FatSecretResource();
 
 	
@@ -32,6 +30,9 @@ public class FatSecretReourceTest {
 				}
 	}
 	
+	
+	
+	
 	@SuppressWarnings("static-access")
 	@Test
 	public void testgetFood() {
@@ -42,4 +43,6 @@ public class FatSecretReourceTest {
 		
 		System.out.println("Food" + " : "  +F1.getName().toString()+ " (ID=" + F1.getId().toString()+")");
 	}
+	
+	
 }

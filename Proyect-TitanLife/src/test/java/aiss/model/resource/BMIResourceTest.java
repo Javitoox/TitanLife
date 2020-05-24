@@ -2,10 +2,10 @@ package aiss.model.resource;
 
 import static org.junit.Assert.assertNotNull;
 
-import org.junit.*;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import aiss.model.BMI.BMIResult;
-import aiss.model.resource.BMIResource;
 import aiss.model.titan.DataBMI;
 import aiss.model.titan.Height;
 import aiss.model.titan.Weight;
@@ -49,4 +49,5 @@ public class BMIResourceTest {
 		
 		System.out.println(BMI3);
 	}
+	
 }
