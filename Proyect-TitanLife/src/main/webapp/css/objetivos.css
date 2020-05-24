@@ -6,23 +6,26 @@
 
 
 body{
-    background-image: url(https://i.pinimg.com/originals/63/6e/af/636eaf6738860fcfce8065a479197a5c.jpg) ;
-    background-size:130%;
+	background: url("https://i.pinimg.com/originals/63/6e/af/636eaf6738860fcfce8065a479197a5c.jpg") no-repeat center center fixed;
+        background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
 }
 
 #youtubeMessage{
 	color:red;
 	font-family:'Titillium Web', sans-serif;
 	position:absolute;
-	top:30%;
-	right:8%;
+	top:15%;
+	right:20%;
 }
 
 .advert{
 	color:red;
 	font-family:'Titillium Web', sans-serif;
 	position:absolute;
-	left:25%;
+	left:28%;
 	top:15%;
 }
 
@@ -165,6 +168,12 @@ body{
     .col-tab-8 {width: 80%;}
     .col-tab-9 {width: 90%;}
     .col-tab-10{width:100%;}
+
+      body{
+         background-image: url("https://i.pinimg.com/originals/c8/51/5a/c8515a695eb660bb2a3d66f38479f1b1.jpg");
+       
+    
+	 }
 }
 
 @media only screen and (min-width: 768px) {
@@ -178,6 +187,22 @@ body{
     .col-8 {width: 80%;}
     .col-9 {width: 90%;}
     .col-10{width: 100%;}
+
+     body{
+         background-image: url("https://i.pinimg.com/originals/c8/51/5a/c8515a695eb660bb2a3d66f38479f1b1.jpg");
+    
+    }
+
+    #youtubeMessage {
+       top: 15%;
+       right: 13.4%;
+    }
+
+    .advert {
+       left: 17.7%;
+       top: 15%;
+    }
+
 
     .boton{
         left: 43%;
@@ -242,5 +267,3 @@ body{
 
    }
 }
-
-
