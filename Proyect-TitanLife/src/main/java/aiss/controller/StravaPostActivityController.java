@@ -1,6 +1,7 @@
 package aiss.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -95,9 +96,10 @@ public class StravaPostActivityController extends HttpServlet {
 					Integer c=CalculatorFatSecret.userBaseCalories(u)+san.get(0).getCalories().intValue();
 					u.setBaseCaloriasDiarias(c);
 					u.setCaloriasDiarias(c);
-				}else {
-				    u.setCaloriasDiarias(u.getCaloriasDiarias()+san.get(0).getCalories().intValue());
+					u.setInstanteCalorias(LocalDate.now());
+					u.setComidasDiarias(new ArrayList<String>());
 				}
+				u.setCaloriasDiarias(u.getCaloriasDiarias()+san.get(0).getCalories().intValue());
 				log.info("Calories actualized with strava activiy: "+san.get(0).getName());
 				
 				for(StravaActivityC st :san) {
@@ -126,7 +128,7 @@ public class StravaPostActivityController extends HttpServlet {
 			}
 			}else {
 	        	log.info("Acces without code");
-	    		response.sendRedirect("http://www.strava.com/oauth/authorize?client_id=46775&response_type=code&redirect_uri=http://localhost:8090/stravaActivityController&approval_prompt=force&scope=activity:read,activity:write");
+	    		response.sendRedirect("http://www.strava.com/oauth/authorize?client_id=46775&response_type=code&redirect_uri=https://titanlife.appspot.com/stravaActivityController&approval_prompt=force&scope=activity:read,activity:write");
 	        	code=request.getParameter("code");
 	        	request.getSession().setAttribute("code", code);
 			}

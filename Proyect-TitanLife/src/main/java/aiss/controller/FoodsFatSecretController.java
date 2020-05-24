@@ -63,7 +63,7 @@ public class FoodsFatSecretController extends HttpServlet {
 				log.info(comidas+"/"+cantidad+"/"+caloriasOcultas+" for user "+u.getUsername());
 				if(Pattern.matches("^[0-9]+$",cantidad) && comidas!=null && !comidas.equals("") && 
 						caloriasOcultas!=null && !caloriasOcultas.equals("")) {
-					u.setCaloriasDiarias(u.getCaloriasDiarias()-Integer.parseInt(caloriasOcultas));
+					u.setCaloriasDiarias(u.getCaloriasDiarias()-(int)Double.parseDouble(caloriasOcultas));
 					u.getComidasDiarias().add(comidas+"/"+cantidad+"/"+caloriasOcultas);
 					log.info(u.getUsername()+"´foods actualized");
 					request.getRequestDispatcher("/fatSecretCaloriesController").forward(request, response);

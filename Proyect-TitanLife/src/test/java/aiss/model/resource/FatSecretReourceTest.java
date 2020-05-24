@@ -1,4 +1,4 @@
-package aiis.model.resource;
+package aiss.model.resource;
 
 import static org.junit.Assert.assertNotNull;
 

@@ -30,7 +30,7 @@ public class DeleteFatSecretController extends HttpServlet {
 					String trozos[]=food.split("/");
 					String calorias=trozos[4];
 					log.info("Calorias a sumar: "+calorias);
-					u.setCaloriasDiarias(u.getCaloriasDiarias()+Integer.parseInt(calorias));
+					u.setCaloriasDiarias(u.getCaloriasDiarias()+(int)Double.parseDouble(calorias));
 					log.info("Eliminando comida : "+food);
 					u.getComidasDiarias().remove(food);
 				}
